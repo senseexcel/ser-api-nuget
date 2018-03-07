@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RootNamespace>SerApiNuget</RootNamespace>
+    <Authors>Konrad Mattheis und Martin Berthold</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright (c) 2018</Copyright>
+    <Company>senseexcel</Company>
+    <PackageId>SerApi</PackageId>
+    <Product>SerApi</Product>
   </PropertyGroup>
 
   <ItemGroup>
