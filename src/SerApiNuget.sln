@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerApiNuget", "SerApiNuget.csproj", "{D54891AC-D247-4E5A-ADBB-B2B70261FC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerApi", "SerApi.csproj", "{3D764FB1-EF5B-40FC-A4C2-B82473256995}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D54891AC-D247-4E5A-ADBB-B2B70261FC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D54891AC-D247-4E5A-ADBB-B2B70261FC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D54891AC-D247-4E5A-ADBB-B2B70261FC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D54891AC-D247-4E5A-ADBB-B2B70261FC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D764FB1-EF5B-40FC-A4C2-B82473256995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D764FB1-EF5B-40FC-A4C2-B82473256995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D764FB1-EF5B-40FC-A4C2-B82473256995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D764FB1-EF5B-40FC-A4C2-B82473256995}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {373F212C-23D1-4FD4-915A-FD411F5F5B91}
+		SolutionGuid = {7BB51D29-4CBF-4AE8-9CBD-A3CD5AF7707C}
 	EndGlobalSection
 EndGlobal

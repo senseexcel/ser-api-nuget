@@ -3,11 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RootNamespace>SerApi</RootNamespace>
-    <AssemblyName>SerApi</AssemblyName>
+    <Authors>Konrad Mattheis und Martin Berthold</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/senseexcel/ser-api-nuget</PackageProjectUrl>
-    <Authors>Konrad Mattheis &amp; Martin Berthold</Authors>
-    <Company>q2g</Company>
+    <Copyright>Copyright (c) 2018</Copyright>
+    <Company>senseexcel</Company>
+    <PackageId>SerApi</PackageId>
+    <Product>SerApi</Product>
   </PropertyGroup>
 
   <ItemGroup>
