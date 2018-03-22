@@ -100,6 +100,9 @@ namespace SerApi
         //entweder CERT als PEM String oder Pfad zum File (Beides)
         [JsonProperty(nameof(Cert))]
         public string Cert { get; set; }
+
+        [JsonProperty(nameof(PrivateKey))]
+        public string PrivateKey { get; set; }
         #endregion
     }
 
