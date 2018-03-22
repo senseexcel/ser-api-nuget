@@ -101,11 +101,8 @@ namespace SerApi
         [JsonProperty(nameof(Cert))]
         public string Cert { get; set; }
 
-        [JsonProperty(nameof(ProxyCertificate))]
-        public string ProxyCertificate { get; set; }
-
-        [JsonProperty(nameof(ProxyPrivateKey))]
-        public string ProxyPrivateKey { get; set; }
+        [JsonProperty(nameof(PrivateKey))]
+        public string PrivateKey { get; set; }
         #endregion
     }
 
