@@ -100,6 +100,12 @@ namespace SerApi
         //entweder CERT als PEM String oder Pfad zum File (Beides)
         [JsonProperty(nameof(Cert))]
         public string Cert { get; set; }
+
+        [JsonProperty(nameof(ProxyCertificate))]
+        public string ProxyCertificate { get; set; }
+
+        [JsonProperty(nameof(ProxyPrivateKey))]
+        public string ProxyPrivateKey { get; set; }
         #endregion
     }
 
