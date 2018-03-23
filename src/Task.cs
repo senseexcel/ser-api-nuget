@@ -62,14 +62,17 @@ namespace SerApi
     public class SerTemplate
     {
         #region Properties
-        [JsonProperty(nameof(FileName))]
-        public string FileName { get; set; }
+        [JsonProperty(nameof(Input))]
+        public string Input { get; set; }
 
-        [JsonProperty(nameof(SaveFormats))]
-        public string SaveFormats { get; set; }
+        [JsonProperty(nameof(Output))]
+        public string Output { get; set; }
 
-        [JsonProperty(nameof(ReportName))]
-        public string ReportName { get; set; }
+        [JsonProperty(nameof(OutputFormat))]
+        public string OutputFormat { get; set; }
+
+        [JsonProperty(nameof(OutputPassword))]
+        public string OutputPassword { get; set; }
 
         [JsonProperty(nameof(KeepFormula))]
         public bool KeepFormula { get; set; } = false;
