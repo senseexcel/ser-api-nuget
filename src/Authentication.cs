@@ -20,7 +20,8 @@ namespace SerApi
     {
         WINDOWSAUTH,
         CERTIFICATE,
-        SESSION
+        SESSION,
+        JWT
     }
     #endregion
 
