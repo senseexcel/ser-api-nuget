@@ -52,7 +52,7 @@ namespace SerApi
         public bool UseSandbox { get; set; } = true;
 
         [JsonProperty(nameof(UseUserSelections))]
-        public bool UseUserSelections { get; set; } = false;
+        public int UseUserSelections { get; set; } = 0;
 
         [JsonProperty(nameof(TaskCount))]
         public int TaskCount { get; set; } = -1;
