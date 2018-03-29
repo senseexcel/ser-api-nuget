@@ -22,6 +22,15 @@ namespace SerApi
     using Newtonsoft.Json.Converters;
     #endregion
 
+    #region Enumerations
+    public enum SelectionMode
+    {
+        Normal = 0,
+        OnDemandOff = 1,
+        OnDemandOn = 2
+    }
+    #endregion
+
     public class SerTask
     {
         #region Properties
@@ -52,7 +61,7 @@ namespace SerApi
         public bool UseSandbox { get; set; } = true;
 
         [JsonProperty(nameof(UseUserSelections))]
-        public int UseUserSelections { get; set; } = 0;
+        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
 
         [JsonProperty(nameof(TaskCount))]
         public int TaskCount { get; set; } = -1;
