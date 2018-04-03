@@ -130,6 +130,12 @@ namespace SerApi
         [JsonProperty(nameof(App))]
         public string App { get; set; }
 
+        [JsonProperty(nameof(SslVerify))]
+        public bool SslVerify { get; set; }
+
+        [JsonProperty(nameof(SslValidThumbprints))]
+        public List<SerThumpprint> SslValidThumbprints { get; set; }
+
         [JsonProperty(nameof(Credentials))]
         public SerCredentials Credentials { get; set; }
         #endregion
@@ -138,6 +144,15 @@ namespace SerApi
         {
             return $"{ConnectUri}-{App}";
         }
+    }
+
+    public class SerThumpprint
+    {
+        [JsonProperty(nameof(Url))]
+        public string Url { get; set; }
+
+        [JsonProperty(nameof(Thumbprint))]
+        public string Thumbprint { get; set; }
     }
 
     public class SerSenseSelection
