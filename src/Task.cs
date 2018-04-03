@@ -29,6 +29,12 @@ namespace SerApi
         OnDemandOff = 1,
         OnDemandOn = 2
     }
+
+    public enum SelectionType
+    {
+        Static,
+        Dynamic
+    }
     #endregion
 
     public class SerTask
@@ -40,8 +46,8 @@ namespace SerApi
         [JsonProperty(nameof(Template))]
         public SerTemplate Template { get; set; } = new SerTemplate();
 
-        [JsonProperty(nameof(Evaluate))]
-        public JObject Evaluate { get; set; }
+        [JsonProperty(nameof(Distribute))]
+        public JObject Distribute { get; set; }
 
         [JsonProperty(nameof(Connection))]
         public SerConnection Connection { get; set; } = new SerConnection();
@@ -92,8 +98,23 @@ namespace SerApi
         [JsonProperty(nameof(ScriptArgs))]
         public List<string> ScriptArgs { get; set; } = new List<string>();
 
-        [JsonProperty(nameof(Selection))]
-        public SerSenseSelection Selection { get; set; }
+        [JsonProperty(nameof(Selections))]
+        public List<SerSenseSelection> Selections { get; private set; }
+
+        [JsonIgnore]
+        public bool Generated { get; set; } = false;
+        #endregion
+
+        #region Public Methods
+        public List<SerSenseSelection> GetDynamicFields()
+        {
+            return Selections?.Where(f => f.Type == SelectionType.Dynamic).ToList();
+        }
+
+        public List<SerSenseSelection> GetStaticFields()
+        {
+            return Selections?.Where(f => f.Type == SelectionType.Static).ToList();
+        }
         #endregion
     }
 
@@ -130,6 +151,15 @@ namespace SerApi
         [JsonProperty(nameof(App))]
         public string App { get; set; }
 
+        [JsonProperty(nameof(SslVerify))]
+        public bool SslVerify { get; set; }
+
+        [JsonProperty(nameof(SharedMode))]
+        public bool SharedMode { get; set; }
+
+        [JsonProperty(nameof(SslValidThumbprints))]
+        public List<SerThumbprint> SslValidThumbprints { get; set; }
+
         [JsonProperty(nameof(Credentials))]
         public SerCredentials Credentials { get; set; }
         #endregion
@@ -140,45 +170,32 @@ namespace SerApi
         }
     }
 
-    public class SerSenseSelection
+    public class SerThumbprint
     {
-        #region Properties
-        [JsonProperty(nameof(Fields))]
-        public List<SerSenseField> Fields { get; set; } = new List<SerSenseField>();
+        [JsonProperty(nameof(Url))]
+        public string Url { get; set; }
 
-        //Unbekannt prüfen
-        [JsonProperty(nameof(Generated))]
-        public bool Generated { get; set; } = false;
-        #endregion
+        [JsonProperty(nameof(Thumbprint))]
+        public string Thumbprint { get; set; }
     }
 
-    public class SerSenseField
+    public class SerSenseSelection
     {
-        #region Enums
-        public enum FieldType
-        {
-            Static,
-            Dynamic
-        }
-        #endregion
-
         #region Properties
         [JsonProperty(nameof(Name))]
         public string Name { get; set; }
 
-        [JsonProperty(nameof(Values))]
-        public List<string> Values { get; set; } = new List<string>();
+        [JsonProperty(nameof(ObjectType))]
+        public string ObjectType { get; set; }
 
-        [JsonProperty(nameof(AllValues))]
-        public bool AllValues { get; set; }
+        [JsonProperty(nameof(Value))]
+        public string Value { get; private set; }
+
+        [JsonProperty(nameof(Values))]
+        public List<string> Values { get; private set; }
 
         [JsonProperty(nameof(Type))]
-        public FieldType Type { get; set; }
+        public SelectionType Type { get; private set; }
         #endregion
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }
