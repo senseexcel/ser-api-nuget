@@ -152,10 +152,10 @@ namespace SerApi
         public string App { get; set; }
 
         [JsonProperty(nameof(SslVerify))]
-        public bool SslVerify { get; set; }
+        public bool SslVerify { get; set; } = true;
 
-        [JsonProperty(nameof(SharedMode))]
-        public bool SharedMode { get; set; }
+        [JsonProperty(nameof(SharedSession))]
+        public bool SharedSession { get; set; }
 
         [JsonProperty(nameof(SslValidThumbprints))]
         public List<SerThumbprint> SslValidThumbprints { get; set; }

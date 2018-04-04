@@ -41,9 +41,6 @@
         [JsonProperty(nameof(RunTime))]
         public TimeSpan RunTime { get; private set; }
 
-        [JsonProperty(nameof(TimeOut))]
-        public int TimeOut { get; private set; }
-
         [JsonProperty(nameof(Status))]
         public TaskStatusInfo Status { get; private set; }
 
@@ -73,8 +70,8 @@
         [JsonProperty(nameof(AfterScriptResult))]
         public List<ScriptResult> AfterScriptResult { get; set; }
 
-        [JsonProperty(nameof(Evaluate))]
-        public JObject Evaluate { get; set; }
+        [JsonProperty(nameof(Distribute))]
+        public JObject Distribute { get; set; }
 
         [JsonProperty(nameof(Connection))]
         public SerConnection Connection { get; set; }
