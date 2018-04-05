@@ -9,7 +9,7 @@
     <Company>senseexcel</Company>
     <PackageId>SerApi</PackageId>
     <Product>SerApi</Product>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
   </PropertyGroup>
 
   <ItemGroup>
