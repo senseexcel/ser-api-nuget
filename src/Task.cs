@@ -162,6 +162,13 @@ namespace SerApi
 
         [JsonProperty(nameof(Credentials))]
         public SerCredentials Credentials { get; set; }
+
+        [JsonProperty(nameof(Lefs))]
+        public List<string> Lefs { get; set; }
+
+        [JsonProperty(nameof(Lef))]
+        public string Lef { get; set; }
+
         #endregion
 
         public override string ToString()
