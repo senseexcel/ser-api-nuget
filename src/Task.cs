@@ -148,6 +148,29 @@ namespace SerApi
         [JsonProperty(nameof(VirtualProxyPath))]
         public string VirtualProxyPath { get; set; }
 
+        [JsonIgnore]
+        public Uri ServerUri
+        {
+            get
+            {
+                var newUri = new UriBuilder(ConnectUri);
+                if (!String.IsNullOrEmpty(VirtualProxyPath))
+                    newUri.Path = VirtualProxyPath;
+
+                switch(newUri.Scheme.ToLowerInvariant())
+                {
+                    case "ws":
+                        newUri.Scheme = "http";
+                        break;
+                    case "wss":
+                        newUri.Scheme = "https";
+                        break;
+                }
+
+                return newUri.Uri;
+            }
+        }
+
         [JsonProperty(nameof(App))]
         public string App { get; set; }
 
