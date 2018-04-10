@@ -57,6 +57,11 @@ namespace SerApi
 
             return base.Equals(obj);
         }
+
+        public override string ToString()
+        {
+            return $"{UserDirectory}\\{UserId}";
+        }
         #endregion
     }
 }
