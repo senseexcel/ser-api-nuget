@@ -47,20 +47,9 @@ namespace SerApi
         #endregion
 
         #region Public Methods
-        public override bool Equals(object obj)
-        {
-            if(obj is DomainUser user)
-            {
-                if(user.UserId == UserId && user.UserDirectory == UserDirectory)
-                    return true;
-            }
-
-            return base.Equals(obj);
-        }
-
         public override string ToString()
         {
-            return $"{UserDirectory}\\{UserId}";
+            return $"{UserDirectory.ToLowerInvariant()}\\{UserId.ToLowerInvariant()}";
         }
         #endregion
     }

@@ -20,6 +20,7 @@ namespace SerApi
     using System.IO;
     using System.Text.RegularExpressions;
     using Newtonsoft.Json.Converters;
+    using System.ComponentModel;
     #endregion
 
     #region Enumerations
@@ -46,11 +47,12 @@ namespace SerApi
         [JsonProperty(nameof(Template))]
         public SerTemplate Template { get; set; } = new SerTemplate();
 
-        [JsonProperty(nameof(Distribute))]
+        [JsonProperty(nameof(Distribute), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(null)]
         public JObject Distribute { get; set; }
 
         [JsonProperty(nameof(Connection))]
-        public SerConnection Connection { get; set; } = new SerConnection();
+        public SerConnection Connection { get; set; }
         #endregion 
     }
 
@@ -58,19 +60,25 @@ namespace SerApi
     {
         #region Properties
         [JsonProperty(nameof(Timeout))]
+        [DefaultValue(300)]
         public int Timeout { get; set; } = 300;
 
         [JsonProperty(nameof(ErrorRepeatCount))]
-        public int ErrorRepeatCount { get; set; } = 3;
+        [DefaultValue(2)]
+        public int ErrorRepeatCount { get; set; } = 2;
 
-        [JsonProperty(nameof(UseSandbox))]
+        [JsonProperty(nameof(UseSandbox), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(true)]
         public bool UseSandbox { get; set; } = true;
 
-        [JsonProperty(nameof(UseUserSelections))]
-        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
+        [JsonProperty(nameof(TaskCount), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(1)]
+        public int TaskCount { get; set; } = 1;
 
-        [JsonProperty(nameof(TaskCount))]
-        public int TaskCount { get; set; } = -1;
+        [JsonProperty(nameof(UseUserSelections), DefaultValueHandling = DefaultValueHandling.Ignore), 
+         JsonConverter(typeof(StringEnumConverter))]
+        [DefaultValue(SelectionMode.Normal)]
+        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
         #endregion
     }
 
@@ -83,37 +91,39 @@ namespace SerApi
         [JsonProperty(nameof(Output))]
         public string Output { get; set; }
 
-        [JsonProperty(nameof(OutputFormat))]
+        [JsonProperty(nameof(OutputFormat), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(null)]
         public string OutputFormat { get; set; }
 
-        [JsonProperty(nameof(OutputPassword))]
+        [JsonProperty(nameof(OutputPassword), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(null)]
         public string OutputPassword { get; set; }
 
-        [JsonProperty(nameof(KeepFormula))]
+        [JsonProperty(nameof(KeepFormula), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
         public bool KeepFormula { get; set; } = false;
 
-        [JsonProperty(nameof(ScriptKeys))]
-        public List<string> ScriptKeys { get; set; } = new List<string>();
+        [JsonProperty(nameof(ScriptKeys), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(null)]
+        public List<string> ScriptKeys { get; set; }
 
-        [JsonProperty(nameof(ScriptArgs))]
-        public List<string> ScriptArgs { get; set; } = new List<string>();
+        [JsonProperty(nameof(ScriptArgs), DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(null)]
+        public List<string> ScriptArgs { get; set; }
 
-        [JsonProperty(nameof(Selections))]
-        public List<SerSenseSelection> Selections { get; private set; }
+        [JsonProperty(nameof(Selections), DefaultValueHandling = DefaultValueHandling.Ignore),
+         JsonConverter(typeof(SettingsConverter))]
+        [DefaultValue(null)]
+        public List<SerSenseSelection> Selections { get; set; }
 
         [JsonIgnore]
         public bool Generated { get; set; } = false;
         #endregion
 
         #region Public Methods
-        public List<SerSenseSelection> GetDynamicFields()
+        public List<SerSenseSelection> GetSelectionObjects(SelectionType type)
         {
-            return Selections?.Where(f => f.Type == SelectionType.Dynamic).ToList();
-        }
-
-        public List<SerSenseSelection> GetStaticFields()
-        {
-            return Selections?.Where(f => f.Type == SelectionType.Static).ToList();
+            return Selections?.Where(f => f.Type == type).ToList();
         }
         #endregion
     }
@@ -125,16 +135,20 @@ namespace SerApi
         public QlikCredentialType Type { get; set; }
 
         [JsonProperty(nameof(Key))]
+        [DefaultValue(null)]
         public string Key { get; set; }
 
         [JsonProperty(nameof(Value))]
+        [DefaultValue(null)]
         public string Value { get; set; }
 
         //entweder CERT als PEM String oder Pfad zum File (Beides)
         [JsonProperty(nameof(Cert))]
+        [DefaultValue(null)]
         public string Cert { get; set; }
 
         [JsonProperty(nameof(PrivateKey))]
+        [DefaultValue(null)]
         public string PrivateKey { get; set; }
         #endregion
     }
@@ -145,6 +159,7 @@ namespace SerApi
         [JsonProperty(nameof(ConnectUri))]
         public string ConnectUri { get; set; }
 
+        //Weg?? alles über connuri
         [JsonProperty(nameof(VirtualProxyPath))]
         public string VirtualProxyPath { get; set; }
 
@@ -175,23 +190,24 @@ namespace SerApi
         public string App { get; set; }
 
         [JsonProperty(nameof(SslVerify))]
+        [DefaultValue(true)]
         public bool SslVerify { get; set; } = true;
 
-        [JsonProperty(nameof(SharedSession))]
-        public bool SharedSession { get; set; }
-
         [JsonProperty(nameof(SslValidThumbprints))]
+        [DefaultValue(null)]
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
+        [JsonProperty(nameof(SharedSession))]
+        [DefaultValue(false)]
+        public bool SharedSession { get; set; } = false;
+
         [JsonProperty(nameof(Credentials))]
+        [DefaultValue(null)]
         public SerCredentials Credentials { get; set; }
 
-        [JsonProperty(nameof(Lefs))]
+        [JsonProperty(nameof(Lefs)), JsonConverter(typeof(SettingsConverter))]
+        [DefaultValue(null)]
         public List<string> Lefs { get; set; }
-
-        [JsonProperty(nameof(Lef))]
-        public string Lef { get; set; }
-
         #endregion
 
         public override string ToString()
@@ -203,9 +219,11 @@ namespace SerApi
     public class SerThumbprint
     {
         [JsonProperty(nameof(Url))]
+        [DefaultValue(null)]
         public string Url { get; set; }
 
         [JsonProperty(nameof(Thumbprint))]
+        [DefaultValue(null)]
         public string Thumbprint { get; set; }
     }
 
@@ -213,19 +231,18 @@ namespace SerApi
     {
         #region Properties
         [JsonProperty(nameof(Name))]
+        [DefaultValue(null)]
         public string Name { get; set; }
 
         [JsonProperty(nameof(ObjectType))]
         public string ObjectType { get; set; }
 
-        [JsonProperty(nameof(Value))]
-        public string Value { get; private set; }
+        [JsonProperty(nameof(Values)), JsonConverter(typeof(SettingsConverter))]
+        [DefaultValue(null)]
+        public List<string> Values { get; set; }
 
-        [JsonProperty(nameof(Values))]
-        public List<string> Values { get; private set; }
-
-        [JsonProperty(nameof(Type))]
-        public SelectionType Type { get; private set; }
+        [JsonProperty(nameof(Type)), JsonConverter(typeof(StringEnumConverter))]
+        public SelectionType Type { get; set; }
         #endregion
     }
 }
