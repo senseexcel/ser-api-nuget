@@ -1,82 +1,56 @@
-using Hjson;
-using Newtonsoft.Json;
-using SerApi;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using Xunit;
-
 namespace XUnitJsonTest
 {
+    #region Usings
+    using Hjson;
+    using Newtonsoft.Json;
+    using SerApi;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using Xunit;
+    #endregion
+
     public class JsonTest
     {
-        [Fact]
-        public void TestDefaultValues()
+        private string GetHJsonPath(string filename)
         {
-            try
-            {
-                var converter = new SettingsConverter();
-                var jsonSettings = new JsonSerializerSettings();
-                //jsonSettings.Converters.Add(converter);
-
-                var sampleJson = HjsonValue.Load(@"C:\Users\MBerthold\Documents\Entwicklung\Projects\SenseExcelReporting\ser-api-nuget\docs\examples\valueSingle.hjson");
-                var json = sampleJson.ToString(Stringify.Formatted);
-                var result = JsonConvert.DeserializeObject<Test>(json, jsonSettings);
-            }
-            catch (Exception ex)
-            {
-                var dd = ex.ToString();
-            }
-        }
-    }
-
-    public class Test
-    {
-        public bool Active { get; set; }
-        [JsonConverter(typeof(SettingsConverter))]
-        public List<Test2> Values { get; set; }
-    }
-
-    public class Test2
-    {
-        public string Url { get; set; }
-        public string Server { get; set; }
-    }
-
-    public class SettingsConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return (objectType == typeof(string)) || (objectType == typeof(List<string>));
+            var fullPath = Path.GetFullPath($"..\\..\\..\\..\\..\\..\\docs\\examples\\{filename}");
+            var sampleJson = HjsonValue.Load(fullPath);
+            return sampleJson.ToString(Stringify.Formatted);
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        [Fact(DisplayName = "ReadTaskConfigWithSingleSelection")]
+        public void ReadTaskConfigWithSingleSelection()
         {
-            if (reader.TokenType == JsonToken.StartArray)
-            {
-                var result = new List<string>();
-                reader.Read();
-                while (reader.TokenType != JsonToken.EndArray)
-                {
-                    result.Add(reader.Value as string);
-                    reader.Read();
-                }
-                return result;
-            }
-            else if(reader.TokenType == JsonToken.StartObject)
-            {
-                return new List<Test2> { reader.Value as Test2 };
-            }
-            else
-            {
-                return new List<string> { reader.Value as string };
-            }
+            var json = GetHJsonPath("selectionsSingle.hjson");
+            var result = JsonConvert.DeserializeObject<SerTask>(json);
+            Assert.True(result.Template.Selections.Count == 1);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        [Fact(DisplayName = "ReadTaskConfigWithSelectionList")]
+        public void ReadTaskConfigWithSelectionList()
         {
-            //ToDo here we can decide to write the json as 
-            //if only has one attribute output as string if it has more output as list
+            var json = GetHJsonPath("selectionsList.hjson");
+            var result = JsonConvert.DeserializeObject<SerTask>(json);
+            Assert.True(result.Template.Selections.Count == 2);
+        }
+
+        [Fact(DisplayName = "ReadArrays")]
+        public void ReadArrays()
+        {
+            var json = GetHJsonPath("arrays.hjson");
+            var result = JsonConvert.DeserializeObject<Test1>(json);
+            Assert.True(result.SingleValues.Length == 1);
+            Assert.True(result.MultipleValues.Length == 2);
+        }
+
+        [Fact(DisplayName = "SerializeTaskConfig")]
+        public void SerializeTaskConfig()
+        {
+            var serConfig = new SerConfig();
+            var result = JsonConvert.SerializeObject(serConfig);
+            
         }
     }
 }

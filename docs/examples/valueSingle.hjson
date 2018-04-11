@@ -1,8 +1,0 @@
-{
-	active: true
-	values: 
-	{
-	  url: http://test.com
-	  server: catserver
-	}
-}

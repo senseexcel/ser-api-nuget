@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="SerApi">
-      <HintPath>..\..\..\src\bin\Debug\netcoreapp2.0\SerApi.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\src\SerApi.csproj" />
   </ItemGroup>
 
 </Project>

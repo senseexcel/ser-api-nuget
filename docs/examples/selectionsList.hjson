@@ -11,13 +11,18 @@
 	template: 
 	{
 		input: ExecutiveDashboard.xlsx
-		output: Test.pdf					
-		selections:
-		{
+		output: Test.pdf						
+		selections:[
+		  {
 			type: static
 			name: Fiscal Year
 			value: 2014	
 			objectType: field
-		}
-	}
+		  }
+		  {
+			type: Dynamic
+			name: Region
+		  }
+		]
+	  }
 }
