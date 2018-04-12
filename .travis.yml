@@ -2,7 +2,6 @@ language: csharp
 mono: none
 dotnet: 2.0.0
 script:
-  - dotnet restore
-  - dotnet build ./src/
+  - dotnet restore ./tests/XUnitJsonTest/
   - dotnet build ./tests/XUnitJsonTest/
   - dotnet test ./tests/XUnitJsonTest/
