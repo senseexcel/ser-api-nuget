@@ -16,11 +16,6 @@ namespace SerApi
             List
         }
 
-        private void AddICollection<T>(ICollection<T> collection, T element)
-        {
-            collection.Add(element);
-        }
-
         private object ReadJsonInternal(Type innerType, Type objectType, JsonReader reader,
                                         JsonSerializer serializer, object retVal, ObjectMode mode)
         {
