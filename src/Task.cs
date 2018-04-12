@@ -48,10 +48,9 @@ namespace SerApi
         public SerTemplate Template { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(null)]
         public JObject Distribute { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public SerConnection Connection { get; set; }
         #endregion 
     }
@@ -98,7 +97,8 @@ namespace SerApi
         [JsonProperty]
         public string OutputPassword { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
         public bool KeepFormula { get; set; } = false;
 
         [JsonProperty]
@@ -237,7 +237,7 @@ namespace SerApi
         [JsonProperty]
         public string Name { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty]
         public string ObjectType { get; set; }
 
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]

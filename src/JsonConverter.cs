@@ -24,7 +24,8 @@ namespace SerApi
         private object ReadJsonInternal(Type innerType, Type objectType, JsonReader reader,
                                         JsonSerializer serializer, object retVal, ObjectMode mode)
         {
-            if (reader.TokenType == JsonToken.StartObject)
+            //???? jeder datentyp
+            if (reader.TokenType == JsonToken.StartObject || reader.TokenType == JsonToken.String)
             {
                 var instance = serializer.Deserialize(reader, innerType);
                 if (mode == ObjectMode.Array)
@@ -92,10 +93,21 @@ namespace SerApi
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            //var list = (List<T>)value;
-            //if (list.Count == 1)
-            //    value = list[0];
-            //serializer.Serialize(writer, value);
+            var objectType = value.GetType();
+            if (objectType.IsArray)
+            {
+                var array = value as object[];
+                if (array.Length == 1)
+                    value = array[0];
+            }
+            else if (typeof(ICollection).IsAssignableFrom(objectType))
+            {
+                var list = value as IList;
+                if (list.Count == 1)
+                    value = list[0];
+            }
+
+            serializer.Serialize(writer, value);
         }
     }
 }

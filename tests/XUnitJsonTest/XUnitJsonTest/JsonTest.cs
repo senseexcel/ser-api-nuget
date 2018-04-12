@@ -5,6 +5,7 @@ namespace XUnitJsonTest
     using Newtonsoft.Json;
     using SerApi;
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
@@ -36,8 +37,8 @@ namespace XUnitJsonTest
             Assert.True(result.Template.Selections.Count == 2);
         }
 
-        [Fact(DisplayName = "ReadArrays")]
-        public void ReadArrays()
+        [Fact(DisplayName = "DeserializeArrays")]
+        public void DeserializeArrays()
         {
             var json = GetHJsonPath("arrays.hjson");
             var result = JsonConvert.DeserializeObject<Test1>(json);
@@ -48,9 +49,66 @@ namespace XUnitJsonTest
         [Fact(DisplayName = "SerializeTaskConfig")]
         public void SerializeTaskConfig()
         {
-            var serConfig = new SerConfig();
-            var result = JsonConvert.SerializeObject(serConfig);
-            
+            var serTask = new SerTask()
+            {
+                Template = new SerTemplate()
+                {
+                    Input = "Demo.pdf",
+                    Output = "Demo",
+                    Selections = new List<SerSenseSelection>()
+                         {
+                              new SerSenseSelection()
+                              {
+                                  Name = "Test",
+                                  ObjectType = "field",
+                                  Type =  SelectionType.Static,
+                                  Values = new List<string>() {"Demo"}
+                              }
+                         }
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(serTask, Formatting.Indented);
+            var result = JsonConvert.DeserializeObject<SerTask>(json);
+            Assert.True(result.Template.Selections.Count == 1);
+        }
+
+        [Fact(DisplayName = "SerializeArrays")]
+        public void SerializeArrays()
+        {
+            var value1 = new Test2()
+            {
+                Server = "http://test1",
+                Url = "myserver1",
+                Info = new Test3()
+                {
+                    Count = 22,
+                    HasCount = true,
+                }
+            };
+
+            var value2 = new Test2()
+            {
+                Server = "http://test2",
+                Url = "myserver2",
+                Info = new Test3()
+                {
+                    Count = 33,
+                    HasCount = true,
+                }
+            };
+
+            var testClass = new Test1();
+            testClass.SingleValues = new Test2[1];
+            testClass.SingleValues[0] = value1;
+            testClass.MultipleValues = new Test2[2];
+            testClass.MultipleValues[0] = value1;
+            testClass.MultipleValues[1] = value2;
+
+            var json = JsonConvert.SerializeObject(testClass, Formatting.Indented);
+            var result = JsonConvert.DeserializeObject<Test1>(json);
+            Assert.True(result.SingleValues.Length == 1);
+            Assert.True(result.MultipleValues.Length == 2);
         }
     }
 }
