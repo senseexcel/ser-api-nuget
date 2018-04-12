@@ -24,8 +24,13 @@ namespace SerApi
         private object ReadJsonInternal(Type innerType, Type objectType, JsonReader reader,
                                         JsonSerializer serializer, object retVal, ObjectMode mode)
         {
-            //???? jeder datentyp
-            if (reader.TokenType == JsonToken.StartObject || reader.TokenType == JsonToken.String)
+            if (reader.TokenType == JsonToken.StartObject || 
+                reader.TokenType == JsonToken.String || 
+                reader.TokenType == JsonToken.Boolean || 
+                reader.TokenType == JsonToken.Date || 
+                reader.TokenType == JsonToken.Bytes ||
+                reader.TokenType == JsonToken.Float ||
+                reader.TokenType == JsonToken.Integer)
             {
                 var instance = serializer.Deserialize(reader, innerType);
                 if (mode == ObjectMode.Array)
@@ -93,18 +98,19 @@ namespace SerApi
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var objectType = value.GetType();
-            if (objectType.IsArray)
+            if (value is IEnumerable enumerable)
             {
-                var array = value as object[];
-                if (array.Length == 1)
-                    value = array[0];
-            }
-            else if (typeof(ICollection).IsAssignableFrom(objectType))
-            {
-                var list = value as IList;
-                if (list.Count == 1)
-                    value = list[0];
+                object singleItem = null;
+                int itemCount = 0;
+                foreach(var item in enumerable)
+                {
+                    itemCount++;
+                    if (itemCount > 1)                    
+                        break;
+                    singleItem = item;                    
+                }
+                if (itemCount == 1)
+                    value = singleItem;
             }
 
             serializer.Serialize(writer, value);
