@@ -3,7 +3,7 @@ namespace XUnitJsonTest
     #region Usings
     using Hjson;
     using Newtonsoft.Json;
-    using SerApi;
+    using Ser.Api;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -98,12 +98,11 @@ namespace XUnitJsonTest
                 }
             };
 
-            var testClass = new Test1();
-            testClass.SingleValues = new Test2[1];
-            testClass.SingleValues[0] = value1;
-            testClass.MultipleValues = new Test2[2];
-            testClass.MultipleValues[0] = value1;
-            testClass.MultipleValues[1] = value2;
+            var testClass = new Test1
+            {
+                SingleValues = new Test2[] { value1 },
+                MultipleValues = new Test2[2] { value1 , value2 }
+            };            
 
             var json = JsonConvert.SerializeObject(testClass, Formatting.Indented);
             var result = JsonConvert.DeserializeObject<Test1>(json);

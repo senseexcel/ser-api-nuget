@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SerApi
+namespace Ser.Api
 {
     public class SingleValueArrayConverter : JsonConverter
     {

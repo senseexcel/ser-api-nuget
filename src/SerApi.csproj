@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0;net452;net462</TargetFrameworks>
-    <RootNamespace>SerApi</RootNamespace>
+    <RootNamespace>Ser.Api</RootNamespace>
     <Authors>Konrad Mattheis und Martin Berthold</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>Copyright (c) 2018</Copyright>

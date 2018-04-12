@@ -1,4 +1,4 @@
-﻿namespace SerApi
+﻿namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
