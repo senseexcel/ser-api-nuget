@@ -20,6 +20,8 @@ namespace SerApi
     using System.IO;
     using System.Text.RegularExpressions;
     using Newtonsoft.Json.Converters;
+    using System.ComponentModel;
+    using NLog;
     #endregion
 
     #region Enumerations
@@ -40,192 +42,209 @@ namespace SerApi
     public class SerTask
     {
         #region Properties
-        [JsonProperty(nameof(General))]
         public SerGeneral General { get; set; } = new SerGeneral();
 
-        [JsonProperty(nameof(Template))]
-        public SerTemplate Template { get; set; } = new SerTemplate();
+        [JsonProperty(Required = Required.Always)]
+        public SerTemplate Template { get; set; }
 
-        [JsonProperty(nameof(Distribute))]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public JObject Distribute { get; set; }
 
-        [JsonProperty(nameof(Connection))]
-        public SerConnection Connection { get; set; } = new SerConnection();
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public SerConnection Connection { get; set; }
         #endregion 
     }
 
     public class SerGeneral
     {
         #region Properties
-        [JsonProperty(nameof(Timeout))]
+        [JsonProperty]
+        [DefaultValue(300)]
         public int Timeout { get; set; } = 300;
 
-        [JsonProperty(nameof(ErrorRepeatCount))]
-        public int ErrorRepeatCount { get; set; } = 3;
+        [JsonProperty]
+        [DefaultValue(2)]
+        public int ErrorRepeatCount { get; set; } = 2;
 
-        [JsonProperty(nameof(UseSandbox))]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(true)]
         public bool UseSandbox { get; set; } = true;
 
-        [JsonProperty(nameof(UseUserSelections))]
-        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(1)]
+        public int TaskCount { get; set; } = 1;
 
-        [JsonProperty(nameof(TaskCount))]
-        public int TaskCount { get; set; } = -1;
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore), 
+         JsonConverter(typeof(StringEnumConverter))]
+        [DefaultValue(SelectionMode.Normal)]
+        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
         #endregion
     }
 
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class SerTemplate
     {
         #region Properties
-        [JsonProperty(nameof(Input))]
+        [JsonProperty(Required = Required.Always)]
         public string Input { get; set; }
 
-        [JsonProperty(nameof(Output))]
+        [JsonProperty(Required = Required.Always)]
         public string Output { get; set; }
 
-        [JsonProperty(nameof(OutputFormat))]
+        [JsonProperty]
         public string OutputFormat { get; set; }
 
-        [JsonProperty(nameof(OutputPassword))]
+        [JsonProperty]
         public string OutputPassword { get; set; }
 
-        [JsonProperty(nameof(KeepFormula))]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
         public bool KeepFormula { get; set; } = false;
 
-        [JsonProperty(nameof(ScriptKeys))]
-        public List<string> ScriptKeys { get; set; } = new List<string>();
+        [JsonProperty]
+        public List<string> ScriptKeys { get; set; }
 
-        [JsonProperty(nameof(ScriptArgs))]
-        public List<string> ScriptArgs { get; set; } = new List<string>();
+        [JsonProperty]
+        public List<string> ScriptArgs { get; set; }
 
-        [JsonProperty(nameof(Selections))]
-        public List<SerSenseSelection> Selections { get; private set; }
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
+        public List<SerSenseSelection> Selections { get; set; }
 
         [JsonIgnore]
         public bool Generated { get; set; } = false;
         #endregion
 
         #region Public Methods
-        public List<SerSenseSelection> GetDynamicFields()
+        public List<SerSenseSelection> GetSelectionObjects(SelectionType type)
         {
-            return Selections?.Where(f => f.Type == SelectionType.Dynamic).ToList();
-        }
-
-        public List<SerSenseSelection> GetStaticFields()
-        {
-            return Selections?.Where(f => f.Type == SelectionType.Static).ToList();
+            try
+            {
+                return Selections?.Where(f => f.Type == type).ToList() ?? new List<SerSenseSelection>();
+            }
+            catch
+            {
+                return new List<SerSenseSelection>();
+            }
         }
         #endregion
     }
 
+    [JsonObject(ItemNullValueHandling=NullValueHandling.Ignore)]
     public class SerCredentials
     {
         #region Properties
-        [JsonProperty(nameof(Type)), JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
         public QlikCredentialType Type { get; set; }
 
-        [JsonProperty(nameof(Key))]
+        [JsonProperty]
         public string Key { get; set; }
 
-        [JsonProperty(nameof(Value))]
+        [JsonProperty]
         public string Value { get; set; }
 
-        //entweder CERT als PEM String oder Pfad zum File (Beides)
-        [JsonProperty(nameof(Cert))]
+        [JsonProperty]
         public string Cert { get; set; }
 
-        [JsonProperty(nameof(PrivateKey))]
+        [JsonProperty]
         public string PrivateKey { get; set; }
         #endregion
     }
 
     public class SerConnection
     {
-        #region Properties
-        [JsonProperty(nameof(ConnectUri))]
-        public string ConnectUri { get; set; }
+        #region Logger
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        #endregion
 
-        [JsonProperty(nameof(VirtualProxyPath))]
-        public string VirtualProxyPath { get; set; }
+        #region Variables && Properties
+        private Uri privateURI;
 
-        [JsonIgnore]
+        [JsonProperty(Required = Required.Always)]
         public Uri ServerUri
         {
             get
             {
-                var newUri = new UriBuilder(ConnectUri);
-                if (!String.IsNullOrEmpty(VirtualProxyPath))
-                    newUri.Path = VirtualProxyPath;
-
-                switch(newUri.Scheme.ToLowerInvariant())
+                try
                 {
-                    case "ws":
-                        newUri.Scheme = "http";
-                        break;
-                    case "wss":
-                        newUri.Scheme = "https";
-                        break;
+                    var newUri = new UriBuilder(privateURI);
+                    switch (newUri.Scheme.ToLowerInvariant())
+                    {
+                        case "ws":
+                            newUri.Scheme = "http";
+                            break;
+                        case "wss":
+                            newUri.Scheme = "https";
+                            break;
+                    }
+                    return newUri.Uri;
                 }
-
-                return newUri.Uri;
+                catch (Exception ex)
+                {
+                    logger.Error(ex, $"The server uri {privateURI} is invalid.");
+                    return null;
+                }
+            }
+            set
+            {
+                if (value != privateURI)
+                    privateURI = value;
             }
         }
 
-        [JsonProperty(nameof(App))]
+        [JsonProperty]
         public string App { get; set; }
 
-        [JsonProperty(nameof(SslVerify))]
+        [JsonProperty]
+        [DefaultValue(true)]
         public bool SslVerify { get; set; } = true;
 
-        [JsonProperty(nameof(SharedSession))]
-        public bool SharedSession { get; set; }
-
-        [JsonProperty(nameof(SslValidThumbprints))]
+        [JsonProperty]
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
-        [JsonProperty(nameof(Credentials))]
+        [JsonProperty]
+        [DefaultValue(false)]
+        public bool SharedSession { get; set; } = false;
+
+        [JsonProperty]
         public SerCredentials Credentials { get; set; }
 
-        [JsonProperty(nameof(Lefs))]
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<string> Lefs { get; set; }
-
-        [JsonProperty(nameof(Lef))]
-        public string Lef { get; set; }
-
         #endregion
 
+        #region Public Methods
         public override string ToString()
         {
-            return $"{ConnectUri}-{App}";
+            return $"{ServerUri}-{App}";
         }
+        #endregion
     }
 
     public class SerThumbprint
     {
-        [JsonProperty(nameof(Url))]
+        #region Properties
+        [JsonProperty(Required = Required.Always)]
         public string Url { get; set; }
 
-        [JsonProperty(nameof(Thumbprint))]
+        [JsonProperty(Required = Required.Always)]
         public string Thumbprint { get; set; }
+        #endregion
     }
 
     public class SerSenseSelection
     {
         #region Properties
-        [JsonProperty(nameof(Name))]
+        [JsonProperty]
         public string Name { get; set; }
 
-        [JsonProperty(nameof(ObjectType))]
+        [JsonProperty]
         public string ObjectType { get; set; }
 
-        [JsonProperty(nameof(Value))]
-        public string Value { get; private set; }
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
+        public List<string> Values { get; set; }
 
-        [JsonProperty(nameof(Values))]
-        public List<string> Values { get; private set; }
-
-        [JsonProperty(nameof(Type))]
-        public SelectionType Type { get; private set; }
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
+        public SelectionType Type { get; set; }
         #endregion
     }
 }
