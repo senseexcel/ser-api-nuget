@@ -226,7 +226,8 @@ namespace Ser.Api
         #endregion
     }
 
-    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerThumbprint
     {
         #region Properties
@@ -238,7 +239,8 @@ namespace Ser.Api
         #endregion
     }
 
-    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerSenseSelection
     {
         #region Properties
