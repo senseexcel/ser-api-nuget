@@ -47,6 +47,10 @@ namespace Ser.Api
             {
                 retVal = serializer.Deserialize(reader, objectType);
             }
+            else if(reader.TokenType == JsonToken.Null)
+            {
+                retVal = null;
+            }
 
             return retVal;
         }
