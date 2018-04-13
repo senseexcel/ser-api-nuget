@@ -3,6 +3,7 @@
     #region Usings
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json.Serialization;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -29,6 +30,7 @@
     }
     #endregion
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class JobResult
     {
         #region Variables & Properties
@@ -55,6 +57,7 @@
         #endregion
     }
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class Report
     {
         #region Properties and Variables

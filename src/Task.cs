@@ -22,6 +22,7 @@ namespace Ser.Api
     using Newtonsoft.Json.Converters;
     using System.ComponentModel;
     using NLog;
+    using Newtonsoft.Json.Serialization;
     #endregion
 
     #region Enumerations
@@ -39,6 +40,7 @@ namespace Ser.Api
     }
     #endregion
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerTask
     {
         #region Properties
@@ -55,6 +57,7 @@ namespace Ser.Api
         #endregion 
     }
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerGeneral
     {
         #region Properties
@@ -81,7 +84,8 @@ namespace Ser.Api
         #endregion
     }
 
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore, 
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerTemplate
     {
         #region Properties
@@ -129,7 +133,8 @@ namespace Ser.Api
         #endregion
     }
 
-    [JsonObject(ItemNullValueHandling=NullValueHandling.Ignore)]
+    [JsonObject(ItemNullValueHandling=NullValueHandling.Ignore,
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerCredentials
     {
         #region Properties
@@ -150,6 +155,7 @@ namespace Ser.Api
         #endregion
     }
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerConnection
     {
         #region Logger
@@ -220,6 +226,7 @@ namespace Ser.Api
         #endregion
     }
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerThumbprint
     {
         #region Properties
@@ -231,6 +238,7 @@ namespace Ser.Api
         #endregion
     }
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerSenseSelection
     {
         #region Properties
