@@ -65,6 +65,11 @@ namespace XUnitJsonTest
                                   Values = new List<string>() {"Demo"}
                               }
                          }
+                },
+                Connection = new SerConnection()
+                {
+                    App = "dd3a6006-2da6-4147-919f-7475623bf36e",
+                    ServerUri = new Uri("https://localhost")
                 }
             };
 
