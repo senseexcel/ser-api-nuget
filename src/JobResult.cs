@@ -34,25 +34,25 @@
     public class JobResult
     {
         #region Variables & Properties
-        [JsonProperty(nameof(TaskId))]
+        [JsonProperty]
         public Guid TaskId { get; private set; }
 
-        [JsonProperty(nameof(StartTime))]
+        [JsonProperty]
         public DateTime StartTime { get; private set; }
 
-        [JsonProperty(nameof(RunTime))]
+        [JsonProperty]
         public TimeSpan RunTime { get; private set; }
 
-        [JsonProperty(nameof(Status))]
+        [JsonProperty]
         public TaskStatusInfo Status { get; private set; }
 
-        [JsonProperty(nameof(AsposeVersion))]
+        [JsonProperty]
         public string AsposeVersion { get; private set; }
 
-        [JsonProperty(nameof(Count))]
+        [JsonProperty]
         public int Count { get; private set; }
 
-        [JsonProperty(nameof(Reports))]
+        [JsonProperty]
         public IList<Report> Reports { get; private set; }
         #endregion
     }
@@ -61,22 +61,22 @@
     public class Report
     {
         #region Properties and Variables
-        [JsonProperty(nameof(Name))]
+        [JsonProperty]
         public string Name { get; private set; }
 
-        [JsonProperty(nameof(Paths))]
+        [JsonProperty]
         public List<string> Paths { get; set; }
 
-        [JsonProperty(nameof(PreScriptResult))]
+        [JsonProperty]
         public List<ScriptResult> PreScriptResult { get; set; }
 
-        [JsonProperty(nameof(AfterScriptResult))]
+        [JsonProperty]
         public List<ScriptResult> AfterScriptResult { get; set; }
 
-        [JsonProperty(nameof(Distribute))]
+        [JsonProperty]
         public JObject Distribute { get; set; }
 
-        [JsonProperty(nameof(Connection))]
+        [JsonProperty]
         public SerConnection Connection { get; set; }
         #endregion
     }
