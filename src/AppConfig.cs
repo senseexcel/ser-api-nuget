@@ -11,15 +11,17 @@ namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
     using System;
     using System.Collections.Generic;
     using System.Text;
     #endregion
 
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerConfig
     {
         #region Properties
-        [JsonProperty(nameof(Tasks))]
+        [JsonProperty]
         public List<SerTask> Tasks { get; set; } = new List<SerTask>();
         #endregion
     }
