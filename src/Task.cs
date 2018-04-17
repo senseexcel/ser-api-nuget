@@ -155,7 +155,8 @@ namespace Ser.Api
         #endregion
     }
 
-    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class SerConnection
     {
         #region Logger
@@ -200,14 +201,14 @@ namespace Ser.Api
         [JsonProperty]
         public string App { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
         public bool SslVerify { get; set; } = true;
 
         [JsonProperty]
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
         public bool SharedSession { get; set; } = false;
 
@@ -221,7 +222,7 @@ namespace Ser.Api
         #region Public Methods
         public override string ToString()
         {
-            return $"{ServerUri}-{App}";
+            return $"{ServerUri}";
         }
         #endregion
     }
