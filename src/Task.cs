@@ -232,7 +232,7 @@ namespace Ser.Api
     public class SerThumbprint
     {
         #region Properties
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty]
         public string Url { get; set; }
 
         [JsonProperty(Required = Required.Always)]
