@@ -10,12 +10,14 @@
     <PackageId>SerApi</PackageId>
     <Product>SerApi</Product>
     <Version>2.0.8</Version>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0008" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="NLog" Version="4.5.2" />
+    <PackageReference Include="NLog" Version="4.5.3" />
   </ItemGroup>
 
 </Project>
