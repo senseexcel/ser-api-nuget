@@ -62,8 +62,8 @@ namespace Ser.Api
     {
         #region Properties
         [JsonProperty]
-        [DefaultValue(300)]
-        public int Timeout { get; set; } = 300;
+        [DefaultValue(900)]
+        public int Timeout { get; set; } = 900;
 
         [JsonProperty]
         [DefaultValue(2)]
