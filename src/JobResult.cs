@@ -50,6 +50,9 @@
         public string AsposeVersion { get; private set; }
 
         [JsonProperty]
+        public string GitVersion { get; private set; }
+
+        [JsonProperty]
         public int Count { get; private set; }
 
         [JsonProperty]
