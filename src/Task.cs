@@ -147,10 +147,10 @@ namespace Ser.Api
         [JsonProperty]
         public string Value { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Cert { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string PrivateKey { get; set; }
         #endregion
     }
