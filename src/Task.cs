@@ -44,6 +44,15 @@ namespace Ser.Api
     public class SerTask
     {
         #region Properties
+        [JsonProperty]
+        public List<SerReport> Reports { get; set; } = new List<SerReport>();
+        #endregion
+    }
+
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    public class SerReport
+    {
+        #region Properties
         public SerGeneral General { get; set; } = new SerGeneral();
 
         [JsonProperty(Required = Required.Always)]
@@ -54,7 +63,7 @@ namespace Ser.Api
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public SerConnection Connection { get; set; }
-        #endregion 
+        #endregion
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
