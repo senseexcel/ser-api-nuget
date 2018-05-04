@@ -203,7 +203,11 @@ namespace Ser.Api
             set
             {
                 if (value != privateURI)
+                {
                     privateURI = value;
+                    var uri = privateURI.OriginalString.TrimEnd('/');
+                    privateURI = new Uri(uri);
+                }
             }
         }
 
