@@ -61,8 +61,9 @@ namespace Ser.Api
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public JObject Distribute { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public SerConnection Connection { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore), 
+         JsonConverter(typeof(SingleValueArrayConverter))]
+        public List<SerConnection> Connections { get; set; }
         #endregion
     }
 
