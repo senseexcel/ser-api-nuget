@@ -21,7 +21,8 @@ namespace Ser.Api
         WINDOWSAUTH,
         CERTIFICATE,
         SESSION,
-        JWT
+        JWT,
+        HEADER
     }
     #endregion
 

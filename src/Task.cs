@@ -44,6 +44,15 @@ namespace Ser.Api
     public class SerTask
     {
         #region Properties
+        [JsonProperty]
+        public List<SerReport> Reports { get; set; } = new List<SerReport>();
+        #endregion
+    }
+
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    public class SerReport
+    {
+        #region Properties
         public SerGeneral General { get; set; } = new SerGeneral();
 
         [JsonProperty(Required = Required.Always)]
@@ -52,9 +61,10 @@ namespace Ser.Api
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public JObject Distribute { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public SerConnection Connection { get; set; }
-        #endregion 
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore), 
+         JsonConverter(typeof(SingleValueArrayConverter))]
+        public List<SerConnection> Connections { get; set; }
+        #endregion
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
@@ -147,10 +157,10 @@ namespace Ser.Api
         [JsonProperty]
         public string Value { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Cert { get; set; }
 
-        [JsonProperty]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string PrivateKey { get; set; }
         #endregion
     }
@@ -194,7 +204,11 @@ namespace Ser.Api
             set
             {
                 if (value != privateURI)
+                {
                     privateURI = value;
+                    var uri = privateURI.OriginalString.TrimEnd('/');
+                    privateURI = new Uri(uri);
+                }
             }
         }
 
