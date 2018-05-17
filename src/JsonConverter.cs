@@ -1,12 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Ser.Api
+﻿namespace Ser.Api
 {
+    #region Usings
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    #endregion
+
     public class SingleValueArrayConverter : JsonConverter
     {
         public enum ObjectMode

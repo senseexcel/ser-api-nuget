@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;net452;net462</TargetFrameworks>
+    <!--net45 is only for TypeScript Generation-->
+    <TargetFrameworks>netcoreapp2.0;net452;net462;net45</TargetFrameworks>    
     <RootNamespace>Ser.Api</RootNamespace>
-    <Authors>Konrad Mattheis und Martin Berthold</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Konrad Mattheis und Martin Berthold</Authors>    
     <Copyright>Copyright (c) 2018</Copyright>
     <Company>senseexcel</Company>
     <PackageId>SerApi</PackageId>
@@ -14,6 +14,34 @@
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(Configuration)' == 'Release'">
+      <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'net45'">
+      <PropertyGroup>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\$(PackageId).ts</RtTargetFile>
+        <RtDisable>false</RtDisable>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <RtDisable>true</RtDisable>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
 
   <Target Name="WriteVersion" AfterTargets="GetVersion">
     <WriteLinesToFile File="$(SolutionDir)\obj\version.txt" Lines="$(GitVersion_NuGetVersion)" Overwrite="true" />
@@ -35,8 +63,11 @@
     <PackageReference Include="GitVersionTask" Version="4.0.0-beta0008">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Reinforced.Typings" Version="1.4.92">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="NLog" Version="4.5.3" />
+    <PackageReference Include="NLog" Version="4.5.3" />    
   </ItemGroup>
 </Project>

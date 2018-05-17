@@ -12,12 +12,14 @@ namespace Ser.Api
     #region Usings
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
+    using Reinforced.Typings.Attributes;
     using System;
     using System.Collections.Generic;
     using System.Text;
     #endregion
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    [TsInterface]
     public class SerConfig
     {
         #region Properties

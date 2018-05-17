@@ -11,11 +11,13 @@ namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
+    using Reinforced.Typings.Attributes;
     using System;
     using System.IO;
     #endregion
 
     #region Enumerations
+    [TsEnum]
     public enum QlikCredentialType
     {
         WINDOWSAUTH,
@@ -27,16 +29,19 @@ namespace Ser.Api
     #endregion
 
     #region Interfaces
+    [TsInterface]
     public interface IQlikCredentials
     {
         QlikCredentialType Type { get; }
     }
     #endregion
 
+    [TsInterface]
     public class CertificateAuth : IQlikCredentials
     {
         #region Properties & Variables
         [JsonIgnore]
+        [TsIgnore]
         public QlikCredentialType Type { get; } = QlikCredentialType.CERTIFICATE;
 
         [JsonProperty(nameof(CertificatePath))]
@@ -57,6 +62,7 @@ namespace Ser.Api
     {
         #region Properties & Variables
         [JsonIgnore]
+        [TsIgnore]
         public QlikCredentialType Type { get; } = QlikCredentialType.WINDOWSAUTH;
 
         [JsonProperty(nameof(Login))]
@@ -67,10 +73,12 @@ namespace Ser.Api
         #endregion
     }
 
+    [TsInterface]
     public class SessionAuth : IQlikCredentials
     {
         #region Properties & Variables
         [JsonIgnore]
+        [TsIgnore]
         public QlikCredentialType Type { get; } = QlikCredentialType.SESSION;
 
         [JsonProperty(nameof(CookieName))]

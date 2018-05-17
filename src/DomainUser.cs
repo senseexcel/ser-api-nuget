@@ -14,8 +14,10 @@ namespace Ser.Api
     using System.Collections.Generic;
     using System.Text;
     using System.Linq;
+    using Reinforced.Typings.Attributes;
     #endregion
 
+    [TsInterface]
     public class DomainUser
     {
         #region Properties
@@ -47,6 +49,7 @@ namespace Ser.Api
         #endregion
 
         #region Public Methods
+        [TsIgnore]
         public override string ToString()
         {
             return $"{UserDirectory.ToLowerInvariant()}\\{UserId.ToLowerInvariant()}";
