@@ -4,14 +4,15 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json.Serialization;
-    using Reinforced.Typings.Attributes;
     using System;
     using System.Collections.Generic;
     using System.Text;
     #endregion
 
     #region Enumerations
-    [TsEnum]
+#if NET452
+    [Reinforced.Typings.Attributes.TsEnum]
+#endif
     public enum ScriptResult
     {
         UNKOWN,
@@ -22,7 +23,9 @@
         WARNING
     }
 
-    [TsEnum]
+#if NET452
+    [Reinforced.Typings.Attributes.TsEnum]
+#endif
     public enum TaskStatusInfo
     {
         ABORT,
@@ -34,7 +37,9 @@
     #endregion
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class JobResult
     {
         #region Variables & Properties
@@ -65,7 +70,9 @@
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class Report
     {
         #region Properties and Variables
@@ -82,7 +89,9 @@
         public List<ScriptResult> AfterScriptResult { get; set; }
 
         [JsonProperty]
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public JObject Distribute { get; set; }
 
         [JsonProperty]
