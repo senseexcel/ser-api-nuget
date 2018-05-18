@@ -77,6 +77,10 @@ namespace Ser.Api
     {
         #region Properties
         [JsonProperty]
+        [DefaultValue(10)]
+        public int CleanupTimeOut { get; set; } = 10;
+
+        [JsonProperty]
         [DefaultValue(900)]
         public int Timeout { get; set; } = 900;
 
