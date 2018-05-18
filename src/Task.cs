@@ -42,37 +42,45 @@ namespace Ser.Api
     #endregion
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerTask
     {
         #region Properties
-        [JsonProperty]        
+        [JsonProperty]
         public List<SerReport> Reports { get; set; } = new List<SerReport>();
         #endregion
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerReport
     {
         #region Properties        
         public SerGeneral General { get; set; } = new SerGeneral();
 
-        [JsonProperty(Required = Required.Always)]        
+        [JsonProperty(Required = Required.Always)]
         public SerTemplate Template { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public JObject Distribute { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore), 
-         JsonConverter(typeof(SingleValueArrayConverter))]        
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore),
+         JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerConnection> Connections { get; set; }
         #endregion
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerGeneral
     {
         #region Properties
@@ -96,16 +104,18 @@ namespace Ser.Api
         [DefaultValue(1)]
         public int TaskCount { get; set; } = 1;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore), 
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore),
          JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(SelectionMode.Normal)]
         public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
         #endregion
     }
 
-    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore, 
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerTemplate
     {
         #region Properties
@@ -139,7 +149,9 @@ namespace Ser.Api
         #endregion
 
         #region Public Methods
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public List<SerSenseSelection> GetSelectionObjects(SelectionType type)
         {
             try
@@ -154,9 +166,12 @@ namespace Ser.Api
         #endregion
     }
 
-    [JsonObject(ItemNullValueHandling=NullValueHandling.Ignore,
-                NamingStrategyType = typeof(CamelCaseNamingStrategy))]    
-    [TsInterface]
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerCredentials
     {
         #region Properties
@@ -178,8 +193,10 @@ namespace Ser.Api
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
-                NamingStrategyType = typeof(CamelCaseNamingStrategy))]  
-    [TsInterface]
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerConnection
     {
         #region Logger
@@ -247,7 +264,9 @@ namespace Ser.Api
         #endregion
 
         #region Public Methods
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public override string ToString()
         {
             return $"{ServerUri}";
@@ -256,8 +275,10 @@ namespace Ser.Api
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
-                NamingStrategyType = typeof(CamelCaseNamingStrategy))]  
-    [TsInterface]
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerThumbprint
     {
         #region Properties
@@ -270,8 +291,10 @@ namespace Ser.Api
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
-                NamingStrategyType = typeof(CamelCaseNamingStrategy))]  
-    [TsInterface]
+                NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SerSenseSelection
     {
         #region Properties

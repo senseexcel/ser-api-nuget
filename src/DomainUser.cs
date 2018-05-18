@@ -17,7 +17,9 @@ namespace Ser.Api
     using Reinforced.Typings.Attributes;
     #endregion
 
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class DomainUser
     {
         #region Properties
@@ -49,7 +51,9 @@ namespace Ser.Api
         #endregion
 
         #region Public Methods
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public override string ToString()
         {
             return $"{UserDirectory.ToLowerInvariant()}\\{UserId.ToLowerInvariant()}";

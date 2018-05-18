@@ -29,19 +29,25 @@ namespace Ser.Api
     #endregion
 
     #region Interfaces
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public interface IQlikCredentials
     {
         QlikCredentialType Type { get; }
     }
     #endregion
 
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class CertificateAuth : IQlikCredentials
     {
         #region Properties & Variables
         [JsonIgnore]
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public QlikCredentialType Type { get; } = QlikCredentialType.CERTIFICATE;
 
         [JsonProperty(nameof(CertificatePath))]
@@ -62,7 +68,9 @@ namespace Ser.Api
     {
         #region Properties & Variables
         [JsonIgnore]
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public QlikCredentialType Type { get; } = QlikCredentialType.WINDOWSAUTH;
 
         [JsonProperty(nameof(Login))]
@@ -73,12 +81,16 @@ namespace Ser.Api
         #endregion
     }
 
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class SessionAuth : IQlikCredentials
     {
         #region Properties & Variables
         [JsonIgnore]
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public QlikCredentialType Type { get; } = QlikCredentialType.SESSION;
 
         [JsonProperty(nameof(CookieName))]

@@ -34,7 +34,9 @@
     #endregion
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class JobResult
     {
         #region Variables & Properties
@@ -65,7 +67,9 @@
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-    [TsInterface]
+#if NET452
+    [Reinforced.Typings.Attributes.TsInterface]
+#endif
     public class Report
     {
         #region Properties and Variables
@@ -82,7 +86,9 @@
         public List<ScriptResult> AfterScriptResult { get; set; }
 
         [JsonProperty]
-        [TsIgnore]
+#if NET452
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
         public JObject Distribute { get; set; }
 
         [JsonProperty]
