@@ -14,7 +14,6 @@ namespace Ser.Api
     using System.Collections.Generic;
     using System.Text;
     using System.Linq;
-    using Reinforced.Typings.Attributes;
     #endregion
 
 #if NET452

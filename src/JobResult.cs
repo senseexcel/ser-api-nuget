@@ -4,14 +4,15 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json.Serialization;
-    using Reinforced.Typings.Attributes;
     using System;
     using System.Collections.Generic;
     using System.Text;
     #endregion
 
     #region Enumerations
-    [TsEnum]
+#if NET452
+    [Reinforced.Typings.Attributes.TsEnum]
+#endif
     public enum ScriptResult
     {
         UNKOWN,
@@ -22,7 +23,9 @@
         WARNING
     }
 
-    [TsEnum]
+#if NET452
+    [Reinforced.Typings.Attributes.TsEnum]
+#endif
     public enum TaskStatusInfo
     {
         ABORT,

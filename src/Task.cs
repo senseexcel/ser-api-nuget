@@ -23,7 +23,6 @@ namespace Ser.Api
     using System.ComponentModel;
     using NLog;
     using Newtonsoft.Json.Serialization;
-    using Reinforced.Typings.Attributes;
     #endregion
 
     #region Enumerations

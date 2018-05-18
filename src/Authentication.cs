@@ -11,13 +11,14 @@ namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
-    using Reinforced.Typings.Attributes;
     using System;
     using System.IO;
     #endregion
 
     #region Enumerations
-    [TsEnum]
+#if NET452
+    [Reinforced.Typings.Attributes.TsEnum]
+#endif
     public enum QlikCredentialType
     {
         WINDOWSAUTH,
@@ -26,9 +27,9 @@ namespace Ser.Api
         JWT,
         HEADER
     }
-    #endregion
+#endregion
 
-    #region Interfaces
+#region Interfaces
 #if NET452
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
@@ -36,14 +37,14 @@ namespace Ser.Api
     {
         QlikCredentialType Type { get; }
     }
-    #endregion
+#endregion
 
 #if NET452
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class CertificateAuth : IQlikCredentials
     {
-        #region Properties & Variables
+#region Properties & Variables
         [JsonIgnore]
 #if NET452
         [Reinforced.Typings.Attributes.TsIgnore]
@@ -61,12 +62,12 @@ namespace Ser.Api
 
         [JsonProperty(nameof(CertPassword))]
         public string CertPassword { get; private set; }
-        #endregion
+#endregion
     }
 
     public class WindowsAuth : IQlikCredentials
     {
-        #region Properties & Variables
+#region Properties & Variables
         [JsonIgnore]
 #if NET452
         [Reinforced.Typings.Attributes.TsIgnore]
@@ -78,7 +79,7 @@ namespace Ser.Api
 
         [JsonProperty(nameof(Password))]
         public string Password { get; set; }
-        #endregion
+#endregion
     }
 
 #if NET452
@@ -86,7 +87,7 @@ namespace Ser.Api
 #endif
     public class SessionAuth : IQlikCredentials
     {
-        #region Properties & Variables
+#region Properties & Variables
         [JsonIgnore]
 #if NET452
         [Reinforced.Typings.Attributes.TsIgnore]
@@ -98,6 +99,6 @@ namespace Ser.Api
 
         [JsonProperty(nameof(CookieValue))]
         public string CookieValue { get; set; }
-        #endregion
+#endregion
     }
 }
