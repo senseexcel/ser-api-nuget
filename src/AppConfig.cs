@@ -18,7 +18,7 @@ namespace Ser.Api
     #endregion
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class SerConfig

@@ -16,7 +16,7 @@ namespace Ser.Api
     #endregion
 
     #region Enumerations
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsEnum]
 #endif
     public enum QlikCredentialType
@@ -30,7 +30,7 @@ namespace Ser.Api
 #endregion
 
 #region Interfaces
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public interface IQlikCredentials
@@ -39,22 +39,25 @@ namespace Ser.Api
     }
 #endregion
 
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class CertificateAuth : IQlikCredentials
     {
 #region Properties & Variables
         [JsonIgnore]
-#if NET452
+#if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
         public QlikCredentialType Type { get; } = QlikCredentialType.CERTIFICATE;
 
         [JsonProperty(nameof(CertificatePath))]
         public string CertificatePath { get; private set; }
-
-        [JsonProperty(nameof(UserId))]
+        
+        /// <summary>
+        /// The UserId for the Certifications Auth.
+        /// </summary>
+        [JsonProperty(nameof(UserId))]        
         public string UserId { get; private set; }
 
         [JsonProperty(nameof(UserDirectory))]
@@ -69,7 +72,7 @@ namespace Ser.Api
     {
 #region Properties & Variables
         [JsonIgnore]
-#if NET452
+#if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
         public QlikCredentialType Type { get; } = QlikCredentialType.WINDOWSAUTH;
@@ -82,14 +85,14 @@ namespace Ser.Api
 #endregion
     }
 
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class SessionAuth : IQlikCredentials
     {
 #region Properties & Variables
         [JsonIgnore]
-#if NET452
+#if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
         public QlikCredentialType Type { get; } = QlikCredentialType.SESSION;

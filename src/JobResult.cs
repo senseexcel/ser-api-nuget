@@ -10,7 +10,7 @@
     #endregion
 
     #region Enumerations
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsEnum]
 #endif
     public enum ScriptResult
@@ -23,7 +23,7 @@
         WARNING
     }
 
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsEnum]
 #endif
     public enum TaskStatusInfo
@@ -37,7 +37,7 @@
     #endregion
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class JobResult
@@ -70,7 +70,7 @@
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class Report
@@ -89,7 +89,7 @@
         public List<ScriptResult> AfterScriptResult { get; set; }
 
         [JsonProperty]
-#if NET452
+#if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
         public JObject Distribute { get; set; }

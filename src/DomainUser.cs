@@ -16,7 +16,7 @@ namespace Ser.Api
     using System.Linq;
     #endregion
 
-#if NET452
+#if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class DomainUser
@@ -50,7 +50,7 @@ namespace Ser.Api
         #endregion
 
         #region Public Methods
-#if NET452
+#if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
         public override string ToString()
