@@ -32,11 +32,11 @@
     <When Condition="'$(TargetFramework)' == 'net45'">
       <PropertyGroup>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-
-        <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\$(PackageId).ts</RtTargetFile>
-        <RtDisable>false</RtDisable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>      
+        <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\index.ts</RtTargetFile>
+        <RtDisable>false</RtDisable>        
       </PropertyGroup>
+
     </When>
     <Otherwise>
       <PropertyGroup>
@@ -44,7 +44,7 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-
+  
   <Target Name="WriteVersion" AfterTargets="GetVersion">
     <WriteLinesToFile File="$(SolutionDir)\obj\version.txt" Lines="$(GitVersion_NuGetVersion)" Overwrite="true" />
   </Target>
@@ -61,6 +61,17 @@
     <Exec WorkingDirectory="$(BaseDir)" Command="dotnet nuget push $(PackageOutputAbsolutePath)$(PackageId).$(PackageVersion).nupkg -k $(NugetAPIKey) -s https://api.nuget.org/v3/index.json" />
   </Target>
 
+  <Target Name="PublishNPM" AfterTargets="PublishToNugetWithAPIKey">
+    <ReadLinesFromFile File="$(SolutionDir)\Helper\package.json">
+      <Output TaskParameter="Lines" PropertyName="PackageJSON" />
+    </ReadLinesFromFile>
+    <ItemGroup>
+      <PackageJSONGroup Include="$(PackageJSON)" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(PackageOutputAbsolutePath)npm\package.json" Lines="@(PackageJSONGroup-&gt;Replace('0.0.0', '$(PackageVersion)'))" Overwrite="true" />
+    <Exec WorkingDirectory="$(PackageOutputAbsolutePath)npm\" Command="start $(COMSPEC) /k &quot;npm publish &amp; exit&quot;" />
+  </Target>
+
   <ItemGroup>
     <PackageReference Include="GitVersionTask" Version="4.0.0-beta0008">
       <PrivateAssets>All</PrivateAssets>
@@ -71,5 +82,11 @@
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="NLog" Version="4.5.4" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Helper\package.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
