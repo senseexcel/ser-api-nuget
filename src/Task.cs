@@ -85,28 +85,40 @@ namespace Ser.Api
         #region Properties
         [JsonProperty]
         [DefaultValue(10)]
-        public int CleanupTimeOut { get; set; } = 10;
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif        public int CleanupTimeOut { get; set; } = 10;
 
         [JsonProperty]
         [DefaultValue(900)]
-        public int Timeout { get; set; } = 900;
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif        public int Timeout { get; set; } = 900;
 
         [JsonProperty]
         [DefaultValue(2)]
-        public int ErrorRepeatCount { get; set; } = 2;
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif        public int ErrorRepeatCount { get; set; } = 2;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
-        public bool UseSandbox { get; set; } = true;
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif        public bool UseSandbox { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(1)]
-        public int TaskCount { get; set; } = 1;
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif        public int TaskCount { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore),
          JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(SelectionMode.Normal)]
-        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
         #endregion
     }
 
@@ -234,7 +246,7 @@ namespace Ser.Api
 
         [JsonProperty(Required = Required.Always)]
 #if NET45
-        [Reinforced.Typings.Attributes.TsProperty(Type="string")]
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable= true, Type="string")]        
 #endif
         public Uri ServerUri
         {
@@ -295,6 +307,9 @@ namespace Ser.Api
         public bool SharedSession { get; set; } = false;
 
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public SerCredentials Credentials { get; set; }
 
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
@@ -340,6 +355,9 @@ namespace Ser.Api
     {
         #region Properties
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public string Name { get; set; }
 
         [JsonProperty]
