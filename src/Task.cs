@@ -131,22 +131,40 @@ namespace Ser.Api
         public string OutputFormat { get; set; }
 
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public string OutputPassword { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public bool KeepFormula { get; set; } = false;
 
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public List<string> ScriptKeys { get; set; }
 
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public List<string> ScriptArgs { get; set; }
 
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public List<SerSenseSelection> Selections { get; set; }
 
         [JsonIgnore]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public bool Generated { get; set; } = false;
         #endregion
 
@@ -187,9 +205,15 @@ namespace Ser.Api
         public string Value { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public string Cert { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public string PrivateKey { get; set; }
         #endregion
     }
@@ -209,6 +233,9 @@ namespace Ser.Api
         private Uri privateURI;
 
         [JsonProperty(Required = Required.Always)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(Type="string")]
+#endif
         public Uri ServerUri
         {
             get
@@ -249,19 +276,31 @@ namespace Ser.Api
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public bool SslVerify { get; set; } = true;
 
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public bool SharedSession { get; set; } = false;
 
         [JsonProperty]
         public SerCredentials Credentials { get; set; }
 
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public List<string> Lefs { get; set; }
         #endregion
 
@@ -304,12 +343,21 @@ namespace Ser.Api
         public string Name { get; set; }
 
         [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public string ObjectType { get; set; }
 
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public List<string> Values { get; set; }
 
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
         public SelectionType Type { get; set; }
         #endregion
     }

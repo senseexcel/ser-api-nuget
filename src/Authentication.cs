@@ -44,7 +44,7 @@ namespace Ser.Api
 #endif
     public class CertificateAuth : IQlikCredentials
     {
-#region Properties & Variables
+        #region Properties & Variables
         [JsonIgnore]
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
@@ -70,7 +70,7 @@ namespace Ser.Api
 
     public class WindowsAuth : IQlikCredentials
     {
-#region Properties & Variables
+        #region Properties & Variables
         [JsonIgnore]
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
@@ -82,7 +82,7 @@ namespace Ser.Api
 
         [JsonProperty(nameof(Password))]
         public string Password { get; set; }
-#endregion
+        #endregion
     }
 
 #if NET45
@@ -90,7 +90,7 @@ namespace Ser.Api
 #endif
     public class SessionAuth : IQlikCredentials
     {
-#region Properties & Variables
+        #region Properties & Variables
         [JsonIgnore]
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
@@ -102,6 +102,6 @@ namespace Ser.Api
 
         [JsonProperty(nameof(CookieValue))]
         public string CookieValue { get; set; }
-#endregion
+        #endregion
     }
 }

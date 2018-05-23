@@ -1,0 +1,11 @@
+{
+  "name": "ser.api",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "This package contains all Api's for the communication with Sense Excel Reporting (SER)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/senseexcel/ser-api-nuget"
+  },
+  "author": "Martin Berthold, Konrad Mattheis"
+}
