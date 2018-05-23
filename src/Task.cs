@@ -87,38 +87,44 @@ namespace Ser.Api
         [DefaultValue(10)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif        public int CleanupTimeOut { get; set; } = 10;
+#endif
+        public int CleanupTimeOut { get; set; } = 10;
 
         [JsonProperty]
         [DefaultValue(900)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif        public int Timeout { get; set; } = 900;
+#endif
+        public int Timeout { get; set; } = 900;
 
         [JsonProperty]
         [DefaultValue(2)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif        public int ErrorRepeatCount { get; set; } = 2;
+#endif
+        public int ErrorRepeatCount { get; set; } = 2;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif        public bool UseSandbox { get; set; } = true;
+#endif
+        public bool UseSandbox { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(1)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif        public int TaskCount { get; set; } = 1;
+#endif
+        public int TaskCount { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore),
          JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(SelectionMode.Normal)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
+#endif
+        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
         #endregion
     }
 
