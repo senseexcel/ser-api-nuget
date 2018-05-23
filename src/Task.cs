@@ -26,6 +26,9 @@ namespace Ser.Api
     #endregion
 
     #region Enumerations
+#if NET45
+    [Reinforced.Typings.Attributes.TsEnum()]
+#endif
     public enum SelectionMode
     {
         Normal = 0,
@@ -33,6 +36,9 @@ namespace Ser.Api
         OnDemandOn = 2
     }
 
+#if NET45
+    [Reinforced.Typings.Attributes.TsEnum()]
+#endif
     public enum SelectionType
     {
         Static,
@@ -46,10 +52,10 @@ namespace Ser.Api
 #endif
     public class SerTask
     {
-        #region Properties
+#region Properties
         [JsonProperty]
         public List<SerReport> Reports { get; set; } = new List<SerReport>();
-        #endregion
+#endregion
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
@@ -58,7 +64,7 @@ namespace Ser.Api
 #endif
     public class SerReport
     {
-        #region Properties        
+#region Properties        
         public SerGeneral General { get; set; } = new SerGeneral();
 
         [JsonProperty(Required = Required.Always)]
@@ -73,7 +79,7 @@ namespace Ser.Api
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore),
          JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerConnection> Connections { get; set; }
-        #endregion
+#endregion
     }
 
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
@@ -82,7 +88,7 @@ namespace Ser.Api
 #endif
     public class SerGeneral
     {
-        #region Properties
+#region Properties
         [JsonProperty]
         [DefaultValue(10)]
 #if NET45
@@ -125,7 +131,7 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
-        #endregion
+#endregion
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
@@ -135,7 +141,7 @@ namespace Ser.Api
 #endif
     public class SerTemplate
     {
-        #region Properties
+#region Properties
         [JsonProperty(Required = Required.Always)]
         public string Input { get; set; }
 
@@ -184,9 +190,9 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public bool Generated { get; set; } = false;
-        #endregion
+#endregion
 
-        #region Public Methods
+#region Public Methods
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
@@ -201,7 +207,7 @@ namespace Ser.Api
                 return new List<SerSenseSelection>();
             }
         }
-        #endregion
+#endregion
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
@@ -212,7 +218,7 @@ namespace Ser.Api
 #endif
     public class SerCredentials
     {
-        #region Properties
+#region Properties
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
         public QlikCredentialType Type { get; set; }
 
@@ -233,7 +239,7 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public string PrivateKey { get; set; }
-        #endregion
+#endregion
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
@@ -243,11 +249,11 @@ namespace Ser.Api
 #endif
     public class SerConnection
     {
-        #region Logger
+#region Logger
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        #endregion
+#endregion
 
-        #region Variables && Properties
+#region Variables && Properties
         private Uri privateURI;
 
         [JsonProperty(Required = Required.Always)]
@@ -323,9 +329,9 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public List<string> Lefs { get; set; }
-        #endregion
+#endregion
 
-        #region Public Methods
+#region Public Methods
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
@@ -333,7 +339,7 @@ namespace Ser.Api
         {
             return $"{ServerUri}";
         }
-        #endregion
+#endregion
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
@@ -343,13 +349,13 @@ namespace Ser.Api
 #endif
     public class SerThumbprint
     {
-        #region Properties
+#region Properties
         [JsonProperty]
         public string Url { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public string Thumbprint { get; set; }
-        #endregion
+#endregion
     }
 
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
@@ -359,7 +365,7 @@ namespace Ser.Api
 #endif
     public class SerSenseSelection
     {
-        #region Properties
+#region Properties
         [JsonProperty]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
@@ -383,6 +389,6 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public SelectionType Type { get; set; }
-        #endregion
+#endregion
     }
 }
