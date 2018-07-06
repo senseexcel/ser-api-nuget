@@ -55,6 +55,19 @@
   </Target>
 
   <Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec">
+    <CreateProperty Value="@(PackageReference-&gt;Metadata('Version'))">
+      <Output PropertyName="tsc_Version" Condition="'%(PackageReference.Identity)' == 'Microsoft.TypeScript.MSBuild'" TaskParameter="Value" />
+    </CreateProperty>
+
+    <PropertyGroup>
+      <tsc_Path>$(NuGetPackageRoot)Microsoft.TypeScript.MSBuild\$(tsc_Version)\tools\tsc\</tsc_Path>
+    </PropertyGroup>
+
+    <Message Importance="High" Text="***** $(SolutionDir)bin\$(Configuration)\npm\"></Message>
+
+    <Exec WorkingDirectory="$(SolutionDir)bin\$(Configuration)\npm\" Command="$(tsc_Path)tsc.exe index.ts -d" />
+    <Delete Files="$(SolutionDir)bin\$(Configuration)\npm\index.ts" />   
+    
     <ReadLinesFromFile File="$(SolutionDir)\..\..\nugetapikey.txt">
       <Output TaskParameter="Lines" PropertyName="NugetAPIKey" />
     </ReadLinesFromFile>
@@ -76,12 +89,15 @@
     <PackageReference Include="GitVersionTask" Version="4.0.0-beta0008">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Reinforced.Typings" Version="1.4.92">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="2.9.2">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Reinforced.Typings" Version="1.4.95">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="NLog" Version="4.5.4" />    
+    <PackageReference Include="NLog" Version="4.5.6" />    
   </ItemGroup>
 
   <ItemGroup>
