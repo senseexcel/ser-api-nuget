@@ -60,6 +60,9 @@ namespace Ser.Api
 #endif
     public interface IQlikCredentials
     {
+        /// <summary>
+        /// Qlik authentication type
+        /// </summary>
         QlikCredentialType Type { get; }
     }
     #endregion
@@ -82,6 +85,9 @@ namespace Ser.Api
 #endif
         public QlikCredentialType Type { get; } = QlikCredentialType.CERTIFICATE;
 
+        /// <summary>
+        /// Path to the qlik server certificates
+        /// </summary>
         [JsonProperty(nameof(CertificatePath))]
         public string CertificatePath { get; private set; }
         
@@ -135,6 +141,9 @@ namespace Ser.Api
         #endregion
     }
 
+    /// <summary>
+    /// The Session authentication class
+    /// </summary>
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif

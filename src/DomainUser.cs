@@ -16,6 +16,9 @@ namespace Ser.Api
     using System.Linq;
     #endregion
 
+    /// <summary>
+    /// Class for work with the qlik userid und userdirectory logic.
+    /// </summary>
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif

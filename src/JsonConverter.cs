@@ -102,7 +102,7 @@ namespace Ser.Api
         /// </summary>
         /// <param name="objectType">Type of the object.</param>
         /// <returns>true if this instance can convert the specified object type, otherwise false.</returns>
-        /// <see cref="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_CanConvert.htm"/>
+        /// <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_CanConvert.htm"/>
         public override bool CanConvert(Type objectType)
         {
             var innerType = objectType.GetElementType();
@@ -123,7 +123,7 @@ namespace Ser.Api
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns></returns>
-        /// <see cref="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_ReadJson.htm"/>
+        /// <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_ReadJson.htm"/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var retVal = new object();
@@ -148,7 +148,7 @@ namespace Ser.Api
         /// <param name="writer">The JsonWriter to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
-        /// <see cref="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
+        /// <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value is IEnumerable enumerable)

@@ -66,10 +66,29 @@ namespace Ser.Api
 #endif
     public enum TaskStatusInfo
     {
+        /// <summary>
+        /// The Task was abort
+        /// </summary>
         ABORT,
+
+        /// <summary>
+        /// The Task was finished successfull
+        /// </summary>
         SUCCESS,
+
+        /// <summary>
+        /// The Task was finished with warnings
+        /// </summary>
         WARNING,
+
+        /// <summary>
+        /// The Task was finished with an error
+        /// </summary>
         ERROR,
+
+        /// <summary>
+        /// The Task was finished with an error, but is repeated at the next call
+        /// </summary>
         RETRYERROR
     }
     #endregion
@@ -176,7 +195,6 @@ namespace Ser.Api
         /// <summary>
         /// This property includes the distribute options.
         /// It is a json structure.
-        /// <seealso cref="https://github.com/senseexcel/ser-distribute-nuget"/>
         /// </summary>
         [JsonProperty]
 #if NET45
