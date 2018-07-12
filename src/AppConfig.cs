@@ -17,12 +17,18 @@ namespace Ser.Api
     using System.Text;
     #endregion
 
+    /// <summary>
+    /// The configuration of SER for working with JSON
+    /// </summary>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class SerConfig
     {
+        /// <summary>
+        /// All tasks to be performed
+        /// </summary>
         #region Properties
         [JsonProperty]
         public List<SerTask> Tasks { get; set; } = new List<SerTask>();

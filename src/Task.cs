@@ -25,51 +25,94 @@ namespace Ser.Api
     using Newtonsoft.Json.Serialization;
     #endregion
 
+    /// <summary>
+    /// The mode to select filter in the qlik app.
+    /// </summary>
     #region Enumerations
 #if NET45
     [Reinforced.Typings.Attributes.TsEnum()]
 #endif
     public enum SelectionMode
     {
+        /// <summary>
+        /// Normal, Use a new session and filtering from config.
+        /// </summary>
         Normal = 0,
+
+        /// <summary>
+        /// OnDemand, Use a new session and filtering from the saved ondemand bookmark.
+        /// </summary>
         OnDemandOff = 1,
+
+        /// <summary>
+        /// Ondemand, Use a shared session and filtering from user preferences.
+        /// </summary>
         OnDemandOn = 2
     }
 
+    /// <summary>
+    /// The type of the selection
+    /// </summary>
 #if NET45
     [Reinforced.Typings.Attributes.TsEnum()]
 #endif
     public enum SelectionType
     {
+        /// <summary>
+        /// Use a fixed filter name or bookmark.
+        /// </summary>
         Static,
+
+        /// <summary>
+        /// Loop over a field or dimension.
+        /// </summary>
         Dynamic
     }
     #endregion
 
+    /// <summary>
+    /// The full task object and configuration.
+    /// </summary>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class SerTask
     {
+        /// <summary>
+        /// The reports to be generating.
+        /// </summary>
 #region Properties
         [JsonProperty]
         public List<SerReport> Reports { get; set; } = new List<SerReport>();
 #endregion
     }
 
+    /// <summary>
+    /// The report of the ser task.
+    /// </summary>
+    /// <seealso cref="SerTask"/>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class SerReport
     {
-#region Properties        
+#region Properties   
+        /// <summary>
+        /// The general setting of a report.
+        /// </summary>
         public SerGeneral General { get; set; } = new SerGeneral();
 
+        /// <summary>
+        /// The template of a report.
+        /// </summary>
         [JsonProperty(Required = Required.Always)]
         public SerTemplate Template { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
