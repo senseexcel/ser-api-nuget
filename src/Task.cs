@@ -460,7 +460,7 @@ namespace Ser.Api
         /// <summary>
         /// The thumb print from qlik client ssl certificate.
         /// </summary>
-        [JsonProperty]
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
