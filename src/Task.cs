@@ -585,6 +585,25 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public SelectionType Type { get; set; }
+
+        /// <summary>
+        /// Export a Root node for the sheet names.
+        /// </summary>
+        [JsonProperty(nameof(ExportRootNode))]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public bool ExportRootNode { get; private set; } = true;
+
+        /// <summary>
+        /// Give the sheet a seperate sheet name form a formaula
+        /// You can also use @@sheetname@@ as placeholter for the orignal sheet name.
+        /// </summary>
+        [JsonProperty(nameof(SheetName))]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public string SheetName { get; private set; }
         #endregion
     }
 }
