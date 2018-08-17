@@ -16,20 +16,35 @@ namespace Ser.Api
     using System.Linq;
     #endregion
 
+    /// <summary>
+    /// Class for work with the qlik userid und userdirectory logic.
+    /// </summary>
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
     public class DomainUser
     {
         #region Properties
+        /// <summary>
+        /// Qlik user id
+        /// </summary>
         public string UserId { get; private set; }
+
+        /// <summary>
+        /// Qlik user directory
+        /// </summary>
         public string UserDirectory { get; private set; }
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Creating a object for DomainUser.
+        /// </summary>
+        /// <param name="domainUserValue">UserId and UserDirectory as Path.
+        /// Sample: 'USERDIRECTORY\\USERID' or 'UserDirectory=USERDIRECTORY; UserId=USERID'
+        /// </param>
         public DomainUser(string domainUserValue)
         {
-            //NB-FC-208000\\mberthold
             var split = domainUserValue.Split('\\');
             if (split.Length == 2)
             {
@@ -38,7 +53,6 @@ namespace Ser.Api
             }
             else
             {
-                //UserDirectory=NB-FC-208000; UserId=mberthold
                 split = domainUserValue.Split(';');
                 if (split.Length == 2)
                 {
@@ -50,6 +64,10 @@ namespace Ser.Api
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Format UserId and UserDirectory to string
+        /// </summary>
+        /// <returns></returns>
 #if NET45
         [Reinforced.Typings.Attributes.TsIgnore]
 #endif
