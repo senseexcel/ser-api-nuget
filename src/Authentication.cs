@@ -25,6 +25,11 @@ namespace Ser.Api
     public enum QlikCredentialType
     {
         /// <summary>
+        /// Connection without Authentication
+        /// </summary>
+        NONE,
+        
+        /// <summary>
         /// Authentication over Windows user name and password
         /// </summary>
         WINDOWSAUTH,
