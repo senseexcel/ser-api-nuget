@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!--net45 is only for TypeScript Generation-->
-    <TargetFrameworks>netcoreapp2.0;net452;net462;net45</TargetFrameworks>    
+    <TargetFrameworks>netcoreapp2.1;net452;net462;net45</TargetFrameworks>    
     <RootNamespace>Ser.Api</RootNamespace>
     <Authors>Konrad Mattheis und Martin Berthold</Authors>    
     <Copyright>Copyright (c) 2018</Copyright>
