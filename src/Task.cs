@@ -26,6 +26,16 @@ namespace Ser.Api
     #endregion
 
     #region Enumerations
+
+    /// <summary>
+    /// Mode for use Server or Desktop
+    /// </summary>
+    public enum QlikAppMode
+    {
+        DESKTOP,
+        SERVER
+    }
+
     /// <summary>
     /// The mode to select filter in the qlik app.
     /// </summary>
@@ -258,6 +268,15 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public string OutputPassword { get; set; }
+
+        /// <summary>
+        /// The separator for saving CSV files.
+        /// </summary>
+        [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public string CsvSeperator { get; set; } = ";";
 
         /// <summary>
         /// Save the formula as json in the template
