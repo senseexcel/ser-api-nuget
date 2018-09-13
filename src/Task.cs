@@ -260,6 +260,15 @@ namespace Ser.Api
         public string OutputPassword { get; set; }
 
         /// <summary>
+        /// Flexible output format options.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsIgnore]
+#endif
+        public JObject OutputFormatOptions { get; set; }
+
+        /// <summary>
         /// Save the formula as json in the template
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

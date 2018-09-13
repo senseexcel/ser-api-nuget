@@ -11,6 +11,7 @@ namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json.Serialization;
     using System;
@@ -125,7 +126,7 @@ namespace Ser.Api
         /// <summary>
         /// The status information of the finished task
         /// </summary>
-        [JsonProperty]
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
         public TaskStatusInfo Status { get; private set; }
 
         /// <summary>
