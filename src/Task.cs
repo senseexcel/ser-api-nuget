@@ -260,7 +260,7 @@ namespace Ser.Api
         public string OutputPassword { get; set; }
 
         /// <summary>
-        /// Flexibile output format options.
+        /// Flexible output format options.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
 #if NET45
