@@ -7,5 +7,7 @@
     "type": "git",
     "url": "https://github.com/senseexcel/ser-api-nuget"
   },
-  "author": "Martin Berthold, Konrad Mattheis"
+  "author": "Martin Berthold, Konrad Mattheis",
+  "main": "./index.js",
+  "types": "./index.d.ts"
 }

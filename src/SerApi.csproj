@@ -36,7 +36,6 @@
         <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\index.ts</RtTargetFile>
         <RtDisable>false</RtDisable>        
       </PropertyGroup>
-
     </When>
     <Otherwise>
       <PropertyGroup>
@@ -45,16 +44,7 @@
     </Otherwise>
   </Choose>
   
-  <Target Name="WriteVersion" AfterTargets="GetVersion">
-    <WriteLinesToFile File="$(SolutionDir)\obj\version.txt" Lines="$(GitVersion_NuGetVersion)" Overwrite="true" />
-  </Target>
-  <Target Name="SetPackageVersionFromFile" BeforeTargets="GenerateNuspec">
-    <ReadLinesFromFile File="$(SolutionDir)obj\version.txt">
-      <Output TaskParameter="Lines" PropertyName="PackageVersion" />
-    </ReadLinesFromFile>
-  </Target>
-
-  <Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec">
+  <Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec">   
     <ReadLinesFromFile File="$(SolutionDir)\..\..\nugetapikey.txt">
       <Output TaskParameter="Lines" PropertyName="NugetAPIKey" />
     </ReadLinesFromFile>
@@ -62,26 +52,40 @@
   </Target>
 
   <Target Name="PublishNPM" AfterTargets="PublishToNugetWithAPIKey">
+    <CreateProperty Value="@(PackageReference-&gt;Metadata('Version'))">
+      <Output PropertyName="tsc_Version" Condition="'%(PackageReference.Identity)' == 'Microsoft.TypeScript.MSBuild'" TaskParameter="Value" />
+    </CreateProperty>
+
+    <Exec WorkingDirectory="$(SolutionDir)bin\$(Configuration)\npm\" Command="$(NuGetPackageRoot)Microsoft.TypeScript.MSBuild\$(tsc_Version)\tools\tsc\tsc.exe index.ts -d" />
+    <Delete Files="$(SolutionDir)bin\$(Configuration)\npm\index.ts" />
+
     <ReadLinesFromFile File="$(SolutionDir)\Helper\package.json">
       <Output TaskParameter="Lines" PropertyName="PackageJSON" />
     </ReadLinesFromFile>
+    
     <ItemGroup>
       <PackageJSONGroup Include="$(PackageJSON)" />
     </ItemGroup>
+    
     <WriteLinesToFile File="$(PackageOutputAbsolutePath)npm\package.json" Lines="@(PackageJSONGroup-&gt;Replace('0.0.0', '$(PackageVersion)'))" Overwrite="true" />
     <Exec WorkingDirectory="$(PackageOutputAbsolutePath)npm\" Command="start $(COMSPEC) /k &quot;npm publish &amp; exit&quot;" />
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0008">
-      <PrivateAssets>All</PrivateAssets>
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0014">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Reinforced.Typings" Version="1.4.92">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Reinforced.Typings" Version="1.4.95">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="NLog" Version="4.5.4" />    
+    <PackageReference Include="NLog" Version="4.5.9" />    
   </ItemGroup>
 
   <ItemGroup>
