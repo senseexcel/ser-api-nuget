@@ -109,49 +109,49 @@ namespace Ser.Api
         /// The id of the task.
         /// </summary>
         [JsonProperty]
-        public Guid TaskId { get; private set; }
+        public Guid TaskId { get; set; }
 
         /// <summary>
         /// The start time of the task.
         /// </summary>
         [JsonProperty]
-        public DateTime StartTime { get; private set; }
+        public DateTime StartTime { get; set; }
 
         /// <summary>
         /// The runtime of the task.
         /// </summary>
         [JsonProperty]
-        public TimeSpan RunTime { get; private set; }
+        public TimeSpan RunTime { get; set; }
 
         /// <summary>
         /// The status information of the finished task
         /// </summary>
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
-        public TaskStatusInfo Status { get; private set; }
+        public TaskStatusInfo Status { get; set; }
 
         /// <summary>
         /// The current version of aspose cells.
         /// </summary>
         [JsonProperty]
-        public string AsposeVersion { get; private set; }
+        public string AsposeVersion { get; set; }
 
         /// <summary>
         /// The current version of the ser engine.
         /// </summary>
         [JsonProperty]
-        public string EngineVersion { get; private set; }
+        public string EngineVersion { get; set; }
 
         /// <summary>
         /// The count of the reports.
         /// </summary>
         [JsonProperty]
-        public int Count { get; private set; }
+        public int Count { get; set; }
 
         /// <summary>
         /// The list of the generated reports.
         /// </summary>
         [JsonProperty]
-        public IList<Report> Reports { get; private set; }
+        public IList<Report> Reports { get; set; }
         #endregion
     }
 
@@ -171,7 +171,7 @@ namespace Ser.Api
         /// The individually name of the report.
         /// </summary>
         [JsonProperty]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// The path or paths of the Report.
