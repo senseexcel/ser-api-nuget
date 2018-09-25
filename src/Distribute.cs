@@ -186,7 +186,10 @@
 #if NET45
     [Reinforced.Typings.Attributes.TsInterface]
 #endif
-    public class HubSettings : DeliverySettings { }
+    public class HubSettings : DeliverySettings
+    {
+        public string SharedContentType { get; set; } = "Qlik report";
+    }
 
     /// <summary>
     /// The settings for mail distribute

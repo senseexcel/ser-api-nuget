@@ -180,14 +180,24 @@ namespace Ser.Api
         public bool UseSandbox { get; set; } = true;
 
         /// <summary>
-        /// The count of cpus or cpu cores.
+        /// The count of cpus or cpu cores for the ser engine.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(1)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
-        public int TaskCount { get; set; } = 1;
+        public int CPULimitInCore { get; set; } = -1;
+
+        /// <summary>
+        /// The soft memory size for the ser engine.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(1)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public int MemoryLimitInGB { get; set; } = -1;
 
         /// <summary>
         /// Use the ondemand mode or normal config mode.
