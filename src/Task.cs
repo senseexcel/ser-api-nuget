@@ -183,7 +183,7 @@ namespace Ser.Api
         /// The count of cpus or cpu cores for the ser engine.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(1)]
+        [DefaultValue(-1)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
@@ -193,7 +193,7 @@ namespace Ser.Api
         /// The soft memory size for the ser engine.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(1)]
+        [DefaultValue(-1)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
