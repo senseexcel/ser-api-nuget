@@ -486,14 +486,13 @@ namespace Ser.Api
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
         /// <summary>
-        /// Share the qlik session or create a new session.
+        /// Share the qlik session or create a new session with a identity
         /// </summary>
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(false)]
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
-        public bool SharedSession { get; set; } = false;
+        public List<string> Identities { get; set; }
 
         /// <summary>
         /// The credentials for the qlik communication.
