@@ -197,7 +197,7 @@ namespace Ser.Api
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
-        public int MemoryLimitInGB { get; set; } = -1;
+        public double MemoryLimitInGB { get; set; } = -1;
 
         /// <summary>
         /// Use the ondemand mode or normal config mode.
