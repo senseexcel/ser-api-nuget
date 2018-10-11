@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!--net45 is only for TypeScript Generation-->
-    <TargetFrameworks>netcoreapp2.0;netcoreapp2.1;net452;net462;net45</TargetFrameworks>    
     <RootNamespace>Ser.Api</RootNamespace>
     <Authors>Konrad Mattheis und Martin Berthold</Authors>    
     <Copyright>Copyright (c) 2018</Copyright>
@@ -14,6 +12,20 @@
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>    
   </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(MSBuildRuntimeType)' == 'Core'">
+      <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <!--net45 is only for TypeScript Generation-->
+        <TargetFrameworks>netcoreapp2.1;net45;net452;net462</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
 
   <Choose>
     <When Condition="'$(Configuration)' == 'Release'">
