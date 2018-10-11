@@ -190,14 +190,14 @@ namespace Ser.Api
         public int CPULimitInCore { get; set; } = -1;
 
         /// <summary>
-        /// The soft memory size for the ser engine.
+        /// The soft memory limit for the ser engine.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(-1)]
+        [DefaultValue(-1.0)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
-        public double MemoryLimitInGB { get; set; } = -1;
+        public double MemoryLimitInGB { get; set; } = -1.0;
 
         /// <summary>
         /// Use the ondemand mode or normal config mode.
@@ -607,7 +607,8 @@ namespace Ser.Api
         /// <summary>
         /// Export a Root node for the sheet names.
         /// </summary>
-        [JsonProperty(nameof(ExportRootNode))]
+        [JsonProperty]
+        [DefaultValue(true)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
@@ -617,7 +618,7 @@ namespace Ser.Api
         /// Give the sheet a seperate sheet name form a formaula
         /// You can also use @@sheetname@@ as placeholter for the orignal sheet name.
         /// </summary>
-        [JsonProperty(nameof(SheetName))]
+        [JsonProperty]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
