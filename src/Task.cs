@@ -27,30 +27,6 @@ namespace Ser.Api
 
     #region Enumerations
     /// <summary>
-    /// The mode to select filter in the qlik app.
-    /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum()]
-#endif
-    public enum SelectionMode
-    {
-        /// <summary>
-        /// Normal, Use a new session and filtering from config.
-        /// </summary>
-        Normal = 0,
-
-        /// <summary>
-        /// OnDemand, Use a new session and filtering from the saved ondemand bookmark.
-        /// </summary>
-        OnDemandOff = 1,
-
-        /// <summary>
-        /// Ondemand, Use a shared session and filtering from user preferences.
-        /// </summary>
-        OnDemandOn = 2
-    }
-
-    /// <summary>
     /// The type of the selection
     /// </summary>
 #if NET45
@@ -198,18 +174,6 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public double MemoryLimitInGB { get; set; } = -1.0;
-
-        /// <summary>
-        /// Use the ondemand mode or normal config mode.
-        /// </summary>
-        /// <seealso cref="SelectionMode"/>
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore),
-         JsonConverter(typeof(StringEnumConverter))]
-        [DefaultValue(SelectionMode.Normal)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
-        public SelectionMode UseUserSelections { get; set; } = SelectionMode.Normal;
         #endregion
     }
 
@@ -316,13 +280,15 @@ namespace Ser.Api
         public List<SerSenseSelection> Selections { get; set; }
 
         /// <summary>
-        /// 
+        /// Clear or clear not the Qlik selections in a session.
+        /// This mode is importent for the OnDemand Extention.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(true)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
-        public bool Generated { get; set; } = false;
+        public bool SelectionsClearAll { get; set; } = true;
         #endregion
 
         #region Public Methods
