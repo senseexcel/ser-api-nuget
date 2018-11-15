@@ -188,6 +188,9 @@
 #endif
     public class HubSettings : DeliverySettings
     {
+        /// <summary>
+        /// The content type of the report.
+        /// </summary>
         public string SharedContentType { get; set; } = "Qlik report";
     }
 
