@@ -89,7 +89,7 @@
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.2.2" PrivateAssets="all" />     
     <PackageReference Include="Reinforced.Typings" Version="1.4.95" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="NLog" Version="4.5.11" />    
   </ItemGroup>
 
