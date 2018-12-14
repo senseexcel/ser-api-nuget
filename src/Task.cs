@@ -433,6 +433,13 @@ namespace Ser.Api
         public string App { get; set; }
 
         /// <summary>
+        /// The reload timeout for InAppMode.
+        /// Wait for data reload of the app.
+        /// </summary>
+        [JsonProperty]
+        public int ReloadTimeout { get; set; }
+
+        /// <summary>
         /// Use the ssl validation
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
