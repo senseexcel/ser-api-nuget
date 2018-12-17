@@ -435,13 +435,14 @@ namespace Ser.Api
         /// <summary>
         /// The reload timeout for InAppMode.
         /// Wait for data reload of the app.
+        /// Wait for other apps or processes
         /// </summary>
         [DefaultValue(0)]
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int ReloadTimeout { get; set; } = 0;
+        public int RetryTimeout { get; set; } = 0;
 
         /// <summary>
         /// Use the ssl validation
