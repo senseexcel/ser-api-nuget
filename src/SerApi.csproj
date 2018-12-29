@@ -69,7 +69,7 @@
       <Output PropertyName="tsc_Version" Condition="'%(PackageReference.Identity)' == 'Microsoft.TypeScript.MSBuild'" TaskParameter="Value" />
     </CreateProperty>
 
-    <Exec WorkingDirectory="$(SolutionDir)bin\$(Configuration)\npm\" Command="$(NuGetPackageRoot)Microsoft.TypeScript.MSBuild\$(tsc_Version)\tools\tsc\tsc.exe index.ts -d" />
+    <Exec WorkingDirectory="$(SolutionDir)bin\$(Configuration)\npm\" Command="node.exe $(NuGetPackageRoot)Microsoft.TypeScript.MSBuild\$(tsc_Version)\tools\tsc\tsc.js index.ts -d" />
     <Delete Files="$(SolutionDir)bin\$(Configuration)\npm\index.ts" />
 
     <ReadLinesFromFile File="$(SolutionDir)\Helper\package.json">
