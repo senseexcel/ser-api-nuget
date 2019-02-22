@@ -49,10 +49,10 @@ namespace Ser.Api
         private object ReadJsonInternal(Type innerType, Type objectType, JsonReader reader,
                                         JsonSerializer serializer, object retVal, ObjectMode mode)
         {
-            if (reader.TokenType == JsonToken.StartObject || 
-                reader.TokenType == JsonToken.String || 
-                reader.TokenType == JsonToken.Boolean || 
-                reader.TokenType == JsonToken.Date || 
+            if (reader.TokenType == JsonToken.StartObject ||
+                reader.TokenType == JsonToken.String ||
+                reader.TokenType == JsonToken.Boolean ||
+                reader.TokenType == JsonToken.Date ||
                 reader.TokenType == JsonToken.Bytes ||
                 reader.TokenType == JsonToken.Float ||
                 reader.TokenType == JsonToken.Integer)
@@ -98,7 +98,7 @@ namespace Ser.Api
 
         #region Public Methods
         /// <summary>
-        /// Determines whether this instance can convert the specified object type. 
+        /// Determines whether this instance can convert the specified object type.
         /// </summary>
         /// <param name="objectType">Type of the object.</param>
         /// <returns>true if this instance can convert the specified object type, otherwise false.</returns>
@@ -116,7 +116,7 @@ namespace Ser.Api
         }
 
         /// <summary>
-        /// Reads the JSON representation of the object. 
+        /// Reads the JSON representation of the object.
         /// </summary>
         /// <param name="reader">The JsonReader to read from.</param>
         /// <param name="objectType">Type of the object.</param>
@@ -158,9 +158,9 @@ namespace Ser.Api
                 foreach(var item in enumerable)
                 {
                     itemCount++;
-                    if (itemCount > 1)                    
+                    if (itemCount > 1)
                         break;
-                    singleItem = item;                    
+                    singleItem = item;
                 }
                 if (itemCount == 1)
                     value = singleItem;
