@@ -166,7 +166,7 @@
 #endif
     public class FileSettings : DeliverySettings
     {
-        // properties for the future   
+        // properties for the future
         #region Variables & Properties
         /// <summary>
         /// Group rights
@@ -202,7 +202,7 @@
 #endif
     public class MailSettings : BaseDeliverySettings
     {
-        #region Variables & Properties 
+        #region Variables & Properties
         /// <summary>
         /// The subject of the mail
         /// </summary>

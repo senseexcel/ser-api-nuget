@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <RootNamespace>Ser.Api</RootNamespace>
-    <Authors>Konrad Mattheis und Martin Berthold</Authors>    
-    <Copyright>Copyright (c) 2018</Copyright>
+    <Authors>Konrad Mattheis und Martin Berthold</Authors>
+    <Copyright>Copyright (c) 2019</Copyright>
     <Company>senseexcel</Company>
-    <PackageId>SerApi</PackageId>
-    <Product>SerApi</Product>
+    <PackageId>Ser.Api</PackageId>
+    <Product>Ser.Api</Product>
     <Version>$(GitVersion_NuGetVersion)</Version>
-   
+
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
@@ -17,13 +17,13 @@
   <Choose>
     <When Condition="'$(MSBuildRuntimeType)' == 'Core'">
       <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFrameworks>netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
         <!--net45 is only for TypeScript Generation-->
-        <TargetFrameworks>netcoreapp2.1;net45;net452;net462</TargetFrameworks>
+        <TargetFrameworks>netcoreapp2.1;netcoreapp2.2;net45;net452;net462</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -40,14 +40,14 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  
+
   <Choose>
     <When Condition="'$(TargetFramework)' == 'net45'">
       <PropertyGroup>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>      
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\index.ts</RtTargetFile>
-        <RtDisable>false</RtDisable>        
+        <RtDisable>false</RtDisable>
       </PropertyGroup>
     </When>
     <Otherwise>
@@ -56,8 +56,8 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  
-  <Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec">   
+
+  <Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec" Condition="Exists('$(SolutionDir)\..\..\nugetapikey.txt')">
     <ReadLinesFromFile File="$(SolutionDir)\..\..\nugetapikey.txt">
       <Output TaskParameter="Lines" PropertyName="NugetAPIKey" />
     </ReadLinesFromFile>
@@ -75,22 +75,22 @@
     <ReadLinesFromFile File="$(SolutionDir)\Helper\package.json">
       <Output TaskParameter="Lines" PropertyName="PackageJSON" />
     </ReadLinesFromFile>
-    
+
     <ItemGroup>
       <PackageJSONGroup Include="$(PackageJSON)" />
     </ItemGroup>
-    
+
     <WriteLinesToFile File="$(PackageOutputAbsolutePath)npm\package.json" Lines="@(PackageJSONGroup-&gt;Replace('0.0.0', '$(PackageVersion)'))" Overwrite="true" />
     <Exec WorkingDirectory="$(PackageOutputAbsolutePath)npm\" Command="start $(COMSPEC) /k &quot;npm publish &amp; exit&quot;" />
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0" PrivateAssets="all" />    
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.2.2" PrivateAssets="all" />     
-    <PackageReference Include="Reinforced.Typings" Version="1.4.95" PrivateAssets="all" />
+    <PackageReference Include="GitVersionTask" Version="4.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.4.0" PrivateAssets="all" />
+    <PackageReference Include="Reinforced.Typings" Version="1.5.2" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="NLog" Version="4.5.11" />    
+    <PackageReference Include="NLog" Version="4.5.11" />
   </ItemGroup>
 
   <ItemGroup>

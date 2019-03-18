@@ -74,7 +74,7 @@ namespace Ser.Api
 #endif
     public class SerReport
     {
-        #region Properties   
+        #region Properties
         /// <summary>
         /// The general setting of a report.
         /// </summary>
@@ -191,7 +191,7 @@ namespace Ser.Api
         /// <summary>
         /// The Input path of the template.
         /// You can use the protokoll 'content' or 'lib'
-        /// Samples: 
+        /// Samples:
         /// Use 'content:///[TEMPLATE]' for InApp template
         /// Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
         /// Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
@@ -221,7 +221,7 @@ namespace Ser.Api
         public string OutputFormat { get; set; }
 
         /// <summary>
-        /// The password what should be set for the reports. 
+        /// The password what should be set for the reports.
         /// Note:
         /// It only works for PDF and XLSX files.
         /// If you not want the password remove it in the json.
@@ -389,7 +389,7 @@ namespace Ser.Api
         /// </summary>
         [JsonProperty(Required = Required.Always)]
 #if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable= true, Type="string")]        
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable= true, Type="string")]
 #endif
         public Uri ServerUri
         {
