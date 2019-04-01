@@ -90,7 +90,7 @@
     <PackageReference Include="Reinforced.Typings" Version="1.5.2" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="NLog" Version="4.5.11" />
+    <PackageReference Include="NLog" Version="4.6.1" />
   </ItemGroup>
 
   <ItemGroup>
