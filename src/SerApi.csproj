@@ -17,13 +17,13 @@
   <Choose>
     <When Condition="'$(MSBuildRuntimeType)' == 'Core'">
       <PropertyGroup>
-        <TargetFrameworks>netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
+        <TargetFrameworks>netcoreapp2.1;netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
         <!--net45 is only for TypeScript Generation-->
-        <TargetFrameworks>netcoreapp2.1;netcoreapp2.2;net45;net452;net462</TargetFrameworks>
+        <TargetFrameworks>netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;net45;net452;net462</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -57,12 +57,12 @@
     </Otherwise>
   </Choose>
 
-  <Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec" Condition="Exists('$(SolutionDir)\..\..\nugetapikey.txt')">
+  <!--<Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec" Condition="Exists('$(SolutionDir)\..\..\nugetapikey.txt')">
     <ReadLinesFromFile File="$(SolutionDir)\..\..\nugetapikey.txt">
       <Output TaskParameter="Lines" PropertyName="NugetAPIKey" />
     </ReadLinesFromFile>
     <Exec WorkingDirectory="$(BaseDir)" Command="dotnet nuget push $(PackageOutputAbsolutePath)$(PackageId).$(PackageVersion).nupkg -k $(NugetAPIKey) -s https://api.nuget.org/v3/index.json" />
-  </Target>
+  </Target>-->
 
   <Target Name="PublishNPM" AfterTargets="PublishToNugetWithAPIKey">
     <CreateProperty Value="@(PackageReference-&gt;Metadata('Version'))">
@@ -85,12 +85,12 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.5.0" PrivateAssets="all" />
-    <PackageReference Include="Reinforced.Typings" Version="1.5.2" PrivateAssets="all" />
+    <PackageReference Include="GitVersionTask" Version="5.0.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3" PrivateAssets="all" />
+    <PackageReference Include="Reinforced.Typings" Version="1.5.4" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="NLog" Version="4.6.3" />
+    <PackageReference Include="NLog" Version="4.6.7" />
   </ItemGroup>
 
   <ItemGroup>
