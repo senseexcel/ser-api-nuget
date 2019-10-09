@@ -214,6 +214,11 @@
         public string Message { get; set; }
 
         /// <summary>
+        /// Send email with a Attachment or no.
+        /// </summary>
+        public bool SendAttachment { get; set; } = true;
+
+        /// <summary>
         /// The body type of the mail
         /// </summary>
         public EMailType MailType { get; set; } = EMailType.TEXT;
