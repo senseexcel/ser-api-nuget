@@ -83,7 +83,6 @@ namespace Ser.Api
         /// <summary>
         /// The template of a report.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
         public SerTemplate Template { get; set; }
 
         /// <summary>
@@ -196,7 +195,6 @@ namespace Ser.Api
         /// Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
         /// Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
         public string Input { get; set; }
 
         /// <summary>
@@ -206,7 +204,6 @@ namespace Ser.Api
         /// If you use the output name without a file extension, you must also use the property 'Outputformat'.
         /// If you do not specify a file extension, PDF will be used automatically.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
         public string Output { get; set; }
 
         /// <summary>
@@ -572,6 +569,15 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public List<string> Values { get; set; }
+
+        /// <summary>
+        /// Sort dynamic values.
+        /// </summary>
+        [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public string Sorted { get; set; }
 
         /// <summary>
         /// Type of the selection.
