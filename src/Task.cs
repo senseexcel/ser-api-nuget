@@ -577,7 +577,7 @@ namespace Ser.Api
 #if NET45
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
-        public bool Sort { get; set; }
+        public string Sorted { get; set; }
 
         /// <summary>
         /// Type of the selection.
