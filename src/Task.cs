@@ -571,6 +571,15 @@ namespace Ser.Api
         public List<string> Values { get; set; }
 
         /// <summary>
+        /// Sort dynamic values.
+        /// </summary>
+        [JsonProperty]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public bool Sort { get; set; }
+
+        /// <summary>
         /// Type of the selection.
         /// </summary>
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
