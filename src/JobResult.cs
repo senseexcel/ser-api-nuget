@@ -182,6 +182,12 @@ namespace Ser.Api
         public List<string> Paths { get; set; }
 
         /// <summary>
+        /// The value of the current dynamic filter.
+        /// </summary>
+        [JsonProperty]
+        public string DynamicPathValue { get; set; }
+
+        /// <summary>
         /// The list of script results that were executed before the calculation was running.
         /// </summary>
         [JsonProperty]
