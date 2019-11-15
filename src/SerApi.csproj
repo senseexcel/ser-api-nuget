@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <RootNamespace>Ser.Api</RootNamespace>
-    <Authors>Konrad Mattheis und Martin Berthold</Authors>
+    <Authors>akquinet finance &amp; controlling GmbH</Authors>
     <Copyright>Copyright (c) 2019</Copyright>
-    <Company>senseexcel</Company>
+    <Company>akquinet finance &amp; controlling GmbH</Company>
     <PackageId>Ser.Api</PackageId>
     <Product>Ser.Api</Product>
-    <Version>$(GitVersion_NuGetVersion)</Version>
+    <Version>$(GitVersion_InformationalVersion)</Version>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -17,13 +17,13 @@
   <Choose>
     <When Condition="'$(MSBuildRuntimeType)' == 'Core'">
       <PropertyGroup>
-        <TargetFrameworks>netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
         <!--net45 is only for TypeScript Generation-->
-        <TargetFrameworks>netcoreapp2.2;netcoreapp3.0;net45;net452;net462</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.0;net45;net452;net462</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -31,7 +31,7 @@
   <Choose>
     <When Condition="'$(Configuration)' == 'Release'">
       <PropertyGroup>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
       </PropertyGroup>
     </When>
     <Otherwise>
@@ -57,13 +57,6 @@
     </Otherwise>
   </Choose>
 
-  <!--<Target Name="PublishToNugetWithAPIKey" AfterTargets="GenerateNuspec" Condition="Exists('$(SolutionDir)\..\..\nugetapikey.txt')">
-    <ReadLinesFromFile File="$(SolutionDir)\..\..\nugetapikey.txt">
-      <Output TaskParameter="Lines" PropertyName="NugetAPIKey" />
-    </ReadLinesFromFile>
-    <Exec WorkingDirectory="$(BaseDir)" Command="dotnet nuget push $(PackageOutputAbsolutePath)$(PackageId).$(PackageVersion).nupkg -k $(NugetAPIKey) -s https://api.nuget.org/v3/index.json" />
-  </Target>-->
-
   <Target Name="PublishNPM" AfterTargets="PublishToNugetWithAPIKey">
     <CreateProperty Value="@(PackageReference-&gt;Metadata('Version'))">
       <Output PropertyName="tsc_Version" Condition="'%(PackageReference.Identity)' == 'Microsoft.TypeScript.MSBuild'" TaskParameter="Value" />
@@ -85,12 +78,12 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="5.0.1" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3" PrivateAssets="all" />
-    <PackageReference Include="Reinforced.Typings" Version="1.5.4" PrivateAssets="all" />
+    <PackageReference Include="GitVersionTask" Version="5.1.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.2" PrivateAssets="all" />
+    <PackageReference Include="Reinforced.Typings" Version="1.5.5" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="NLog" Version="4.6.7" />
+    <PackageReference Include="NLog" Version="4.6.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -98,4 +91,8 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="GitVersion" BeforeTargets="AfterBuild">
+    <Message Importance="High" Text="++++++ GitVersion: $(GitVersion_InformationalVersion) ++++++" />
+  </Target>
 </Project>
