@@ -240,16 +240,6 @@ namespace Ser.Api
         public JObject OutputFormatOptions { get; set; }
 
         /// <summary>
-        /// Save the formula as json in the template
-        /// </summary>
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(false)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
-        public bool KeepFormula { get; set; } = false;
-
-        /// <summary>
         /// The signature for the script executing.
         /// </summary>
         [JsonProperty]
