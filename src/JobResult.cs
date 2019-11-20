@@ -124,12 +124,6 @@ namespace Ser.Api
         public TimeSpan RunTime { get; set; }
 
         /// <summary>
-        /// The status information of the finished task
-        /// </summary>
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
-        public TaskStatusInfo Status { get; set; }
-
-        /// <summary>
         /// The current version of aspose cells.
         /// </summary>
         [JsonProperty]
@@ -140,6 +134,18 @@ namespace Ser.Api
         /// </summary>
         [JsonProperty]
         public string EngineVersion { get; set; }
+
+        /// <summary>
+        /// The status information of the finished task
+        /// </summary>
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
+        public TaskStatusInfo Status { get; set; }
+        
+        /// <summary>
+        /// Set the first Error
+        /// </summary>
+        [JsonProperty]
+        public Exception FirstException { get; set; }
 
         /// <summary>
         /// The count of the reports.
