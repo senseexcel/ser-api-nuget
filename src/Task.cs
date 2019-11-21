@@ -125,6 +125,16 @@ namespace Ser.Api
         public int CleanupTimeOut { get; set; } = 10;
 
         /// <summary>
+        /// Auto fit the colunms and rows from tables and pivottables.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public bool AutoFitTables { get; set; }
+
+        /// <summary>
         /// The time until the report is aborted.
         /// </summary>
         [JsonProperty]
@@ -143,16 +153,6 @@ namespace Ser.Api
         [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
 #endif
         public int ErrorRepeatCount { get; set; } = 2;
-
-        /// <summary>
-        /// Use the sand box for script execute.
-        /// </summary>
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(true)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
-        public bool UseSandbox { get; set; } = false;
 
         /// <summary>
         /// The count of cpus or cpu cores for the ser engine.
