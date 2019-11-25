@@ -225,7 +225,7 @@ namespace Ser.Api
         /// Download data from restservice.
         /// </summary>
         [JsonIgnore]
-        public List<ReportData> Data { get; set; }
+        public List<ReportData> Data { get; set; } = new List<ReportData>();
         #endregion
     }
 
