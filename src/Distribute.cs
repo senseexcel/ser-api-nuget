@@ -244,18 +244,6 @@
         public MailServerSettings MailServer { get; set; }
 
         /// <summary>
-        /// List of Reportpaths
-        /// </summary>
-        [JsonIgnore]
-        public List<string> Paths { get; set; }
-
-        /// <summary>
-        /// Name of the report
-        /// </summary>
-        [JsonIgnore]
-        public string ReportName { get; set; }
-
-        /// <summary>
         /// Cache of mail reports befor make a package
         /// </summary>
         [JsonIgnore]
