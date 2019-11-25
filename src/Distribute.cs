@@ -254,6 +254,12 @@
         /// </summary>
         [JsonIgnore]
         public string ReportName { get; set; }
+
+        /// <summary>
+        /// Cache of mail reports befor make a package
+        /// </summary>
+        [JsonIgnore]
+        public List<Report> MailReports { get; set; }
         #endregion
 
         /// <summary>
