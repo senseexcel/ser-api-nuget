@@ -140,7 +140,7 @@ namespace Ser.Api
         /// </summary>
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
         public TaskStatusInfo Status { get; set; }
-        
+
         /// <summary>
         /// Set the first Error
         /// </summary>
@@ -220,6 +220,25 @@ namespace Ser.Api
         /// </summary>
         [JsonProperty]
         public SerConnection Connection { get; set; }
+
+        /// <summary>
+        /// Download data from restservice.
+        /// </summary>
+        [JsonIgnore]
+        public List<ReportData> Data { get; set; }
         #endregion
+    }
+
+    public class ReportData
+    {
+        /// <summary>
+        /// File path of the report.
+        /// </summary>
+        public string Path { get; set; }
+
+        /// <summary>
+        /// Data as byte array
+        /// </summary>
+        public byte[] DownloadData { get; set; }
     }
 }
