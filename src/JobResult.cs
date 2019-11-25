@@ -234,7 +234,7 @@ namespace Ser.Api
         /// <summary>
         /// File path of the report.
         /// </summary>
-        public string Path { get; set; }
+        public string Filename { get; set; }
 
         /// <summary>
         /// Data as byte array
