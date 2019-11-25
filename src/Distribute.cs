@@ -247,7 +247,7 @@
         /// Cache of mail reports befor make a package
         /// </summary>
         [JsonIgnore]
-        public List<Report> MailReports { get; set; }
+        public List<Report> MailReports { get; set; } = new List<Report>();
         #endregion
 
         /// <summary>
