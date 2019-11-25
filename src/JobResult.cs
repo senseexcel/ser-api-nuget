@@ -229,6 +229,9 @@ namespace Ser.Api
         #endregion
     }
 
+    /// <summary>
+    /// Reporting data from rest service
+    /// </summary>
     public class ReportData
     {
         /// <summary>
