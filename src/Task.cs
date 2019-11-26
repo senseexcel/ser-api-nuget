@@ -135,6 +135,16 @@ namespace Ser.Api
         public bool AutoFitTables { get; set; }
 
         /// <summary>
+        /// Disable dataSource linking by pivot tables.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+#if NET45
+        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
+#endif
+        public bool DisableAutoLink { get; set; }
+
+        /// <summary>
         /// The time until the report is aborted.
         /// </summary>
         [JsonProperty]
