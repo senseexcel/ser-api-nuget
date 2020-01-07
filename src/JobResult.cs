@@ -124,12 +124,6 @@ namespace Ser.Api
         public TimeSpan RunTime { get; set; }
 
         /// <summary>
-        /// The status information of the finished task
-        /// </summary>
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
-        public TaskStatusInfo Status { get; set; }
-
-        /// <summary>
         /// The current version of aspose cells.
         /// </summary>
         [JsonProperty]
@@ -140,6 +134,18 @@ namespace Ser.Api
         /// </summary>
         [JsonProperty]
         public string EngineVersion { get; set; }
+
+        /// <summary>
+        /// The status information of the finished task
+        /// </summary>
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
+        public TaskStatusInfo Status { get; set; }
+
+        /// <summary>
+        /// Set the first Error
+        /// </summary>
+        [JsonProperty]
+        public Exception FirstException { get; set; }
 
         /// <summary>
         /// The count of the reports.
@@ -214,6 +220,28 @@ namespace Ser.Api
         /// </summary>
         [JsonProperty]
         public SerConnection Connection { get; set; }
+
+        /// <summary>
+        /// Download data from restservice.
+        /// </summary>
+        [JsonIgnore]
+        public List<ReportData> Data { get; set; } = new List<ReportData>();
         #endregion
+    }
+
+    /// <summary>
+    /// Reporting data from rest service
+    /// </summary>
+    public class ReportData
+    {
+        /// <summary>
+        /// File path of the report.
+        /// </summary>
+        public string Filename { get; set; }
+
+        /// <summary>
+        /// Data as byte array
+        /// </summary>
+        public byte[] DownloadData { get; set; }
     }
 }

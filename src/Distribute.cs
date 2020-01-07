@@ -244,16 +244,10 @@
         public MailServerSettings MailServer { get; set; }
 
         /// <summary>
-        /// List of Reportpaths
+        /// Cache of mail reports befor make a package
         /// </summary>
         [JsonIgnore]
-        public List<string> Paths { get; set; }
-
-        /// <summary>
-        /// Name of the report
-        /// </summary>
-        [JsonIgnore]
-        public string ReportName { get; set; }
+        public List<Report> MailReports { get; set; } = new List<Report>();
         #endregion
 
         /// <summary>
@@ -307,6 +301,12 @@
         /// Use ssl of authentication
         /// </summary>
         public bool UseSsl { get; set; }
+
+        /// <summary>
+        /// Use this property to send mail with a delay.
+        /// Value in seconds.
+        /// </summary>
+        public int SendDelay { get; set; } = 0;
         #endregion
     }
 }
