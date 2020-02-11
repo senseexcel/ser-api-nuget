@@ -17,13 +17,13 @@
   <Choose>
     <When Condition="'$(MSBuildRuntimeType)' == 'Core'">
       <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup>
         <!--net45 is only for TypeScript Generation-->
-        <TargetFrameworks>netcoreapp3.0;net45;net452;net462</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.1;net45;net452;net462</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -44,10 +44,10 @@
   <Choose>
     <When Condition="'$(TargetFramework)' == 'net45'">
       <PropertyGroup>
+        <RtDisable>false</RtDisable>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\index.ts</RtTargetFile>
-        <RtDisable>false</RtDisable>
       </PropertyGroup>
     </When>
     <Otherwise>
@@ -57,7 +57,7 @@
     </Otherwise>
   </Choose>
 
-  <Target Name="PublishNPM" AfterTargets="PublishToNugetWithAPIKey">
+  <Target Name="PublishNPM" AfterTargets="AfterBuild">
     <CreateProperty Value="@(PackageReference-&gt;Metadata('Version'))">
       <Output PropertyName="tsc_Version" Condition="'%(PackageReference.Identity)' == 'Microsoft.TypeScript.MSBuild'" TaskParameter="Value" />
     </CreateProperty>
