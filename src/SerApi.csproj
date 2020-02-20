@@ -4,7 +4,7 @@
     <RootNamespace>Ser.Api</RootNamespace>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>akquinet finance &amp; controlling GmbH</Authors>
-    <Copyright>Copyright (c) 2020</Copyright>
+    <Copyright>Copyright (c) $([System.DateTime]::Today.ToString('yyyy'))</Copyright>
     <Company>akquinet finance &amp; controlling GmbH</Company>
     <PackageId>Ser.Api</PackageId>
     <Product>Ser.Api</Product>
