@@ -1,0 +1,957 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SerApi</name>
+    </assembly>
+    <members>
+        <member name="T:Ser.Api.SerConfig">
+            <summary>
+            The configuration of SER for working with JSON
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConfig.Tasks">
+            <summary>
+            All tasks to be performed
+            </summary>
+        </member>
+        <member name="T:Ser.Api.QlikCredentialType">
+            <summary>
+            Authentication type to connect to Qlik
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.NONE">
+            <summary>
+            Connection without Authentication
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.WINDOWSAUTH">
+            <summary>
+            Authentication over Windows user name and password
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.CERTIFICATE">
+            <summary>
+            Authentication over Qlik client certificate
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.SESSION">
+            <summary>
+            Authentication over Qlik session cookie
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.JWT">
+            <summary>
+            Authentication over Vitrual Proxy with method JWT
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.HEADER">
+            <summary>
+            Authentication over Vitrual Proxy with JWT Bearer
+            </summary>
+        </member>
+        <member name="T:Ser.Api.IQlikCredentials">
+            <summary>
+            Qlik authentication type
+            </summary>
+        </member>
+        <member name="P:Ser.Api.IQlikCredentials.Type">
+            <summary>
+            Qlik authentication type
+            </summary>
+        </member>
+        <member name="T:Ser.Api.CertificateAuth">
+            <summary>
+            Logic for certificate authentication
+            </summary>
+        </member>
+        <member name="P:Ser.Api.CertificateAuth.Type">
+            <summary>
+            Qlik authentication type
+            </summary>
+        </member>
+        <member name="P:Ser.Api.CertificateAuth.CertificatePath">
+            <summary>
+            Path to the qlik server certificates
+            </summary>
+        </member>
+        <member name="P:Ser.Api.CertificateAuth.UserId">
+            <summary>
+            Qlik UserId
+            </summary>
+        </member>
+        <member name="P:Ser.Api.CertificateAuth.UserDirectory">
+            <summary>
+            Qlik UserDirectory
+            </summary>
+        </member>
+        <member name="P:Ser.Api.CertificateAuth.CertPassword">
+            <summary>
+            Password of the certificate which can be specified when generating
+            </summary>
+        </member>
+        <member name="T:Ser.Api.WindowsAuth">
+            <summary>
+            Logic for windows authentication
+            </summary>
+        </member>
+        <member name="P:Ser.Api.WindowsAuth.Type">
+            <summary>
+            Qlik authentication type
+            </summary>
+        </member>
+        <member name="P:Ser.Api.WindowsAuth.Login">
+            <summary>
+            windows account name
+            </summary>
+        </member>
+        <member name="P:Ser.Api.WindowsAuth.Password">
+            <summary>
+            windows account password
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SessionAuth">
+            <summary>
+            The Session authentication class
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SessionAuth.Type">
+            <summary>
+            Qlik authentication type
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SessionAuth.CookieName">
+            <summary>
+            The name of the cookie (Default: XQlik-Session)
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SessionAuth.CookieValue">
+            <summary>
+            The value of the cookie
+            </summary>
+        </member>
+        <member name="T:Ser.Api.EMailType">
+            <summary>
+            Type of the email body
+            </summary>
+        </member>
+        <member name="F:Ser.Api.EMailType.TEXT">
+            <summary>
+            Use mail plain text in the mail body
+            </summary>
+        </member>
+        <member name="F:Ser.Api.EMailType.HTML">
+            <summary>
+            Use html code in the mail body
+            </summary>
+        </member>
+        <member name="F:Ser.Api.EMailType.MARKDOWN">
+            <summary>
+            Use markdown syntax in the mail body
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SettingsType">
+            <summary>
+            Distribute type
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SettingsType.MAIL">
+            <summary>
+            Distribute type mail
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SettingsType.FILE">
+            <summary>
+             Distribute type file
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SettingsType.HUB">
+            <summary>
+             Distribute type hub
+            </summary>
+        </member>
+        <member name="T:Ser.Api.DistributeMode">
+            <summary>
+            Mode how the delivery should behave.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.DistributeMode.OVERRIDE">
+            <summary>
+            Override the content or file on distribute.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.DistributeMode.DELETEALLFIRST">
+            <summary>
+            Delete all content before distribute
+            </summary>
+        </member>
+        <member name="F:Ser.Api.DistributeMode.CREATEONLY">
+            <summary>
+            Create only new content or trigger an exception.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.ISettings">
+            <summary>
+            Basic interfaces to identify the delivery type
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ISettings.Type">
+            <summary>
+            The type of the settings
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ISettings.Active">
+            <summary>
+            Activate distribute
+            </summary>
+        </member>
+        <member name="T:Ser.Api.BaseDeliverySettings">
+            <summary>
+            Base settings
+            </summary>
+        </member>
+        <member name="P:Ser.Api.BaseDeliverySettings.Active">
+            <summary>
+            Activate distribute
+            </summary>
+        </member>
+        <member name="P:Ser.Api.BaseDeliverySettings.Type">
+            <summary>
+            Distribute type
+            </summary>
+        </member>
+        <member name="T:Ser.Api.DeliverySettings">
+            <summary>
+            Base setting for distribute
+            </summary>
+        </member>
+        <member name="P:Ser.Api.DeliverySettings.Target">
+            <summary>
+            target location for distribute
+            </summary>
+        </member>
+        <member name="P:Ser.Api.DeliverySettings.Mode">
+            <summary>
+            distribute mode
+            </summary>
+        </member>
+        <member name="P:Ser.Api.DeliverySettings.Owner">
+            <summary>
+            The user to be the owner.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.DeliverySettings.Connections">
+            <summary>
+            All connections that can be used.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.FileSettings">
+            <summary>
+            The settings for file distribute
+            </summary>
+        </member>
+        <member name="F:Ser.Api.FileSettings.Group">
+            <summary>
+            Group rights
+            </summary>
+        </member>
+        <member name="F:Ser.Api.FileSettings.ACL">
+            <summary>
+            Access control list rights
+            </summary>
+        </member>
+        <member name="T:Ser.Api.HubSettings">
+            <summary>
+            The settings for hub distribute
+            </summary>
+        </member>
+        <member name="P:Ser.Api.HubSettings.SharedContentType">
+            <summary>
+            The content type of the report.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.MailSettings">
+            <summary>
+            The settings for mail distribute
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.Subject">
+            <summary>
+            The subject of the mail
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.Message">
+            <summary>
+            The message of the mail
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.SendAttachment">
+            <summary>
+            Send email with a Attachment or no.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.MailType">
+            <summary>
+            The body type of the mail
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.To">
+            <summary>
+            The recipients of the email
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.Cc">
+            <summary>
+            The copy recipients of the email
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.Bcc">
+            <summary>
+            The blind copy recipients of the email
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.MailServer">
+            <summary>
+            The mail server settings
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailSettings.MailReports">
+            <summary>
+            Cache of mail reports befor make a package
+            </summary>
+        </member>
+        <member name="M:Ser.Api.MailSettings.ToString">
+            <summary>
+            gets the full string of the mail
+            </summary>
+            <returns>Full string of the mail</returns>
+        </member>
+        <member name="T:Ser.Api.MailServerSettings">
+            <summary>
+            The settings of the mail server.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.Host">
+            <summary>
+            The host machine
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.From">
+            <summary>
+            The sender of the mail
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.Port">
+            <summary>
+            The port of the mail server
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.Username">
+            <summary>
+            The username of the mail account (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.Password">
+            <summary>
+            The password of the mail account (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.UseSsl">
+            <summary>
+            Use ssl of authentication (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.MailServerSettings.SendDelay">
+            <summary>
+            Use this property to send mail with a delay (optional).
+            Value in seconds.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.DomainUser">
+            <summary>
+            Class for work with the qlik userid und userdirectory logic.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.DomainUser.UserId">
+            <summary>
+            Qlik user id
+            </summary>
+        </member>
+        <member name="P:Ser.Api.DomainUser.UserDirectory">
+            <summary>
+            Qlik user directory
+            </summary>
+        </member>
+        <member name="M:Ser.Api.DomainUser.#ctor(System.String)">
+            <summary>
+            Creating a object for DomainUser.
+            </summary>
+            <param name="domainUserValue">UserId and UserDirectory as Path.
+            Sample: 'USERDIRECTORY\\USERID' or 'UserDirectory=USERDIRECTORY; UserId=USERID'
+            </param>
+        </member>
+        <member name="M:Ser.Api.DomainUser.ToString">
+            <summary>
+            Format UserId and UserDirectory to string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ser.Api.ScriptResult">
+            <summary>
+            The status of a finished script
+            </summary>
+        </member>
+        <member name="F:Ser.Api.ScriptResult.UNKOWN">
+            <summary>
+            Unkown result
+            </summary>
+        </member>
+        <member name="F:Ser.Api.ScriptResult.SUCCESS">
+            <summary>
+            Success result
+            </summary>
+        </member>
+        <member name="F:Ser.Api.ScriptResult.SCRIPT_ERROR">
+            <summary>
+            The .net script has an error
+            </summary>
+        </member>
+        <member name="F:Ser.Api.ScriptResult.PERMISSION_ERROR">
+            <summary>
+            No access to the sandbox.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.ScriptResult.ERROR">
+            <summary>
+            General error
+            </summary>
+        </member>
+        <member name="F:Ser.Api.ScriptResult.WARNING">
+            <summary>
+            General warning
+            </summary>
+        </member>
+        <member name="T:Ser.Api.TaskStatusInfo">
+            <summary>
+            The stauts of a finished task
+            </summary>
+        </member>
+        <member name="F:Ser.Api.TaskStatusInfo.ABORT">
+            <summary>
+            The Task was abort
+            </summary>
+        </member>
+        <member name="F:Ser.Api.TaskStatusInfo.SUCCESS">
+            <summary>
+            The Task was finished successfull
+            </summary>
+        </member>
+        <member name="F:Ser.Api.TaskStatusInfo.WARNING">
+            <summary>
+            The Task was finished with warnings
+            </summary>
+        </member>
+        <member name="F:Ser.Api.TaskStatusInfo.ERROR">
+            <summary>
+            The Task was finished with an error
+            </summary>
+        </member>
+        <member name="F:Ser.Api.TaskStatusInfo.RETRYERROR">
+            <summary>
+            The Task was finished with an error, but is repeated at the next call
+            </summary>
+        </member>
+        <member name="T:Ser.Api.JobResult">
+            <summary>
+            The result of a finished job.
+            This information is needed for the result file.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.TaskId">
+            <summary>
+            The id of the task.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.StartTime">
+            <summary>
+            The start time of the task.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.RunTime">
+            <summary>
+            The runtime of the task.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.AsposeVersion">
+            <summary>
+            The current version of aspose cells.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.EngineVersion">
+            <summary>
+            The current version of the ser engine.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.Status">
+            <summary>
+            The status information of the finished task
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.FirstException">
+            <summary>
+            Set the first Error
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.Count">
+            <summary>
+            The count of the reports.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.Reports">
+            <summary>
+            The list of the generated reports.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Report">
+            <summary>
+            This class is a part of JobResult.
+            It maps the individual report in the job result.
+            </summary>
+            <seealso cref="T:Ser.Api.JobResult"/>
+        </member>
+        <member name="P:Ser.Api.Report.Name">
+            <summary>
+            The individually name of the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.Paths">
+            <summary>
+            The path or paths of the Report.
+            The PDF can save multiple pages, in this case is it one path.
+            The CSV save multiple files, in this case is it many paths.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.DynamicPathValue">
+            <summary>
+            The value of the current dynamic filter.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.PreScriptResult">
+            <summary>
+            The list of script results that were executed before the calculation was running.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.AfterScriptResult">
+            <summary>
+            The list of script results that were executed after the calculation was running.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.Distribute">
+            <summary>
+            This property includes the distribute options.
+            It is a json structure.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.Connection">
+            <summary>
+            The used connection to create the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Report.Data">
+            <summary>
+            Download data from restservice.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.ReportData">
+            <summary>
+            Reporting data from rest service
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportData.Filename">
+            <summary>
+            File path of the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportData.DownloadData">
+            <summary>
+            Data as byte array
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SingleValueArrayConverter">
+            <summary>
+            This converter converts a single object into an array item.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SingleValueArrayConverter.ObjectMode">
+            <summary>
+            The mode of the json object.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SingleValueArrayConverter.ObjectMode.Standard">
+            <summary>
+            No list and no array.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SingleValueArrayConverter.ObjectMode.Array">
+            <summary>
+            It is a array.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SingleValueArrayConverter.ObjectMode.List">
+            <summary>
+            It is a list.
+            </summary>
+        </member>
+        <member name="M:Ser.Api.SingleValueArrayConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type.
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>true if this instance can convert the specified object type, otherwise false.</returns>
+            <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_CanConvert.htm"/>
+        </member>
+        <member name="M:Ser.Api.SingleValueArrayConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON representation of the object.
+            </summary>
+            <param name="reader">The JsonReader to read from.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="existingValue">The existing value of object being read.</param>
+            <param name="serializer">The calling serializer.</param>
+            <returns></returns>
+            <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_ReadJson.htm"/>
+        </member>
+        <member name="M:Ser.Api.SingleValueArrayConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object.
+            </summary>
+            <param name="writer">The JsonWriter to write to.</param>
+            <param name="value">The value.</param>
+            <param name="serializer">The calling serializer.</param>
+            <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
+        </member>
+        <member name="T:Ser.Api.SerUtilities">
+            <summary>
+            Class with general methods for SER
+            </summary>
+        </member>
+        <member name="M:Ser.Api.SerUtilities.GetFullPathFromApp(System.String)">
+            <summary>
+            Convert a Path to a full path.
+            </summary>
+            <param name="path">path</param>
+            <returns>full path</returns>
+        </member>
+        <member name="T:Ser.Api.SelectionType">
+            <summary>
+            The type of the selection
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SelectionType.Static">
+            <summary>
+            Use a fixed filter name or bookmark.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.SelectionType.Dynamic">
+            <summary>
+            Loop over a field or dimension.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SerTask">
+            <summary>
+            The full task object and configuration.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTask.Reports">
+            <summary>
+            The reports to be generating.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SerReport">
+            <summary>
+            The report of the ser task.
+            </summary>
+            <seealso cref="T:Ser.Api.SerTask"/>
+        </member>
+        <member name="P:Ser.Api.SerReport.General">
+            <summary>
+            The general setting of a report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerReport.Template">
+            <summary>
+            The template of a report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerReport.Distribute">
+            <summary>
+            This property includes the distribute options.
+            It is a json structure.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerReport.Connections">
+            <summary>
+            The available connections to Qlik.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SerGeneral">
+            <summary>
+            The general settings for the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.CleanupTimeOut">
+            <summary>
+            The time after clean up the temp folder (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.AutoFitTables">
+            <summary>
+            Auto fit the colunms and rows from tables and pivottables (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.DisableAutoLink">
+            <summary>
+            Disable dataSource linking by pivot tables (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.Timeout">
+            <summary>
+            The time until the report is aborted (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.ErrorRepeatCount">
+            <summary>
+            The repeat until the report is canceled as error (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.CPULimitInCore">
+            <summary>
+            The count of cpus or cpu cores for the ser engine (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerGeneral.MemoryLimitInGB">
+            <summary>
+            The soft memory limit for the ser engine (optional).
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SerTemplate">
+            <summary>
+            The template for the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.Input">
+            <summary>
+            The Input path of the template (optional).
+            You can use the protokoll 'content' or 'lib'
+            Samples:
+            Use 'content:///[TEMPLATE]' for InApp template
+            Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
+            Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.Output">
+            <summary>
+            The output name of the report (optional).
+            Note:
+            You can use the output name with or without file extention.
+            If you use the output name without a file extension, you must also use the property 'Outputformat'.
+            If you do not specify a file extension, PDF will be used automatically.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.OutputFormat">
+            <summary>
+            The file extention for the output name (optional).
+            It is optional.
+            </summary>
+            <seealso cref="P:Ser.Api.SerTemplate.Output"/>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.OutputPassword">
+            <summary>
+            The password what should be set for the reports (optional).
+            Note:
+            It only works for PDF and XLSX files.
+            If you not want the password remove it in the json.
+            Please do not leave blank, because the human json convention can not handle it.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.OutputFormatOptions">
+            <summary>
+            Flexible output format options (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.ScriptKeys">
+            <summary>
+            The signature for the script executing (optional)..
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.ScriptArgs">
+            <summary>
+            The arguments for the executing .NET scripts (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.Selections">
+            <summary>
+            The qlik filters used for the report (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.SelectionsClearAll">
+            <summary>
+            Clear or clear not the Qlik selections in a session (optional).
+            This mode is importent for the OnDemand Extention.
+            </summary>
+        </member>
+        <member name="M:Ser.Api.SerTemplate.GetSelectionObjects(Ser.Api.SelectionType)">
+            <summary>
+            Returns the selections of a special type.
+            </summary>
+            <param name="type">The type of a selection.</param>
+            <returns>A list of selections</returns>
+        </member>
+        <member name="T:Ser.Api.SerCredentials">
+            <summary>
+            The credentials for the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerCredentials.Type">
+            <summary>
+            The credential type for the connection.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerCredentials.Key">
+            <summary>
+            The name of the cookie.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerCredentials.Value">
+            <summary>
+            The Value of the cookie.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerCredentials.Cert">
+            <summary>
+            The path to the JWT certificate.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerCredentials.PrivateKey">
+            <summary>
+            The path to the private key.
+            It's generate the JWT token.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SerConnection">
+            <summary>
+            The connection class of the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.ServerUri">
+            <summary>
+            The Connection uri to Qlik for TypeScript (optional).
+            Note:
+            Desktop: "Qlik Sense Desktop"
+            Server: "https://NAME_OF_SERVER/VIRTUALPROXY"
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.App">
+            <summary>
+            Qlik app name or id
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.RetryTimeout">
+            <summary>
+            The reload timeout for InAppMode.
+            Wait for data reload of the app (optional).
+            Wait for other apps or processes
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.SslVerify">
+            <summary>
+            Use the ssl validation (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.SslValidThumbprints">
+            <summary>
+            The thumb print from qlik client ssl certificate (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.Identities">
+            <summary>
+            Share the qlik session or create a new session with a identity (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.Credentials">
+            <summary>
+            The credentials for the qlik communication for TypeScript (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerConnection.Lefs">
+            <summary>
+            The lisence keys (optional).
+            </summary>
+        </member>
+        <member name="M:Ser.Api.SerConnection.ToString">
+            <summary>
+            Get the server uri.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ser.Api.SerThumbprint">
+            <summary>
+            The thumb print for the report.
+            Note:
+            Copy the thumb print from thw qlik client certificate.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerThumbprint.Url">
+            <summary>
+            The server url to the qlilk certificate
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerThumbprint.Thumbprint">
+            <summary>
+            The thumb print from the qlik clint certificate
+            </summary>
+        </member>
+        <member name="T:Ser.Api.SerSenseSelection">
+            <summary>
+            The selection of the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.Name">
+            <summary>
+            The Name of the filter (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.ObjectType">
+            <summary>
+            Type of the filter type.
+            By Default it will used 'Field'.
+            Other Values are 'bookmark' and 'hiddenbookmark'
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.Values">
+            <summary>
+            The values that should be used (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.Sorted">
+            <summary>
+            Sort dynamic values (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.Type">
+            <summary>
+            Type of the selection.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.ExportRootNode">
+            <summary>
+            Export a Root node for the sheet names (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.SheetName">
+            <summary>
+            Give the sheet a seperate sheet name form a formaula (optional).
+            You can also use @@sheetname@@ as placeholter for the orignal sheet name.
+            </summary>
+        </member>
+    </members>
+</doc>

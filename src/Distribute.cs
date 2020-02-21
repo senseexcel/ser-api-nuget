@@ -12,9 +12,6 @@
     /// <summary>
     /// Type of the email body
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum]
-#endif
     public enum EMailType
     {
         /// <summary>
@@ -36,9 +33,6 @@
     /// <summary>
     /// Distribute type
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum]
-#endif
     public enum SettingsType
     {
         /// <summary>
@@ -60,9 +54,6 @@
     /// <summary>
     /// Mode how the delivery should behave.
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum]
-#endif
     public enum DistributeMode
     {
         /// <summary>
@@ -86,9 +77,6 @@
     /// <summary>
     /// Basic interfaces to identify the delivery type
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public interface ISettings
     {
         /// <summary>
@@ -106,9 +94,6 @@
     /// <summary>
     /// Base settings
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class BaseDeliverySettings : ISettings
@@ -129,9 +114,6 @@
     /// <summary>
     /// Base setting for distribute
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class DeliverySettings : BaseDeliverySettings
     {
         #region Properties
@@ -161,9 +143,6 @@
     /// <summary>
     /// The settings for file distribute
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class FileSettings : DeliverySettings
     {
         // properties for the future
@@ -183,9 +162,6 @@
     /// <summary>
     /// The settings for hub distribute
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class HubSettings : DeliverySettings
     {
         /// <summary>
@@ -197,9 +173,6 @@
     /// <summary>
     /// The settings for mail distribute
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class MailSettings : BaseDeliverySettings
     {
         #region Variables & Properties
@@ -254,9 +227,6 @@
         /// gets the full string of the mail
         /// </summary>
         /// <returns>Full string of the mail</returns>
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public override string ToString()
         {
             return $"{Subject}|{Message}|{To}/{Cc}/{Bcc}";
@@ -266,9 +236,6 @@
     /// <summary>
     /// The settings of the mail server.
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class MailServerSettings
     {
         #region Variables & Properties
@@ -288,22 +255,22 @@
         public int Port { get; set; }
 
         /// <summary>
-        /// The username of the mail account
+        /// The username of the mail account (optional).
         /// </summary>
         public string Username { get; set; }
 
         /// <summary>
-        /// The password of the mail account
+        /// The password of the mail account (optional).
         /// </summary>
         public string Password { get; set; }
 
         /// <summary>
-        /// Use ssl of authentication
+        /// Use ssl of authentication (optional).
         /// </summary>
         public bool UseSsl { get; set; }
 
         /// <summary>
-        /// Use this property to send mail with a delay.
+        /// Use this property to send mail with a delay (optional).
         /// Value in seconds.
         /// </summary>
         public int SendDelay { get; set; } = 0;

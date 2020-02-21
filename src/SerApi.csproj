@@ -2,97 +2,28 @@
 
   <PropertyGroup>
     <RootNamespace>Ser.Api</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>akquinet finance &amp; controlling GmbH</Authors>
-    <Copyright>Copyright (c) 2019</Copyright>
+    <Copyright>Copyright (c) $([System.DateTime]::Today.ToString('yyyy'))</Copyright>
     <Company>akquinet finance &amp; controlling GmbH</Company>
     <PackageId>Ser.Api</PackageId>
     <Product>Ser.Api</Product>
     <Version>$(GitVersion_InformationalVersion)</Version>
-
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <DocumentationFile>C:\Users\MBerthold\Documents\Entwicklung\SenseExcelReporting\ser-api-nuget\src\SerApi.xml</DocumentationFile>
   </PropertyGroup>
-
-  <Choose>
-    <When Condition="'$(MSBuildRuntimeType)' == 'Core'">
-      <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <!--net45 is only for TypeScript Generation-->
-        <TargetFrameworks>netcoreapp3.1;net45;net452;net462</TargetFrameworks>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-
-  <Choose>
-    <When Condition="'$(Configuration)' == 'Release'">
-      <PropertyGroup>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-
-  <Choose>
-    <When Condition="'$(TargetFramework)' == 'net45'">
-      <PropertyGroup>
-        <RtDisable>false</RtDisable>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <RtTargetFile>$(ProjectDir)bin\$(Configuration)\npm\index.ts</RtTargetFile>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <RtDisable>true</RtDisable>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-
-  <Target Name="PublishNPM" AfterTargets="AfterBuild">
-    <CreateProperty Value="@(PackageReference-&gt;Metadata('Version'))">
-      <Output PropertyName="tsc_Version" Condition="'%(PackageReference.Identity)' == 'Microsoft.TypeScript.MSBuild'" TaskParameter="Value" />
-    </CreateProperty>
-
-    <Exec WorkingDirectory="$(SolutionDir)bin\$(Configuration)\npm\" Command="node.exe $(NuGetPackageRoot)Microsoft.TypeScript.MSBuild\$(tsc_Version)\tools\tsc\tsc.js index.ts -d" />
-    <Delete Files="$(SolutionDir)bin\$(Configuration)\npm\index.ts" />
-
-    <ReadLinesFromFile File="$(SolutionDir)\Helper\package.json">
-      <Output TaskParameter="Lines" PropertyName="PackageJSON" />
-    </ReadLinesFromFile>
-
-    <ItemGroup>
-      <PackageJSONGroup Include="$(PackageJSON)" />
-    </ItemGroup>
-
-    <WriteLinesToFile File="$(PackageOutputAbsolutePath)npm\package.json" Lines="@(PackageJSONGroup-&gt;Replace('0.0.0', '$(PackageVersion)'))" Overwrite="true" />
-    <Exec WorkingDirectory="$(PackageOutputAbsolutePath)npm\" Command="start $(COMSPEC) /k &quot;npm publish &amp; exit&quot;" />
-  </Target>
 
   <ItemGroup>
     <PackageReference Include="GitVersionTask" Version="5.1.3" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.4" PrivateAssets="all" />
-    <PackageReference Include="Reinforced.Typings" Version="1.5.6" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NLog" Version="4.6.8" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Helper\package.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <Target Name="GitVersion" BeforeTargets="AfterBuild">
-    <Message Importance="High" Text="++++++ GitVersion: $(GitVersion_InformationalVersion) ++++++" />
+  <Target Name="GitVersion" AfterTargets="AfterBuild" Condition="Exists('C:\Users\MBerthold\Documents\DevTools\dotent2typescript')">
+    <Message Importance="High" Text="++++++ GitVersion: $(GitVersion_InformationalVersion) $(ProjectDir) ++++++" />
+    <Exec WorkingDirectory="C:\Users\MBerthold\Documents\DevTools\dotent2typescript" Command="%HOMEPATH%\Documents\DevTools\dotent2typescript\dotnet2typescript.exe config.json" />
   </Target>
 </Project>

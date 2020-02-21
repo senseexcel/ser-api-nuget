@@ -1,13 +1,4 @@
-﻿#region License
-/*
-Copyright (c) 2018 Konrad Mattheis und Martin Berthold
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-#endregion;
-
-namespace Ser.Api
+﻿namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
@@ -23,9 +14,6 @@ namespace Ser.Api
     /// <summary>
     /// The status of a finished script
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum]
-#endif
     public enum ScriptResult
     {
         /// <summary>
@@ -62,9 +50,6 @@ namespace Ser.Api
     /// <summary>
     /// The stauts of a finished task
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum]
-#endif
     public enum TaskStatusInfo
     {
         /// <summary>
@@ -99,9 +84,6 @@ namespace Ser.Api
     /// This information is needed for the result file.
     /// </summary>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class JobResult
     {
         #region Variables & Properties
@@ -167,9 +149,6 @@ namespace Ser.Api
     /// </summary>
     /// <seealso cref="JobResult"/>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class Report
     {
         #region Properties and Variables
@@ -210,9 +189,6 @@ namespace Ser.Api
         /// It is a json structure.
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public JObject Distribute { get; set; }
 
         /// <summary>

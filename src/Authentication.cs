@@ -1,13 +1,4 @@
-﻿#region License
-/*
-Copyright (c) 2019 Konrad Mattheis und Martin Berthold
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-#endregion
-
-namespace Ser.Api
+﻿namespace Ser.Api
 {
     #region Usings
     using Newtonsoft.Json;
@@ -19,9 +10,6 @@ namespace Ser.Api
     /// Authentication type to connect to Qlik
     /// </summary>
     #region Enumerations
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum]
-#endif
     public enum QlikCredentialType
     {
         /// <summary>
@@ -60,9 +48,6 @@ namespace Ser.Api
     /// <summary>
     /// Qlik authentication type
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public interface IQlikCredentials
     {
         /// <summary>
@@ -75,9 +60,6 @@ namespace Ser.Api
     /// <summary>
     /// Logic for certificate authentication
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class CertificateAuth : IQlikCredentials
     {
         #region Properties & Variables
@@ -85,9 +67,6 @@ namespace Ser.Api
         /// Qlik authentication type
         /// </summary>
         [JsonIgnore]
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public QlikCredentialType Type { get; } = QlikCredentialType.CERTIFICATE;
 
         /// <summary>
@@ -126,9 +105,6 @@ namespace Ser.Api
         /// Qlik authentication type
         /// </summary>
         [JsonIgnore]
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public QlikCredentialType Type { get; } = QlikCredentialType.WINDOWSAUTH;
 
         /// <summary>
@@ -149,9 +125,6 @@ namespace Ser.Api
     /// <summary>
     /// The Session authentication class
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SessionAuth : IQlikCredentials
     {
         #region Properties & Variables
@@ -159,9 +132,6 @@ namespace Ser.Api
         /// Qlik authentication type
         /// </summary>
         [JsonIgnore]
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public QlikCredentialType Type { get; } = QlikCredentialType.SESSION;
 
         /// <summary>

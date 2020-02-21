@@ -20,9 +20,6 @@
     /// <summary>
     /// The type of the selection
     /// </summary>
-#if NET45
-    [Reinforced.Typings.Attributes.TsEnum()]
-#endif
     public enum SelectionType
     {
         /// <summary>
@@ -41,9 +38,6 @@
     /// The full task object and configuration.
     /// </summary>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerTask
     {
         #region Properties
@@ -60,9 +54,6 @@
     /// </summary>
     /// <seealso cref="SerTask"/>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerReport
     {
         #region Properties
@@ -81,9 +72,6 @@
         /// It is a json structure.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public JObject Distribute { get; set; }
 
         /// <summary>
@@ -99,80 +87,56 @@
     /// The general settings for the report.
     /// </summary>
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerGeneral
     {
         #region Properties
         /// <summary>
-        /// The time after clean up the temp folder.
+        /// The time after clean up the temp folder (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(10)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public int CleanupTimeOut { get; set; } = 10;
 
         /// <summary>
-        /// Auto fit the colunms and rows from tables and pivottables.
+        /// Auto fit the colunms and rows from tables and pivottables (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public bool AutoFitTables { get; set; }
 
         /// <summary>
-        /// Disable dataSource linking by pivot tables.
+        /// Disable dataSource linking by pivot tables (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public bool DisableAutoLink { get; set; }
 
         /// <summary>
-        /// The time until the report is aborted.
+        /// The time until the report is aborted (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(900)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public int Timeout { get; set; } = 900;
 
         /// <summary>
-        /// The repeat until the report is canceled as error.
+        /// The repeat until the report is canceled as error (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(2)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public int ErrorRepeatCount { get; set; } = 2;
 
         /// <summary>
-        /// The count of cpus or cpu cores for the ser engine.
+        /// The count of cpus or cpu cores for the ser engine (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(-1)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public int CPULimitInCore { get; set; } = -1;
 
         /// <summary>
-        /// The soft memory limit for the ser engine.
+        /// The soft memory limit for the ser engine (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(-1.0)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public double MemoryLimitInGB { get; set; } = -1.0;
         #endregion
     }
@@ -182,14 +146,11 @@
     /// </summary>
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerTemplate
     {
         #region Properties
         /// <summary>
-        /// The Input path of the template.
+        /// The Input path of the template (optional).
         /// You can use the protokoll 'content' or 'lib'
         /// Samples:
         /// Use 'content:///[TEMPLATE]' for InApp template
@@ -199,7 +160,7 @@
         public string Input { get; set; }
 
         /// <summary>
-        /// The output name of the report.
+        /// The output name of the report (optional).
         /// Note:
         /// You can use the output name with or without file extention.
         /// If you use the output name without a file extension, you must also use the property 'Outputformat'.
@@ -208,74 +169,53 @@
         public string Output { get; set; }
 
         /// <summary>
-        /// The file extention for the output name.
+        /// The file extention for the output name (optional).
         /// It is optional.
         /// </summary>
         /// <seealso cref="SerTemplate.Output"/>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string OutputFormat { get; set; }
 
         /// <summary>
-        /// The password what should be set for the reports.
+        /// The password what should be set for the reports (optional).
         /// Note:
         /// It only works for PDF and XLSX files.
         /// If you not want the password remove it in the json.
         /// Please do not leave blank, because the human json convention can not handle it.
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string OutputPassword { get; set; }
 
         /// <summary>
-        /// Flexible output format options.
+        /// Flexible output format options (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public JObject OutputFormatOptions { get; set; }
 
         /// <summary>
-        /// The signature for the script executing.
+        /// The signature for the script executing (optional)..
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<string> ScriptKeys { get; set; }
 
         /// <summary>
-        /// The arguments for the executing .NET scripts
+        /// The arguments for the executing .NET scripts (optional).
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<string> ScriptArgs { get; set; }
 
         /// <summary>
-        /// The qlik filters used for the report.
+        /// The qlik filters used for the report (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<SerSenseSelection> Selections { get; set; }
 
         /// <summary>
-        /// Clear or clear not the Qlik selections in a session.
+        /// Clear or clear not the Qlik selections in a session (optional).
         /// This mode is importent for the OnDemand Extention.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public bool SelectionsClearAll { get; set; } = true;
         #endregion
 
@@ -285,9 +225,6 @@
         /// </summary>
         /// <param name="type">The type of a selection.</param>
         /// <returns>A list of selections</returns>
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public List<SerSenseSelection> GetSelectionObjects(SelectionType type)
         {
             try
@@ -307,9 +244,6 @@
     /// </summary>
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerCredentials
     {
         #region Properties
@@ -335,9 +269,6 @@
         /// The path to the JWT certificate.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string Cert { get; set; }
 
         /// <summary>
@@ -345,9 +276,6 @@
         /// It's generate the JWT token.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string PrivateKey { get; set; }
         #endregion
     }
@@ -357,9 +285,6 @@
     /// </summary>
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerConnection
     {
         #region Logger
@@ -370,15 +295,12 @@
         private Uri privateURI;
 
         /// <summary>
-        /// The Connection uri to Qlik.
+        /// The Connection uri to Qlik for TypeScript (optional).
         /// Note:
         /// Desktop: "Qlik Sense Desktop"
         /// Server: "https://NAME_OF_SERVER/VIRTUALPROXY"
         /// </summary>
         [JsonProperty(Required = Required.Always)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable= true, Type="string")]
-#endif
         public Uri ServerUri
         {
             get
@@ -422,60 +344,42 @@
 
         /// <summary>
         /// The reload timeout for InAppMode.
-        /// Wait for data reload of the app.
+        /// Wait for data reload of the app (optional).
         /// Wait for other apps or processes
         /// </summary>
         [DefaultValue(0)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int RetryTimeout { get; set; } = 0;
 
         /// <summary>
-        /// Use the ssl validation
+        /// Use the ssl validation (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public bool SslVerify { get; set; } = true;
 
         /// <summary>
-        /// The thumb print from qlik client ssl certificate.
+        /// The thumb print from qlik client ssl certificate (optional).
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
         /// <summary>
-        /// Share the qlik session or create a new session with a identity
+        /// Share the qlik session or create a new session with a identity (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<string> Identities { get; set; }
 
         /// <summary>
-        /// The credentials for the qlik communication.
+        /// The credentials for the qlik communication for TypeScript (optional).
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public SerCredentials Credentials { get; set; }
 
         /// <summary>
-        /// The lisence keys
+        /// The lisence keys (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<string> Lefs { get; set; }
         #endregion
 
@@ -484,9 +388,6 @@
         /// Get the server uri.
         /// </summary>
         /// <returns></returns>
-#if NET45
-        [Reinforced.Typings.Attributes.TsIgnore]
-#endif
         public override string ToString()
         {
             return $"{ServerUri}";
@@ -501,9 +402,6 @@
     /// </summary>
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerThumbprint
     {
         #region Properties
@@ -526,19 +424,13 @@
     /// </summary>
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore,
                 NamingStrategyType = typeof(CamelCaseNamingStrategy))]
-#if NET45
-    [Reinforced.Typings.Attributes.TsInterface]
-#endif
     public class SerSenseSelection
     {
         #region Properties
         /// <summary>
-        /// The Name of the filter.
+        /// The Name of the filter (optional).
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -547,56 +439,38 @@
         /// Other Values are 'bookmark' and 'hiddenbookmark'
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string ObjectType { get; set; }
 
         /// <summary>
-        /// The values that should be used.
+        /// The values that should be used (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public List<string> Values { get; set; }
 
         /// <summary>
-        /// Sort dynamic values.
+        /// Sort dynamic values (optional).
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string Sorted { get; set; }
 
         /// <summary>
         /// Type of the selection.
         /// </summary>
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public SelectionType Type { get; set; }
 
         /// <summary>
-        /// Export a Root node for the sheet names.
+        /// Export a Root node for the sheet names (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(true)]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public bool ExportRootNode { get; private set; } = true;
 
         /// <summary>
-        /// Give the sheet a seperate sheet name form a formaula
+        /// Give the sheet a seperate sheet name form a formaula (optional).
         /// You can also use @@sheetname@@ as placeholter for the orignal sheet name.
         /// </summary>
         [JsonProperty]
-#if NET45
-        [Reinforced.Typings.Attributes.TsProperty(ForceNullable=true)]
-#endif
         public string SheetName { get; private set; }
         #endregion
     }
