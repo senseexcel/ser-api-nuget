@@ -12,9 +12,6 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>C:\Users\MBerthold\Documents\Entwicklung\SenseExcelReporting\ser-api-nuget\src\SerApi.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -25,7 +22,8 @@
     <PackageReference Include="NLog" Version="4.6.8" />
   </ItemGroup>
 
-  <Target Name="GitVersion" AfterTargets="AfterBuild">
-    <Message Importance="High" Text="++++++ GitVersion: $(GitVersion_InformationalVersion) ++++++" />
+  <Target Name="GitVersion" AfterTargets="AfterBuild" Condition="Exists('C:\Users\MBerthold\Documents\DevTools\dotent2typescript')">
+    <Message Importance="High" Text="++++++ GitVersion: $(GitVersion_InformationalVersion) $(ProjectDir) ++++++" />
+    <Exec WorkingDirectory="C:\Users\MBerthold\Documents\DevTools\dotent2typescript" Command="%HOMEPATH%\Documents\DevTools\dotent2typescript\dotnet2typescript.exe config.json" />
   </Target>
 </Project>
