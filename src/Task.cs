@@ -91,49 +91,49 @@
     {
         #region Properties
         /// <summary>
-        /// The time after clean up the temp folder.
+        /// The time after clean up the temp folder (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(10)]
         public int CleanupTimeOut { get; set; } = 10;
 
         /// <summary>
-        /// Auto fit the colunms and rows from tables and pivottables.
+        /// Auto fit the colunms and rows from tables and pivottables (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
         public bool AutoFitTables { get; set; }
 
         /// <summary>
-        /// Disable dataSource linking by pivot tables.
+        /// Disable dataSource linking by pivot tables (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
         public bool DisableAutoLink { get; set; }
 
         /// <summary>
-        /// The time until the report is aborted.
+        /// The time until the report is aborted (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(900)]
         public int Timeout { get; set; } = 900;
 
         /// <summary>
-        /// The repeat until the report is canceled as error.
+        /// The repeat until the report is canceled as error (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(2)]
         public int ErrorRepeatCount { get; set; } = 2;
 
         /// <summary>
-        /// The count of cpus or cpu cores for the ser engine.
+        /// The count of cpus or cpu cores for the ser engine (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(-1)]
         public int CPULimitInCore { get; set; } = -1;
 
         /// <summary>
-        /// The soft memory limit for the ser engine.
+        /// The soft memory limit for the ser engine (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(-1.0)]
@@ -150,7 +150,7 @@
     {
         #region Properties
         /// <summary>
-        /// The Input path of the template.
+        /// The Input path of the template (optional).
         /// You can use the protokoll 'content' or 'lib'
         /// Samples:
         /// Use 'content:///[TEMPLATE]' for InApp template
@@ -160,7 +160,7 @@
         public string Input { get; set; }
 
         /// <summary>
-        /// The output name of the report.
+        /// The output name of the report (optional).
         /// Note:
         /// You can use the output name with or without file extention.
         /// If you use the output name without a file extension, you must also use the property 'Outputformat'.
@@ -169,7 +169,7 @@
         public string Output { get; set; }
 
         /// <summary>
-        /// The file extention for the output name.
+        /// The file extention for the output name (optional).
         /// It is optional.
         /// </summary>
         /// <seealso cref="SerTemplate.Output"/>
@@ -177,7 +177,7 @@
         public string OutputFormat { get; set; }
 
         /// <summary>
-        /// The password what should be set for the reports.
+        /// The password what should be set for the reports (optional).
         /// Note:
         /// It only works for PDF and XLSX files.
         /// If you not want the password remove it in the json.
@@ -187,31 +187,31 @@
         public string OutputPassword { get; set; }
 
         /// <summary>
-        /// Flexible output format options.
+        /// Flexible output format options (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public JObject OutputFormatOptions { get; set; }
 
         /// <summary>
-        /// The signature for the script executing.
+        /// The signature for the script executing (optional)..
         /// </summary>
         [JsonProperty]
         public List<string> ScriptKeys { get; set; }
 
         /// <summary>
-        /// The arguments for the executing .NET scripts
+        /// The arguments for the executing .NET scripts (optional).
         /// </summary>
         [JsonProperty]
         public List<string> ScriptArgs { get; set; }
 
         /// <summary>
-        /// The qlik filters used for the report.
+        /// The qlik filters used for the report (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerSenseSelection> Selections { get; set; }
 
         /// <summary>
-        /// Clear or clear not the Qlik selections in a session.
+        /// Clear or clear not the Qlik selections in a session (optional).
         /// This mode is importent for the OnDemand Extention.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -295,7 +295,7 @@
         private Uri privateURI;
 
         /// <summary>
-        /// The Connection uri to Qlik.
+        /// The Connection uri to Qlik for TypeScript (optional).
         /// Note:
         /// Desktop: "Qlik Sense Desktop"
         /// Server: "https://NAME_OF_SERVER/VIRTUALPROXY"
@@ -344,7 +344,7 @@
 
         /// <summary>
         /// The reload timeout for InAppMode.
-        /// Wait for data reload of the app.
+        /// Wait for data reload of the app (optional).
         /// Wait for other apps or processes
         /// </summary>
         [DefaultValue(0)]
@@ -352,32 +352,32 @@
         public int RetryTimeout { get; set; } = 0;
 
         /// <summary>
-        /// Use the ssl validation
+        /// Use the ssl validation (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(true)]
         public bool SslVerify { get; set; } = true;
 
         /// <summary>
-        /// The thumb print from qlik client ssl certificate.
+        /// The thumb print from qlik client ssl certificate (optional).
         /// </summary>
         [JsonProperty]
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
         /// <summary>
-        /// Share the qlik session or create a new session with a identity
+        /// Share the qlik session or create a new session with a identity (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<string> Identities { get; set; }
 
         /// <summary>
-        /// The credentials for the qlik communication.
+        /// The credentials for the qlik communication for TypeScript (optional).
         /// </summary>
         [JsonProperty]
         public SerCredentials Credentials { get; set; }
 
         /// <summary>
-        /// The lisence keys
+        /// The lisence keys (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<string> Lefs { get; set; }
@@ -428,7 +428,7 @@
     {
         #region Properties
         /// <summary>
-        /// The Name of the filter.
+        /// The Name of the filter (optional).
         /// </summary>
         [JsonProperty]
         public string Name { get; set; }
@@ -442,13 +442,13 @@
         public string ObjectType { get; set; }
 
         /// <summary>
-        /// The values that should be used.
+        /// The values that should be used (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<string> Values { get; set; }
 
         /// <summary>
-        /// Sort dynamic values.
+        /// Sort dynamic values (optional).
         /// </summary>
         [JsonProperty]
         public string Sorted { get; set; }
@@ -460,14 +460,14 @@
         public SelectionType Type { get; set; }
 
         /// <summary>
-        /// Export a Root node for the sheet names.
+        /// Export a Root node for the sheet names (optional).
         /// </summary>
         [JsonProperty]
         [DefaultValue(true)]
         public bool ExportRootNode { get; private set; } = true;
 
         /// <summary>
-        /// Give the sheet a seperate sheet name form a formaula
+        /// Give the sheet a seperate sheet name form a formaula (optional).
         /// You can also use @@sheetname@@ as placeholter for the orignal sheet name.
         /// </summary>
         [JsonProperty]

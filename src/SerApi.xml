@@ -347,22 +347,22 @@
         </member>
         <member name="P:Ser.Api.MailServerSettings.Username">
             <summary>
-            The username of the mail account
+            The username of the mail account (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.MailServerSettings.Password">
             <summary>
-            The password of the mail account
+            The password of the mail account (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.MailServerSettings.UseSsl">
             <summary>
-            Use ssl of authentication
+            Use ssl of authentication (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.MailServerSettings.SendDelay">
             <summary>
-            Use this property to send mail with a delay.
+            Use this property to send mail with a delay (optional).
             Value in seconds.
             </summary>
         </member>
@@ -700,37 +700,37 @@
         </member>
         <member name="P:Ser.Api.SerGeneral.CleanupTimeOut">
             <summary>
-            The time after clean up the temp folder.
+            The time after clean up the temp folder (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerGeneral.AutoFitTables">
             <summary>
-            Auto fit the colunms and rows from tables and pivottables.
+            Auto fit the colunms and rows from tables and pivottables (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerGeneral.DisableAutoLink">
             <summary>
-            Disable dataSource linking by pivot tables.
+            Disable dataSource linking by pivot tables (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerGeneral.Timeout">
             <summary>
-            The time until the report is aborted.
+            The time until the report is aborted (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerGeneral.ErrorRepeatCount">
             <summary>
-            The repeat until the report is canceled as error.
+            The repeat until the report is canceled as error (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerGeneral.CPULimitInCore">
             <summary>
-            The count of cpus or cpu cores for the ser engine.
+            The count of cpus or cpu cores for the ser engine (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerGeneral.MemoryLimitInGB">
             <summary>
-            The soft memory limit for the ser engine.
+            The soft memory limit for the ser engine (optional).
             </summary>
         </member>
         <member name="T:Ser.Api.SerTemplate">
@@ -740,7 +740,7 @@
         </member>
         <member name="P:Ser.Api.SerTemplate.Input">
             <summary>
-            The Input path of the template.
+            The Input path of the template (optional).
             You can use the protokoll 'content' or 'lib'
             Samples:
             Use 'content:///[TEMPLATE]' for InApp template
@@ -750,7 +750,7 @@
         </member>
         <member name="P:Ser.Api.SerTemplate.Output">
             <summary>
-            The output name of the report.
+            The output name of the report (optional).
             Note:
             You can use the output name with or without file extention.
             If you use the output name without a file extension, you must also use the property 'Outputformat'.
@@ -759,14 +759,14 @@
         </member>
         <member name="P:Ser.Api.SerTemplate.OutputFormat">
             <summary>
-            The file extention for the output name.
+            The file extention for the output name (optional).
             It is optional.
             </summary>
             <seealso cref="P:Ser.Api.SerTemplate.Output"/>
         </member>
         <member name="P:Ser.Api.SerTemplate.OutputPassword">
             <summary>
-            The password what should be set for the reports.
+            The password what should be set for the reports (optional).
             Note:
             It only works for PDF and XLSX files.
             If you not want the password remove it in the json.
@@ -775,27 +775,27 @@
         </member>
         <member name="P:Ser.Api.SerTemplate.OutputFormatOptions">
             <summary>
-            Flexible output format options.
+            Flexible output format options (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerTemplate.ScriptKeys">
             <summary>
-            The signature for the script executing.
+            The signature for the script executing (optional)..
             </summary>
         </member>
         <member name="P:Ser.Api.SerTemplate.ScriptArgs">
             <summary>
-            The arguments for the executing .NET scripts
+            The arguments for the executing .NET scripts (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerTemplate.Selections">
             <summary>
-            The qlik filters used for the report.
+            The qlik filters used for the report (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerTemplate.SelectionsClearAll">
             <summary>
-            Clear or clear not the Qlik selections in a session.
+            Clear or clear not the Qlik selections in a session (optional).
             This mode is importent for the OnDemand Extention.
             </summary>
         </member>
@@ -844,7 +844,7 @@
         </member>
         <member name="P:Ser.Api.SerConnection.ServerUri">
             <summary>
-            The Connection uri to Qlik.
+            The Connection uri to Qlik for TypeScript (optional).
             Note:
             Desktop: "Qlik Sense Desktop"
             Server: "https://NAME_OF_SERVER/VIRTUALPROXY"
@@ -858,33 +858,33 @@
         <member name="P:Ser.Api.SerConnection.RetryTimeout">
             <summary>
             The reload timeout for InAppMode.
-            Wait for data reload of the app.
+            Wait for data reload of the app (optional).
             Wait for other apps or processes
             </summary>
         </member>
         <member name="P:Ser.Api.SerConnection.SslVerify">
             <summary>
-            Use the ssl validation
+            Use the ssl validation (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerConnection.SslValidThumbprints">
             <summary>
-            The thumb print from qlik client ssl certificate.
+            The thumb print from qlik client ssl certificate (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerConnection.Identities">
             <summary>
-            Share the qlik session or create a new session with a identity
+            Share the qlik session or create a new session with a identity (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerConnection.Credentials">
             <summary>
-            The credentials for the qlik communication.
+            The credentials for the qlik communication for TypeScript (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerConnection.Lefs">
             <summary>
-            The lisence keys
+            The lisence keys (optional).
             </summary>
         </member>
         <member name="M:Ser.Api.SerConnection.ToString">
@@ -917,7 +917,7 @@
         </member>
         <member name="P:Ser.Api.SerSenseSelection.Name">
             <summary>
-            The Name of the filter.
+            The Name of the filter (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.ObjectType">
@@ -929,12 +929,12 @@
         </member>
         <member name="P:Ser.Api.SerSenseSelection.Values">
             <summary>
-            The values that should be used.
+            The values that should be used (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.Sorted">
             <summary>
-            Sort dynamic values.
+            Sort dynamic values (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.Type">
@@ -944,12 +944,12 @@
         </member>
         <member name="P:Ser.Api.SerSenseSelection.ExportRootNode">
             <summary>
-            Export a Root node for the sheet names.
+            Export a Root node for the sheet names (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.SheetName">
             <summary>
-            Give the sheet a seperate sheet name form a formaula
+            Give the sheet a seperate sheet name form a formaula (optional).
             You can also use @@sheetname@@ as placeholter for the orignal sheet name.
             </summary>
         </member>

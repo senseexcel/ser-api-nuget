@@ -255,22 +255,22 @@
         public int Port { get; set; }
 
         /// <summary>
-        /// The username of the mail account
+        /// The username of the mail account (optional).
         /// </summary>
         public string Username { get; set; }
 
         /// <summary>
-        /// The password of the mail account
+        /// The password of the mail account (optional).
         /// </summary>
         public string Password { get; set; }
 
         /// <summary>
-        /// Use ssl of authentication
+        /// Use ssl of authentication (optional).
         /// </summary>
         public bool UseSsl { get; set; }
 
         /// <summary>
-        /// Use this property to send mail with a delay.
+        /// Use this property to send mail with a delay (optional).
         /// Value in seconds.
         /// </summary>
         public int SendDelay { get; set; } = 0;
