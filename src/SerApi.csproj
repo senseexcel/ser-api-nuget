@@ -12,7 +12,7 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <DocumentationFile>C:\Users\MBerthold\Documents\Entwicklung\SenseExcelReporting\ser-api-nuget\src\SerApi.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\MBerthold\Documents\Entwicklung\SenseExcelReporting\ser-api\src\SerApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
