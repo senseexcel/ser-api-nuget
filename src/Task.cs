@@ -6,10 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using Hjson;
-    using System.IO;
-    using System.Text.RegularExpressions;
     using Newtonsoft.Json.Converters;
     using System.ComponentModel;
     using NLog;

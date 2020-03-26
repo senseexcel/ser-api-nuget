@@ -629,18 +629,6 @@
             <param name="serializer">The calling serializer.</param>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
         </member>
-        <member name="T:Ser.Api.SerUtilities">
-            <summary>
-            Class with general methods for SER
-            </summary>
-        </member>
-        <member name="M:Ser.Api.SerUtilities.GetFullPathFromApp(System.String)">
-            <summary>
-            Convert a Path to a full path.
-            </summary>
-            <param name="path">path</param>
-            <returns>full path</returns>
-        </member>
         <member name="T:Ser.Api.SelectionType">
             <summary>
             The type of the selection

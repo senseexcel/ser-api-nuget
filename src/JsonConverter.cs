@@ -68,7 +68,7 @@
             {
                 retVal = serializer.Deserialize(reader, objectType);
             }
-            else if(reader.TokenType == JsonToken.Null)
+            else if (reader.TokenType == JsonToken.Null)
             {
                 retVal = null;
             }
@@ -146,7 +146,7 @@
             {
                 object singleItem = null;
                 int itemCount = 0;
-                foreach(var item in enumerable)
+                foreach (var item in enumerable)
                 {
                     itemCount++;
                     if (itemCount > 1)

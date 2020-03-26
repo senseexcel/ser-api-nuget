@@ -1,9 +1,6 @@
 ﻿namespace Ser.Api
 {
     #region Usings
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Linq;
     #endregion
 
