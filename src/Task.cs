@@ -184,6 +184,12 @@
         public string OutputPassword { get; set; }
 
         /// <summary>
+        /// If you wont to use a BASE64 encoded password.
+        /// </summary>
+        [JsonProperty]
+        public bool UseBase64Password { get; set; }
+
+        /// <summary>
         /// Flexible output format options (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
