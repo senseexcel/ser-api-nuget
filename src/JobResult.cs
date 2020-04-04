@@ -126,7 +126,7 @@
         /// Set the first Error
         /// </summary>
         [JsonProperty]
-        public Exception FirstException { get; set; }
+        public ReportException Exception { get; set; }
 
         /// <summary>
         /// The count of the reports.
@@ -218,5 +218,30 @@
         /// Data as byte array
         /// </summary>
         public byte[] DownloadData { get; set; }
+    }
+
+    /// <summary>
+    /// If the engine has an error.
+    /// </summary>
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    public class ReportException
+    {
+        /// <summary>
+        /// First message in excpetion recursion
+        /// </summary>
+        [JsonProperty]
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Full message string
+        /// </summary>
+        [JsonProperty]
+        public string FullMessage { get; set; }
+
+        /// <summary>
+        /// Stacktrace Infos
+        /// </summary>
+        [JsonProperty]
+        public string StackTrace { get; set; }
     }
 }

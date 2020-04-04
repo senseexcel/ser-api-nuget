@@ -496,7 +496,7 @@
             The status information of the finished task
             </summary>
         </member>
-        <member name="P:Ser.Api.JobResult.FirstException">
+        <member name="P:Ser.Api.JobResult.Exception">
             <summary>
             Set the first Error
             </summary>
@@ -574,6 +574,26 @@
         <member name="P:Ser.Api.ReportData.DownloadData">
             <summary>
             Data as byte array
+            </summary>
+        </member>
+        <member name="T:Ser.Api.ReportException">
+            <summary>
+            If the engine has an error.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportException.Message">
+            <summary>
+            First message in excpetion recursion
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportException.FullMessage">
+            <summary>
+            Full message string
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportException.StackTrace">
+            <summary>
+            Stacktrace Infos
             </summary>
         </member>
         <member name="T:Ser.Api.SingleValueArrayConverter">
