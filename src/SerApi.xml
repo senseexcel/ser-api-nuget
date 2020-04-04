@@ -581,14 +581,14 @@
             If the engine has an error.
             </summary>
         </member>
-        <member name="P:Ser.Api.ReportException.FirstMessage">
-            <summary>
-            First message in excpetion recursion
-            </summary>
-        </member>
         <member name="P:Ser.Api.ReportException.FullMessage">
             <summary>
-            Full message string
+            All messages in excpetion recursion
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportException.StackTrace">
+            <summary>
+            All messages and the stacktrace
             </summary>
         </member>
         <member name="T:Ser.Api.SingleValueArrayConverter">

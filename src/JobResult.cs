@@ -227,15 +227,15 @@
     public class ReportException
     {
         /// <summary>
-        /// First message in excpetion recursion
-        /// </summary>
-        [JsonProperty]
-        public string FirstMessage { get; set; }
-
-        /// <summary>
-        /// Full message string
+        /// All messages in excpetion recursion
         /// </summary>
         [JsonProperty]
         public string FullMessage { get; set; }
+
+        /// <summary>
+        /// All messages and the stacktrace
+        /// </summary>
+        [JsonProperty]
+        public string StackTrace { get; set; }
     }
 }
