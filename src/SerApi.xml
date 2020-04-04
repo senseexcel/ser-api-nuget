@@ -581,7 +581,7 @@
             If the engine has an error.
             </summary>
         </member>
-        <member name="P:Ser.Api.ReportException.Message">
+        <member name="P:Ser.Api.ReportException.FirstMessage">
             <summary>
             First message in excpetion recursion
             </summary>

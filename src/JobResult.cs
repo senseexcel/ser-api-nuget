@@ -230,7 +230,7 @@
         /// First message in excpetion recursion
         /// </summary>
         [JsonProperty]
-        public string Message { get; set; }
+        public string FirstMessage { get; set; }
 
         /// <summary>
         /// Full message string
