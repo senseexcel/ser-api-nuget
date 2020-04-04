@@ -761,6 +761,11 @@
             Please do not leave blank, because the human json convention can not handle it.
             </summary>
         </member>
+        <member name="P:Ser.Api.SerTemplate.UseBase64Password">
+            <summary>
+            If you wont to use a BASE64 encoded password.
+            </summary>
+        </member>
         <member name="P:Ser.Api.SerTemplate.OutputFormatOptions">
             <summary>
             Flexible output format options (optional).
