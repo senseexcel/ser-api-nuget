@@ -237,11 +237,5 @@
         /// </summary>
         [JsonProperty]
         public string FullMessage { get; set; }
-
-        /// <summary>
-        /// Stacktrace Infos
-        /// </summary>
-        [JsonProperty]
-        public string StackTrace { get; set; }
     }
 }

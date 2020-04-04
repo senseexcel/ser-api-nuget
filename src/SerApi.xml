@@ -591,11 +591,6 @@
             Full message string
             </summary>
         </member>
-        <member name="P:Ser.Api.ReportException.StackTrace">
-            <summary>
-            Stacktrace Infos
-            </summary>
-        </member>
         <member name="T:Ser.Api.SingleValueArrayConverter">
             <summary>
             This converter converts a single object into an array item.
