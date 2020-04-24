@@ -2,8 +2,6 @@
 {
     #region Usings
     using Newtonsoft.Json;
-    using System;
-    using System.IO;
     #endregion
 
     /// <summary>
@@ -16,7 +14,7 @@
         /// Connection without Authentication
         /// </summary>
         NONE,
-        
+
         /// <summary>
         /// Authentication over Windows user name and password
         /// </summary>
@@ -74,11 +72,11 @@
         /// </summary>
         [JsonProperty(nameof(CertificatePath))]
         public string CertificatePath { get; private set; }
-        
+
         /// <summary>
         /// Qlik UserId
         /// </summary>
-        [JsonProperty(nameof(UserId))]        
+        [JsonProperty(nameof(UserId))]
         public string UserId { get; private set; }
 
         /// <summary>
@@ -92,7 +90,7 @@
         /// </summary>
         [JsonProperty(nameof(CertPassword))]
         public string CertPassword { get; private set; }
-#endregion
+        #endregion
     }
 
     /// <summary>

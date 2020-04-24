@@ -496,7 +496,7 @@
             The status information of the finished task
             </summary>
         </member>
-        <member name="P:Ser.Api.JobResult.FirstException">
+        <member name="P:Ser.Api.JobResult.Exception">
             <summary>
             Set the first Error
             </summary>
@@ -576,6 +576,21 @@
             Data as byte array
             </summary>
         </member>
+        <member name="T:Ser.Api.ReportException">
+            <summary>
+            If the engine has an error.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportException.FullMessage">
+            <summary>
+            All messages in excpetion recursion
+            </summary>
+        </member>
+        <member name="P:Ser.Api.ReportException.StackTrace">
+            <summary>
+            All messages and the stacktrace
+            </summary>
+        </member>
         <member name="T:Ser.Api.SingleValueArrayConverter">
             <summary>
             This converter converts a single object into an array item.
@@ -628,18 +643,6 @@
             <param name="value">The value.</param>
             <param name="serializer">The calling serializer.</param>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
-        </member>
-        <member name="T:Ser.Api.SerUtilities">
-            <summary>
-            Class with general methods for SER
-            </summary>
-        </member>
-        <member name="M:Ser.Api.SerUtilities.GetFullPathFromApp(System.String)">
-            <summary>
-            Convert a Path to a full path.
-            </summary>
-            <param name="path">path</param>
-            <returns>full path</returns>
         </member>
         <member name="T:Ser.Api.SelectionType">
             <summary>
@@ -771,6 +774,11 @@
             It only works for PDF and XLSX files.
             If you not want the password remove it in the json.
             Please do not leave blank, because the human json convention can not handle it.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTemplate.UseBase64Password">
+            <summary>
+            If you wont to use a BASE64 encoded password.
             </summary>
         </member>
         <member name="P:Ser.Api.SerTemplate.OutputFormatOptions">

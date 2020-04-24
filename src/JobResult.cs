@@ -7,7 +7,6 @@
     using Newtonsoft.Json.Serialization;
     using System;
     using System.Collections.Generic;
-    using System.Text;
     #endregion
 
     #region Enumerations
@@ -127,7 +126,7 @@
         /// Set the first Error
         /// </summary>
         [JsonProperty]
-        public Exception FirstException { get; set; }
+        public ReportException Exception { get; set; }
 
         /// <summary>
         /// The count of the reports.
@@ -219,5 +218,24 @@
         /// Data as byte array
         /// </summary>
         public byte[] DownloadData { get; set; }
+    }
+
+    /// <summary>
+    /// If the engine has an error.
+    /// </summary>
+    [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
+    public class ReportException
+    {
+        /// <summary>
+        /// All messages in excpetion recursion
+        /// </summary>
+        [JsonProperty]
+        public string FullMessage { get; set; }
+
+        /// <summary>
+        /// All messages and the stacktrace
+        /// </summary>
+        [JsonProperty]
+        public string StackTrace { get; set; }
     }
 }

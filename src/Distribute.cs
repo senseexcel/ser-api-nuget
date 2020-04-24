@@ -1,9 +1,7 @@
 ﻿namespace Ser.Api
 {
     #region Usings
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using Newtonsoft.Json.Serialization;
     using Newtonsoft.Json;
     #endregion

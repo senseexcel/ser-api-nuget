@@ -6,10 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using Hjson;
-    using System.IO;
-    using System.Text.RegularExpressions;
     using Newtonsoft.Json.Converters;
     using System.ComponentModel;
     using NLog;
@@ -185,6 +182,12 @@
         /// </summary>
         [JsonProperty]
         public string OutputPassword { get; set; }
+
+        /// <summary>
+        /// If you wont to use a BASE64 encoded password.
+        /// </summary>
+        [JsonProperty]
+        public bool UseBase64Password { get; set; }
 
         /// <summary>
         /// Flexible output format options (optional).
