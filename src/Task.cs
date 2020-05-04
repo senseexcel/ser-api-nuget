@@ -109,6 +109,13 @@
         public bool DisableAutoLink { get; set; }
 
         /// <summary>
+        /// Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool DisableAdvancedTableMode { get; set; }
+
+        /// <summary>
         /// The time until the report is aborted (optional).
         /// </summary>
         [JsonProperty]
