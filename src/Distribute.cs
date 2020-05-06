@@ -55,6 +55,11 @@
     public enum DistributeMode
     {
         /// <summary>
+        /// Create only new content or trigger an exception.
+        /// </summary>
+        CREATEONLY,
+
+        /// <summary>
         /// Override the content or file on distribute.
         /// </summary>
         OVERRIDE,
@@ -62,12 +67,7 @@
         /// <summary>
         /// Delete all content before distribute
         /// </summary>
-        DELETEALLFIRST,
-
-        /// <summary>
-        /// Create only new content or trigger an exception.
-        /// </summary>
-        CREATEONLY
+        DELETEALLFIRST
     }
     #endregion
 
