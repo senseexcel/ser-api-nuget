@@ -116,6 +116,13 @@
         public bool DisableAdvancedTableMode { get; set; }
 
         /// <summary>
+        /// Use the internal perfomance analyzer (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool UsePerfomanceAnalyzer { get; set; }
+
+        /// <summary>
         /// The time until the report is aborted (optional).
         /// </summary>
         [JsonProperty]

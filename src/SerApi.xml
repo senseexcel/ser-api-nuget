@@ -721,6 +721,11 @@
             Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
             </summary>
         </member>
+        <member name="P:Ser.Api.SerGeneral.UsePerfomanceAnalyzer">
+            <summary>
+            Use the internal perfomance analyzer (optional).
+            </summary>
+        </member>
         <member name="P:Ser.Api.SerGeneral.Timeout">
             <summary>
             The time until the report is aborted (optional).
