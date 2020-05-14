@@ -123,6 +123,13 @@
         public bool UsePerfomanceAnalyzer { get; set; }
 
         /// <summary>
+        /// Writes the resolved SenseEv formulas into the custom xml structure. (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool WriteFormulaInCustomXml { get; set; }
+        
+        /// <summary>
         /// The time until the report is aborted (optional).
         /// </summary>
         [JsonProperty]

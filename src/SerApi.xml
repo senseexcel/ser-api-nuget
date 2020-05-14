@@ -726,6 +726,11 @@
             Use the internal perfomance analyzer (optional).
             </summary>
         </member>
+        <member name="P:Ser.Api.SerGeneral.WriteFormulaInCustomXml">
+            <summary>
+            Writes the resolved SenseEv formulas into the custom xml structure. (optional).
+            </summary>
+        </member>
         <member name="P:Ser.Api.SerGeneral.Timeout">
             <summary>
             The time until the report is aborted (optional).
