@@ -269,6 +269,11 @@
             The content type of the report.
             </summary>
         </member>
+        <member name="P:Ser.Api.HubSettings.SessionUser">
+            <summary>
+            Session user for Hub delivery.
+            </summary>
+        </member>
         <member name="T:Ser.Api.MailSettings">
             <summary>
             The settings for mail distribute
