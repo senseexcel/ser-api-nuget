@@ -166,12 +166,6 @@
         /// The content type of the report.
         /// </summary>
         public string SharedContentType { get; set; } = "Qlik report";
-
-        /// <summary>
-        /// Session user for Hub delivery.
-        /// </summary>
-        [JsonIgnore]
-        public DomainUser SessionUser { get; set; }
     }
 
     /// <summary>
