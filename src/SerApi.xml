@@ -14,363 +14,6 @@
             All tasks to be performed
             </summary>
         </member>
-        <member name="T:Ser.Api.QlikCredentialType">
-            <summary>
-            Authentication type to connect to Qlik
-            </summary>
-        </member>
-        <member name="F:Ser.Api.QlikCredentialType.NONE">
-            <summary>
-            Connection without Authentication
-            </summary>
-        </member>
-        <member name="F:Ser.Api.QlikCredentialType.WINDOWSAUTH">
-            <summary>
-            Authentication over Windows user name and password
-            </summary>
-        </member>
-        <member name="F:Ser.Api.QlikCredentialType.CERTIFICATE">
-            <summary>
-            Authentication over Qlik client certificate
-            </summary>
-        </member>
-        <member name="F:Ser.Api.QlikCredentialType.SESSION">
-            <summary>
-            Authentication over Qlik session cookie
-            </summary>
-        </member>
-        <member name="F:Ser.Api.QlikCredentialType.JWT">
-            <summary>
-            Authentication over Vitrual Proxy with method JWT
-            </summary>
-        </member>
-        <member name="F:Ser.Api.QlikCredentialType.HEADER">
-            <summary>
-            Authentication over Vitrual Proxy with JWT Bearer
-            </summary>
-        </member>
-        <member name="T:Ser.Api.IQlikCredentials">
-            <summary>
-            Qlik authentication type
-            </summary>
-        </member>
-        <member name="P:Ser.Api.IQlikCredentials.Type">
-            <summary>
-            Qlik authentication type
-            </summary>
-        </member>
-        <member name="T:Ser.Api.CertificateAuth">
-            <summary>
-            Logic for certificate authentication
-            </summary>
-        </member>
-        <member name="P:Ser.Api.CertificateAuth.Type">
-            <summary>
-            Qlik authentication type
-            </summary>
-        </member>
-        <member name="P:Ser.Api.CertificateAuth.CertificatePath">
-            <summary>
-            Path to the qlik server certificates
-            </summary>
-        </member>
-        <member name="P:Ser.Api.CertificateAuth.UserId">
-            <summary>
-            Qlik UserId
-            </summary>
-        </member>
-        <member name="P:Ser.Api.CertificateAuth.UserDirectory">
-            <summary>
-            Qlik UserDirectory
-            </summary>
-        </member>
-        <member name="P:Ser.Api.CertificateAuth.CertPassword">
-            <summary>
-            Password of the certificate which can be specified when generating
-            </summary>
-        </member>
-        <member name="T:Ser.Api.WindowsAuth">
-            <summary>
-            Logic for windows authentication
-            </summary>
-        </member>
-        <member name="P:Ser.Api.WindowsAuth.Type">
-            <summary>
-            Qlik authentication type
-            </summary>
-        </member>
-        <member name="P:Ser.Api.WindowsAuth.Login">
-            <summary>
-            windows account name
-            </summary>
-        </member>
-        <member name="P:Ser.Api.WindowsAuth.Password">
-            <summary>
-            windows account password
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SessionAuth">
-            <summary>
-            The Session authentication class
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SessionAuth.Type">
-            <summary>
-            Qlik authentication type
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SessionAuth.CookieName">
-            <summary>
-            The name of the cookie (Default: XQlik-Session)
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SessionAuth.CookieValue">
-            <summary>
-            The value of the cookie
-            </summary>
-        </member>
-        <member name="T:Ser.Api.EMailType">
-            <summary>
-            Type of the email body
-            </summary>
-        </member>
-        <member name="F:Ser.Api.EMailType.TEXT">
-            <summary>
-            Use mail plain text in the mail body
-            </summary>
-        </member>
-        <member name="F:Ser.Api.EMailType.HTML">
-            <summary>
-            Use html code in the mail body
-            </summary>
-        </member>
-        <member name="F:Ser.Api.EMailType.MARKDOWN">
-            <summary>
-            Use markdown syntax in the mail body
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SettingsType">
-            <summary>
-            Distribute type
-            </summary>
-        </member>
-        <member name="F:Ser.Api.SettingsType.MAIL">
-            <summary>
-            Distribute type mail
-            </summary>
-        </member>
-        <member name="F:Ser.Api.SettingsType.FILE">
-            <summary>
-             Distribute type file
-            </summary>
-        </member>
-        <member name="F:Ser.Api.SettingsType.HUB">
-            <summary>
-             Distribute type hub
-            </summary>
-        </member>
-        <member name="T:Ser.Api.DistributeMode">
-            <summary>
-            Mode how the delivery should behave.
-            </summary>
-        </member>
-        <member name="F:Ser.Api.DistributeMode.CREATEONLY">
-            <summary>
-            Create only new content or trigger an exception.
-            </summary>
-        </member>
-        <member name="F:Ser.Api.DistributeMode.OVERRIDE">
-            <summary>
-            Override the content or file on distribute.
-            </summary>
-        </member>
-        <member name="F:Ser.Api.DistributeMode.DELETEALLFIRST">
-            <summary>
-            Delete all content before distribute
-            </summary>
-        </member>
-        <member name="T:Ser.Api.ISettings">
-            <summary>
-            Basic interfaces to identify the delivery type
-            </summary>
-        </member>
-        <member name="P:Ser.Api.ISettings.Type">
-            <summary>
-            The type of the settings
-            </summary>
-        </member>
-        <member name="P:Ser.Api.ISettings.Active">
-            <summary>
-            Activate distribute
-            </summary>
-        </member>
-        <member name="T:Ser.Api.BaseDeliverySettings">
-            <summary>
-            Base settings
-            </summary>
-        </member>
-        <member name="P:Ser.Api.BaseDeliverySettings.Active">
-            <summary>
-            Activate distribute
-            </summary>
-        </member>
-        <member name="P:Ser.Api.BaseDeliverySettings.Type">
-            <summary>
-            Distribute type
-            </summary>
-        </member>
-        <member name="T:Ser.Api.DeliverySettings">
-            <summary>
-            Base setting for distribute
-            </summary>
-        </member>
-        <member name="P:Ser.Api.DeliverySettings.Target">
-            <summary>
-            target location for distribute
-            </summary>
-        </member>
-        <member name="P:Ser.Api.DeliverySettings.Mode">
-            <summary>
-            distribute mode
-            </summary>
-        </member>
-        <member name="P:Ser.Api.DeliverySettings.Owner">
-            <summary>
-            The user to be the owner.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.DeliverySettings.Connections">
-            <summary>
-            All connections that can be used.
-            </summary>
-        </member>
-        <member name="T:Ser.Api.FileSettings">
-            <summary>
-            The settings for file distribute
-            </summary>
-        </member>
-        <member name="F:Ser.Api.FileSettings.Group">
-            <summary>
-            Group rights
-            </summary>
-        </member>
-        <member name="F:Ser.Api.FileSettings.ACL">
-            <summary>
-            Access control list rights
-            </summary>
-        </member>
-        <member name="T:Ser.Api.HubSettings">
-            <summary>
-            The settings for hub distribute
-            </summary>
-        </member>
-        <member name="P:Ser.Api.HubSettings.SharedContentType">
-            <summary>
-            The content type of the report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.HubSettings.SessionUser">
-            <summary>
-            Session user for Hub delivery.
-            </summary>
-        </member>
-        <member name="T:Ser.Api.MailSettings">
-            <summary>
-            The settings for mail distribute
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.Subject">
-            <summary>
-            The subject of the mail
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.Message">
-            <summary>
-            The message of the mail
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.SendAttachment">
-            <summary>
-            Send email with a Attachment or no.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.MailType">
-            <summary>
-            The body type of the mail
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.To">
-            <summary>
-            The recipients of the email
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.Cc">
-            <summary>
-            The copy recipients of the email
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.Bcc">
-            <summary>
-            The blind copy recipients of the email
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.MailServer">
-            <summary>
-            The mail server settings
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailSettings.MailReports">
-            <summary>
-            Cache of mail reports befor make a package
-            </summary>
-        </member>
-        <member name="M:Ser.Api.MailSettings.ToString">
-            <summary>
-            gets the full string of the mail
-            </summary>
-            <returns>Full string of the mail</returns>
-        </member>
-        <member name="T:Ser.Api.MailServerSettings">
-            <summary>
-            The settings of the mail server.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.Host">
-            <summary>
-            The host machine
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.From">
-            <summary>
-            The sender of the mail
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.Port">
-            <summary>
-            The port of the mail server
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.Username">
-            <summary>
-            The username of the mail account (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.Password">
-            <summary>
-            The password of the mail account (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.UseSsl">
-            <summary>
-            Use ssl of authentication (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.MailServerSettings.SendDelay">
-            <summary>
-            Use this property to send mail with a delay (optional).
-            Value in seconds.
-            </summary>
-        </member>
         <member name="T:Ser.Api.DomainUser">
             <summary>
             Class for work with the qlik userid und userdirectory logic.
@@ -648,6 +291,41 @@
             <param name="value">The value.</param>
             <param name="serializer">The calling serializer.</param>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
+        </member>
+        <member name="T:Ser.Api.QlikCredentialType">
+            <summary>
+            Authentication type to connect to Qlik
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.NONE">
+            <summary>
+            Connection without Authentication
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.WINDOWSAUTH">
+            <summary>
+            Authentication over Windows user name and password
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.CERTIFICATE">
+            <summary>
+            Authentication over Qlik client certificate
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.SESSION">
+            <summary>
+            Authentication over Qlik session cookie
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.JWT">
+            <summary>
+            Authentication over Vitrual Proxy with method JWT
+            </summary>
+        </member>
+        <member name="F:Ser.Api.QlikCredentialType.HEADER">
+            <summary>
+            Authentication over Vitrual Proxy with JWT Bearer
+            </summary>
         </member>
         <member name="T:Ser.Api.SelectionType">
             <summary>
