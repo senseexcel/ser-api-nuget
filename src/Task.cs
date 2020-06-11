@@ -116,6 +116,20 @@
         public bool DisableAdvancedTableMode { get; set; }
 
         /// <summary>
+        /// Use the internal perfomance analyzer (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool UsePerfomanceAnalyzer { get; set; }
+
+        /// <summary>
+        /// Writes the resolved SenseEv formulas into the custom xml structure. (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool WriteFormulaInCustomXml { get; set; }
+        
+        /// <summary>
         /// The time until the report is aborted (optional).
         /// </summary>
         [JsonProperty]
@@ -298,7 +312,7 @@
     public class SerConnection
     {
         #region Logger
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private readonly static Logger logger = LogManager.GetCurrentClassLogger();
         #endregion
 
         #region Variables && Properties
