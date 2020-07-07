@@ -38,7 +38,12 @@
         /// <summary>
         /// Authentication over Vitrual Proxy with JWT Bearer
         /// </summary>
-        HEADER
+        HEADER,
+
+        /// <summary>
+        ///  Authentication To Qlik-Entprise-SAAS over API-Key
+        /// </summary>
+        CLOUD
     }
     #endregion
 }
