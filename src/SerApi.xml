@@ -327,6 +327,11 @@
             Authentication over Vitrual Proxy with JWT Bearer
             </summary>
         </member>
+        <member name="F:Ser.Api.QlikCredentialType.CLOUD">
+            <summary>
+             Authentication To Qlik-Entprise-SAAS over API-Key
+            </summary>
+        </member>
         <member name="T:Ser.Api.SelectionType">
             <summary>
             The type of the selection
