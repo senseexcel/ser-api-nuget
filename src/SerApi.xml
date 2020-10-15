@@ -409,6 +409,11 @@
             Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
             </summary>
         </member>
+        <member name="P:Ser.Api.SerGeneral.DisableGenerateImage">
+            <summary>
+            Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+            </summary>
+        </member>
         <member name="P:Ser.Api.SerGeneral.UsePerfomanceAnalyzer">
             <summary>
             Use the internal perfomance analyzer (optional).
@@ -629,6 +634,11 @@
         <member name="P:Ser.Api.SerSenseSelection.Name">
             <summary>
             The Name of the filter (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.StateName">
+            <summary>
+            The Name of the selection state default is $ (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.ObjectType">

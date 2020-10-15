@@ -465,6 +465,12 @@
         public string Name { get; set; }
 
         /// <summary>
+        /// The Name of the selection state default is $ (optional).
+        /// </summary>
+        [JsonProperty]
+        public string StateName { get; set; }
+
+        /// <summary>
         /// Type of the filter type.
         /// By Default it will used 'Field'.
         /// Other Values are 'bookmark' and 'hiddenbookmark'
