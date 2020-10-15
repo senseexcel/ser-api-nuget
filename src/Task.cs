@@ -468,7 +468,7 @@
         /// The Name of the selection state default is $ (optional).
         /// </summary>
         [JsonProperty]
-        public string StateName { get; set; }
+        public string StateName { get; set; } = "$";
 
         /// <summary>
         /// Type of the filter type.
