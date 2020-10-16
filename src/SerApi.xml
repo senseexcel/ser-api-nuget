@@ -317,9 +317,14 @@
             Authentication over Qlik session cookie
             </summary>
         </member>
+        <member name="F:Ser.Api.QlikCredentialType.NEWSESSION">
+            <summary>
+            Creates a new session to Qlik
+            </summary>
+        </member>
         <member name="F:Ser.Api.QlikCredentialType.JWT">
             <summary>
-            Authentication over Vitrual Proxy with method JWT
+            Authentication over Vitrual Proxy with method JWT/Bearer
             </summary>
         </member>
         <member name="F:Ser.Api.QlikCredentialType.HEADER">
