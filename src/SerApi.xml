@@ -394,6 +394,11 @@
             The general settings for the report.
             </summary>
         </member>
+        <member name="P:Ser.Api.SerGeneral.Active">
+            <summary>
+            Task aktivieren oder deaktivierung für Alerting (optional).
+            </summary>
+        </member>
         <member name="P:Ser.Api.SerGeneral.CleanupTimeOut">
             <summary>
             The time after clean up the temp folder (optional).

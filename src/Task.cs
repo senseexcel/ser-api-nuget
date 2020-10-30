@@ -88,6 +88,13 @@
     {
         #region Properties
         /// <summary>
+        /// Task aktivieren oder deaktivierung für Alerting (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(true)]
+        public bool Active { get; set; } = true;
+
+        /// <summary>
         /// The time after clean up the temp folder (optional).
         /// </summary>
         [JsonProperty]
