@@ -74,7 +74,12 @@
         /// <summary>
         /// The Task was finished with an error, but is repeated at the next call
         /// </summary>
-        RETRYERROR
+        RETRYERROR,
+
+        /// <summary>
+        /// The Task was tagged as inactive
+        /// </summary>
+        INACTIVE
     }
     #endregion
 
