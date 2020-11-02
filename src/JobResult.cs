@@ -168,7 +168,7 @@
         /// The CSV save multiple files, in this case is it many paths.
         /// </summary>
         [JsonProperty]
-        public List<string> Paths { get; set; }
+        public List<string> Paths { get; set; } = new List<string>();
 
         /// <summary>
         /// The value of the current dynamic filter.
