@@ -90,9 +90,8 @@
         /// <summary>
         /// Task aktivieren oder deaktivierung für Alerting (optional).
         /// </summary>
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(true)]
-        public bool Active { get; set; } = true;
+        [JsonProperty]
+        public string Active { get; set; }
 
         /// <summary>
         /// The time after clean up the temp folder (optional).
@@ -189,6 +188,7 @@
         /// Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
         /// Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
         /// </summary>
+        [JsonProperty]
         public string Input { get; set; }
 
         /// <summary>
@@ -198,6 +198,7 @@
         /// If you use the output name without a file extension, you must also use the property 'Outputformat'.
         /// If you do not specify a file extension, PDF will be used automatically.
         /// </summary>
+        [JsonProperty]
         public string Output { get; set; }
 
         /// <summary>

@@ -108,6 +108,11 @@
             The Task was finished with an error, but is repeated at the next call
             </summary>
         </member>
+        <member name="F:Ser.Api.TaskStatusInfo.INACTIVE">
+            <summary>
+            The Task was tagged as inactive
+            </summary>
+        </member>
         <member name="T:Ser.Api.JobResult">
             <summary>
             The result of a finished job.
