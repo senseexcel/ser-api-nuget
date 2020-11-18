@@ -31,7 +31,12 @@
         SESSION,
 
         /// <summary>
-        /// Authentication over Vitrual Proxy with method JWT
+        /// Creates a new session to Qlik
+        /// </summary>
+        NEWSESSION,
+
+        /// <summary>
+        /// Authentication over Vitrual Proxy with method JWT/Bearer
         /// </summary>
         JWT,
 

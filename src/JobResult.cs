@@ -74,7 +74,12 @@
         /// <summary>
         /// The Task was finished with an error, but is repeated at the next call
         /// </summary>
-        RETRYERROR
+        RETRYERROR,
+
+        /// <summary>
+        /// The Task was tagged as inactive
+        /// </summary>
+        INACTIVE
     }
     #endregion
 
@@ -163,7 +168,7 @@
         /// The CSV save multiple files, in this case is it many paths.
         /// </summary>
         [JsonProperty]
-        public List<string> Paths { get; set; }
+        public List<string> Paths { get; set; } = new List<string>();
 
         /// <summary>
         /// The value of the current dynamic filter.

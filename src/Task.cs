@@ -88,6 +88,12 @@
     {
         #region Properties
         /// <summary>
+        /// Task aktivieren oder deaktivierung für Alerting (optional).
+        /// </summary>
+        [JsonProperty]
+        public string Active { get; set; }
+
+        /// <summary>
         /// The time after clean up the temp folder (optional).
         /// </summary>
         [JsonProperty]
@@ -114,6 +120,13 @@
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
         public bool DisableAdvancedTableMode { get; set; }
+
+        /// <summary>
+        /// Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool DisableGenerateImage { get; set; }
 
         /// <summary>
         /// Use the internal perfomance analyzer (optional).
@@ -175,6 +188,7 @@
         /// Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
         /// Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
         /// </summary>
+        [JsonProperty]
         public string Input { get; set; }
 
         /// <summary>
@@ -184,6 +198,7 @@
         /// If you use the output name without a file extension, you must also use the property 'Outputformat'.
         /// If you do not specify a file extension, PDF will be used automatically.
         /// </summary>
+        [JsonProperty]
         public string Output { get; set; }
 
         /// <summary>
@@ -456,6 +471,12 @@
         /// </summary>
         [JsonProperty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The Name of the selection state default is $ (optional).
+        /// </summary>
+        [JsonProperty]
+        public string StateName { get; set; } = "$";
 
         /// <summary>
         /// Type of the filter type.
