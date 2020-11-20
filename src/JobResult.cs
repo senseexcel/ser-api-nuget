@@ -54,32 +54,32 @@
         /// <summary>
         /// The Task was abort
         /// </summary>
-        ABORT,
+        ABORT = 0,
 
         /// <summary>
         /// The Task was finished successfull
         /// </summary>
-        SUCCESS,
+        SUCCESS = 1,
 
         /// <summary>
         /// The Task was finished with warnings
         /// </summary>
-        WARNING,
+        WARNING = 2,
 
         /// <summary>
         /// The Task was finished with an error
         /// </summary>
-        ERROR,
+        ERROR = 4,
 
         /// <summary>
         /// The Task was finished with an error, but is repeated at the next call
         /// </summary>
-        RETRYERROR,
+        RETRYERROR = 8,
 
         /// <summary>
         /// The Task was tagged as inactive
         /// </summary>
-        INACTIVE
+        INACTIVE = 16
     }
     #endregion
 
