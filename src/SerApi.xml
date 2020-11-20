@@ -362,6 +362,11 @@
             The full task object and configuration.
             </summary>
         </member>
+        <member name="P:Ser.Api.SerTask.Id">
+            <summary>
+            The GUID of the Task
+            </summary>
+        </member>
         <member name="P:Ser.Api.SerTask.Reports">
             <summary>
             The reports to be generating.

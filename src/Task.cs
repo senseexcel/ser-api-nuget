@@ -39,6 +39,12 @@
     {
         #region Properties
         /// <summary>
+        /// The GUID of the Task
+        /// </summary>
+        [JsonProperty]
+        public Guid Id { get; set; }
+
+        /// <summary>
         /// The reports to be generating.
         /// </summary>
         [JsonProperty]
