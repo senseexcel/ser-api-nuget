@@ -260,7 +260,7 @@
         /// Convert a full exception to serialize exception.
         /// </summary>
         /// <param name="exception">full exception</param>
-        /// <returns></returns>
+        /// <returns>serialize exception</returns>
         public static ReportException GetException(Exception exception)
         {
             if (exception == null)
@@ -270,6 +270,19 @@
             {
                 FullMessage = GetCompleteMessage(exception),
                 StackTrace = exception.ToString()
+            };
+        }
+
+        /// <summary>
+        /// Create a serialize exception form message text.
+        /// </summary>
+        /// <param name="message">message text</param>
+        /// <returns>serialize exception</returns>
+        public static ReportException GetException(string message)
+        {
+            return new ReportException()
+            {
+                FullMessage = message
             };
         }
     }
