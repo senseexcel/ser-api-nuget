@@ -7,6 +7,7 @@
     using Newtonsoft.Json.Serialization;
     using System;
     using System.Collections.Generic;
+    using System.Text;
     #endregion
 
     #region Enumerations
@@ -242,5 +243,34 @@
         /// </summary>
         [JsonProperty]
         public string StackTrace { get; set; }
+
+        private static string GetCompleteMessage(Exception exception)
+        {
+            var x = exception?.InnerException ?? null;
+            var msg = new StringBuilder(exception?.Message);
+            while (x != null)
+            {
+                msg.Append($"{Environment.NewLine}{x.Message}");
+                x = x.InnerException;
+            }
+            return msg.ToString();
+        }
+
+        /// <summary>
+        /// Convert a full exception to serialize exception.
+        /// </summary>
+        /// <param name="exception">full exception</param>
+        /// <returns></returns>
+        public static ReportException GetException(Exception exception)
+        {
+            if (exception == null)
+                return null;
+
+            return new ReportException()
+            {
+                FullMessage = GetCompleteMessage(exception),
+                StackTrace = exception.ToString()
+            };
+        }
     }
 }

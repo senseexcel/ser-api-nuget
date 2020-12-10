@@ -244,6 +244,13 @@
             All messages and the stacktrace
             </summary>
         </member>
+        <member name="M:Ser.Api.ReportException.GetException(System.Exception)">
+            <summary>
+            Convert a full exception to serialize exception.
+            </summary>
+            <param name="exception">full exception</param>
+            <returns></returns>
+        </member>
         <member name="T:Ser.Api.SingleValueArrayConverter">
             <summary>
             This converter converts a single object into an array item.
@@ -676,6 +683,11 @@
         <member name="P:Ser.Api.SerSenseSelection.Sorted">
             <summary>
             Sort dynamic values (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.DisableFilterValidation">
+            <summary>
+            Disable the static filter validation (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.Type">
