@@ -99,6 +99,12 @@
         public Guid TaskId { get; set; }
 
         /// <summary>
+        /// A optional Name of the task.
+        /// </summary>
+        [JsonProperty]
+        public string TaskName { get; set; }
+
+        /// <summary>
         /// The start time of the task.
         /// </summary>
         [JsonProperty]
