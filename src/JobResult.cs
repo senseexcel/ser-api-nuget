@@ -108,13 +108,13 @@
         /// The start date and time of the task.
         /// </summary>
         [JsonProperty]
-        public DateTime TaskStart { get; set; }
+        public DateTime StartTask { get; set; }
 
         /// <summary>
         /// The end date and time of the task.
         /// </summary>
         [JsonProperty]
-        public DateTime TaskEnd { get; set; }
+        public DateTime EndTask { get; set; }
 
         /// <summary>
         /// The current version of aspose cells.
