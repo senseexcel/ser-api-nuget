@@ -105,16 +105,16 @@
         public string TaskName { get; set; }
 
         /// <summary>
-        /// The start time of the task.
+        /// The start date and time of the task.
         /// </summary>
         [JsonProperty]
-        public DateTime StartTime { get; set; }
+        public DateTime TaskStart { get; set; }
 
         /// <summary>
-        /// The runtime of the task.
+        /// The end date and time of the task.
         /// </summary>
         [JsonProperty]
-        public TimeSpan RunTime { get; set; }
+        public DateTime TaskEnd { get; set; }
 
         /// <summary>
         /// The current version of aspose cells.
