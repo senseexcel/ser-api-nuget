@@ -129,12 +129,12 @@
             A optional Name of the task.
             </summary>
         </member>
-        <member name="P:Ser.Api.JobResult.TaskStart">
+        <member name="P:Ser.Api.JobResult.StartTask">
             <summary>
             The start date and time of the task.
             </summary>
         </member>
-        <member name="P:Ser.Api.JobResult.TaskEnd">
+        <member name="P:Ser.Api.JobResult.EndTask">
             <summary>
             The end date and time of the task.
             </summary>
