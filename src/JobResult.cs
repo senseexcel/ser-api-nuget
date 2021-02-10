@@ -7,6 +7,7 @@
     using Newtonsoft.Json.Serialization;
     using System;
     using System.Collections.Generic;
+    using System.Text;
     #endregion
 
     #region Enumerations
@@ -54,32 +55,32 @@
         /// <summary>
         /// The Task was abort
         /// </summary>
-        ABORT,
+        ABORT = 0,
 
         /// <summary>
         /// The Task was finished successfull
         /// </summary>
-        SUCCESS,
+        SUCCESS = 1,
 
         /// <summary>
         /// The Task was finished with warnings
         /// </summary>
-        WARNING,
+        WARNING = 2,
 
         /// <summary>
         /// The Task was finished with an error
         /// </summary>
-        ERROR,
+        ERROR = 4,
 
         /// <summary>
         /// The Task was finished with an error, but is repeated at the next call
         /// </summary>
-        RETRYERROR,
+        RETRYERROR = 8,
 
         /// <summary>
         /// The Task was tagged as inactive
         /// </summary>
-        INACTIVE
+        INACTIVE = 16
     }
     #endregion
 
@@ -98,16 +99,22 @@
         public Guid TaskId { get; set; }
 
         /// <summary>
-        /// The start time of the task.
+        /// A optional Name of the task.
         /// </summary>
         [JsonProperty]
-        public DateTime StartTime { get; set; }
+        public string TaskName { get; set; }
 
         /// <summary>
-        /// The runtime of the task.
+        /// The start date and time of the task.
         /// </summary>
         [JsonProperty]
-        public TimeSpan RunTime { get; set; }
+        public DateTime StartTask { get; set; }
+
+        /// <summary>
+        /// The end date and time of the task.
+        /// </summary>
+        [JsonProperty]
+        public DateTime EndTask { get; set; }
 
         /// <summary>
         /// The current version of aspose cells.
@@ -242,5 +249,47 @@
         /// </summary>
         [JsonProperty]
         public string StackTrace { get; set; }
+
+        private static string GetCompleteMessage(Exception exception)
+        {
+            var x = exception?.InnerException ?? null;
+            var msg = new StringBuilder(exception?.Message);
+            while (x != null)
+            {
+                msg.Append($"{Environment.NewLine}{x.Message}");
+                x = x.InnerException;
+            }
+            return msg.ToString();
+        }
+
+        /// <summary>
+        /// Convert a full exception to serialize exception.
+        /// </summary>
+        /// <param name="exception">full exception</param>
+        /// <returns>serialize exception</returns>
+        public static ReportException GetException(Exception exception)
+        {
+            if (exception == null)
+                return null;
+
+            return new ReportException()
+            {
+                FullMessage = GetCompleteMessage(exception),
+                StackTrace = exception.ToString()
+            };
+        }
+
+        /// <summary>
+        /// Create a serialize exception form message text.
+        /// </summary>
+        /// <param name="message">message text</param>
+        /// <returns>serialize exception</returns>
+        public static ReportException GetException(string message)
+        {
+            return new ReportException()
+            {
+                FullMessage = message
+            };
+        }
     }
 }

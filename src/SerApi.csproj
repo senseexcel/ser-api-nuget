@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>Ser.Api</RootNamespace>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>akquinet finance &amp; controlling GmbH</Authors>
     <Copyright>Copyright (c) $([System.DateTime]::Today.ToString('yyyy'))</Copyright>
     <Company>akquinet finance &amp; controlling GmbH</Company>
@@ -16,10 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="5.3.7" PrivateAssets="all" />
+    <PackageReference Include="GitVersionTask" Version="5.5.1" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="NLog" Version="4.7.5" />
+    <PackageReference Include="NLog" Version="4.7.7" />
   </ItemGroup>
 
   <Target Name="GitVersion" AfterTargets="AfterBuild" Condition="Exists('C:\Users\MBerthold\Documents\DevTools\dotent2typescript')">

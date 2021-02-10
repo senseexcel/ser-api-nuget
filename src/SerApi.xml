@@ -124,14 +124,19 @@
             The id of the task.
             </summary>
         </member>
-        <member name="P:Ser.Api.JobResult.StartTime">
+        <member name="P:Ser.Api.JobResult.TaskName">
             <summary>
-            The start time of the task.
+            A optional Name of the task.
             </summary>
         </member>
-        <member name="P:Ser.Api.JobResult.RunTime">
+        <member name="P:Ser.Api.JobResult.StartTask">
             <summary>
-            The runtime of the task.
+            The start date and time of the task.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.JobResult.EndTask">
+            <summary>
+            The end date and time of the task.
             </summary>
         </member>
         <member name="P:Ser.Api.JobResult.AsposeVersion">
@@ -243,6 +248,20 @@
             <summary>
             All messages and the stacktrace
             </summary>
+        </member>
+        <member name="M:Ser.Api.ReportException.GetException(System.Exception)">
+            <summary>
+            Convert a full exception to serialize exception.
+            </summary>
+            <param name="exception">full exception</param>
+            <returns>serialize exception</returns>
+        </member>
+        <member name="M:Ser.Api.ReportException.GetException(System.String)">
+            <summary>
+            Create a serialize exception form message text.
+            </summary>
+            <param name="message">message text</param>
+            <returns>serialize exception</returns>
         </member>
         <member name="T:Ser.Api.SingleValueArrayConverter">
             <summary>
@@ -360,6 +379,11 @@
         <member name="T:Ser.Api.SerTask">
             <summary>
             The full task object and configuration.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerTask.Id">
+            <summary>
+            The GUID of the Task
             </summary>
         </member>
         <member name="P:Ser.Api.SerTask.Reports">
@@ -671,6 +695,11 @@
         <member name="P:Ser.Api.SerSenseSelection.Sorted">
             <summary>
             Sort dynamic values (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerSenseSelection.DisableFilterValidation">
+            <summary>
+            Disable the static filter validation (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.SerSenseSelection.Type">

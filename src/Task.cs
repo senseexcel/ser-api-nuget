@@ -39,6 +39,12 @@
     {
         #region Properties
         /// <summary>
+        /// The GUID of the Task
+        /// </summary>
+        [JsonProperty]
+        public Guid Id { get; set; }
+
+        /// <summary>
         /// The reports to be generating.
         /// </summary>
         [JsonProperty]
@@ -497,6 +503,12 @@
         /// </summary>
         [JsonProperty]
         public string Sorted { get; set; }
+        
+        /// <summary>
+        /// Disable the static filter validation (optional).
+        /// </summary>
+        [JsonProperty]
+        public bool DisableFilterValidation { get; set; }
 
         /// <summary>
         /// Type of the selection.
