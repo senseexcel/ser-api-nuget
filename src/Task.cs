@@ -252,7 +252,6 @@
         /// <summary>
         /// The qlik filters used for the report (optional).
         /// </summary>
-        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerSenseSelection> Selections { get; set; }
 
         /// <summary>
@@ -406,7 +405,6 @@
         /// <summary>
         /// The thumb print from qlik client ssl certificate (optional).
         /// </summary>
-        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
         /// <summary>
@@ -430,7 +428,6 @@
         /// <summary>
         /// The lisence server (optional).
         /// </summary>
-        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerServer> LicenseServer { get; set; }
         #endregion
 
