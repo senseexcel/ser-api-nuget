@@ -426,6 +426,12 @@
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<string> Lefs { get; set; }
+
+        /// <summary>
+        /// The lisence server (optional).
+        /// </summary>
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
+        public List<Uri> LicenseServer { get; set; }
         #endregion
 
         #region Public Methods

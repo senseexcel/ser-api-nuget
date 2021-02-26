@@ -642,6 +642,11 @@
             The lisence keys (optional).
             </summary>
         </member>
+        <member name="P:Ser.Api.SerConnection.LicenseServer">
+            <summary>
+            The lisence server (optional).
+            </summary>
+        </member>
         <member name="M:Ser.Api.SerConnection.ToString">
             <summary>
             Get the server uri.
