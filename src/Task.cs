@@ -406,7 +406,7 @@
         /// <summary>
         /// The thumb print from qlik client ssl certificate (optional).
         /// </summary>
-        [JsonProperty]
+        [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
         public List<SerThumbprint> SslValidThumbprints { get; set; }
 
         /// <summary>
@@ -431,7 +431,7 @@
         /// The lisence server (optional).
         /// </summary>
         [JsonProperty, JsonConverter(typeof(SingleValueArrayConverter))]
-        public List<Uri> LicenseServer { get; set; }
+        public List<SerServer> LicenseServer { get; set; }
         #endregion
 
         #region Public Methods
@@ -444,6 +444,27 @@
             return $"{ServerUri}";
         }
         #endregion
+    }
+
+    /// <summary>
+    /// Server info for license Server
+    /// </summary>
+    public class SerServer
+    {
+        /// <summary>
+        /// Server uri with port and protocol
+        /// </summary>
+        public Uri ServerUri { get; set; }
+
+        /// <summary>
+        /// Country short
+        /// </summary>
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Prefer server x
+        /// </summary>
+        public int Priority { get; set; }
     }
 
     /// <summary>

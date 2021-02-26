@@ -653,6 +653,26 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Ser.Api.SerServer">
+            <summary>
+            Server info for license Server
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerServer.ServerUri">
+            <summary>
+            Server uri with port and protocol
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerServer.Country">
+            <summary>
+            Country short
+            </summary>
+        </member>
+        <member name="P:Ser.Api.SerServer.Priority">
+            <summary>
+            Prefer server x
+            </summary>
+        </member>
         <member name="T:Ser.Api.SerThumbprint">
             <summary>
             The thumb print for the report.
