@@ -4,16 +4,6 @@
         <name>SerApi</name>
     </assembly>
     <members>
-        <member name="T:Ser.Api.SerConfig">
-            <summary>
-            The configuration of SER for working with JSON
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConfig.Tasks">
-            <summary>
-            All tasks to be performed
-            </summary>
-        </member>
         <member name="T:Ser.Api.DomainUser">
             <summary>
             Class for work with the qlik userid und userdirectory logic.
@@ -316,6 +306,403 @@
             <param name="serializer">The calling serializer.</param>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_WriteJson.htm"/>
         </member>
+        <member name="T:Ser.Api.Model.SerConfig">
+            <summary>
+            The configuration of SER for working with JSON
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConfig.Tasks">
+            <summary>
+            All tasks to be performed
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerConnection">
+            <summary>
+            The connection class of the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.ServerUri">
+            <summary>
+            The Connection uri to Qlik for TypeScript (optional).
+            Note:
+            Desktop: "Qlik Sense Desktop"
+            Server: "https://NAME_OF_SERVER/VIRTUALPROXY"
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.App">
+            <summary>
+            Qlik app name or id
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.RetryTimeout">
+            <summary>
+            The reload timeout for InAppMode.
+            Wait for data reload of the app (optional).
+            Wait for other apps or processes
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.SslVerify">
+            <summary>
+            Use the ssl validation (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.SslValidThumbprints">
+            <summary>
+            The thumb print from qlik client ssl certificate (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.Identities">
+            <summary>
+            Share the qlik session or create a new session with a identity (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.Credentials">
+            <summary>
+            The credentials for the qlik communication for TypeScript (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.Lefs">
+            <summary>
+            The lisence keys (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.LicenseServers">
+            <summary>
+            The lisence server (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerConnection.RendererServers">
+            <summary>
+            The renderer server (optional).
+            </summary>
+        </member>
+        <member name="M:Ser.Api.Model.SerConnection.ToString">
+            <summary>
+            Get the server uri.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ser.Api.Model.SerServer">
+            <summary>
+            Server info for license Server
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerServer.ServerUri">
+            <summary>
+            Server uri with port and protocol
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerServer.Location">
+            <summary>
+            Location/Country short
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerServer.Priority">
+            <summary>
+            Prefer server x
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerThumbprint">
+            <summary>
+            The thumb print for the report.
+            Note:
+            Copy the thumb print from thw qlik client certificate.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerThumbprint.Url">
+            <summary>
+            The server url to the qlilk certificate
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerThumbprint.Thumbprint">
+            <summary>
+            The thumb print from the qlik clint certificate
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerCredentials">
+            <summary>
+            The credentials for the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerCredentials.Type">
+            <summary>
+            The credential type for the connection.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerCredentials.Key">
+            <summary>
+            The name of the cookie.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerCredentials.Value">
+            <summary>
+            The Value of the cookie.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerCredentials.Cert">
+            <summary>
+            The path to the JWT certificate.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerCredentials.PrivateKey">
+            <summary>
+            The path to the private key.
+            It's generate the JWT token.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerGeneral">
+            <summary>
+            The general settings for the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.Active">
+            <summary>
+            Task aktivieren oder deaktivierung für Alerting (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.CleanupTimeOut">
+            <summary>
+            The time after clean up the temp folder (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.AutoFitTables">
+            <summary>
+            Auto fit the colunms and rows from tables and pivottables (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.DisableAutoLink">
+            <summary>
+            Disable dataSource linking by pivot tables (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.DisableAdvancedTableMode">
+            <summary>
+            Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.DisableGenerateImage">
+            <summary>
+            Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.UsePerfomanceAnalyzer">
+            <summary>
+            Use the internal perfomance analyzer (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.WriteFormulaInCustomXml">
+            <summary>
+            Writes the resolved SenseEv formulas into the custom xml structure. (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.Timeout">
+            <summary>
+            The time until the report is aborted (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.ErrorRepeatCount">
+            <summary>
+            The repeat until the report is canceled as error (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.CPULimitInCore">
+            <summary>
+            The count of cpus or cpu cores for the ser engine (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerGeneral.MemoryLimitInGB">
+            <summary>
+            The soft memory limit for the ser engine (optional).
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerReport">
+            <summary>
+            The report of the ser task.
+            </summary>
+            <seealso cref="T:Ser.Api.Model.SerTask"/>
+        </member>
+        <member name="P:Ser.Api.Model.SerReport.General">
+            <summary>
+            The general setting of a report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerReport.Template">
+            <summary>
+            The template of a report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerReport.Distribute">
+            <summary>
+            This property includes the distribute options.
+            It is a json structure.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerReport.Connections">
+            <summary>
+            The available connections to Qlik.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SelectionType">
+            <summary>
+            The type of the selection
+            </summary>
+        </member>
+        <member name="F:Ser.Api.Model.SelectionType.Static">
+            <summary>
+            Use a fixed filter name or bookmark.
+            </summary>
+        </member>
+        <member name="F:Ser.Api.Model.SelectionType.Dynamic">
+            <summary>
+            Loop over a field or dimension.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerSenseSelection">
+            <summary>
+            The selection of the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.Name">
+            <summary>
+            The Name of the filter (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.StateName">
+            <summary>
+            The Name of the selection state default is $ (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.ObjectType">
+            <summary>
+            Type of the filter type.
+            By Default it will used 'Field'.
+            Other Values are 'bookmark' and 'hiddenbookmark'
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.Values">
+            <summary>
+            The values that should be used (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.Sorted">
+            <summary>
+            Sort dynamic values (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.DisableFilterValidation">
+            <summary>
+            Disable the static filter validation (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.Type">
+            <summary>
+            Type of the selection.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.ExportRootNode">
+            <summary>
+            Export a Root node for the sheet names (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerSenseSelection.SheetName">
+            <summary>
+            Give the sheet a seperate sheet name form a formaula (optional).
+            You can also use @@sheetname@@ as placeholter for the orignal sheet name.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerTask">
+            <summary>
+            The full task object and configuration.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTask.Id">
+            <summary>
+            The GUID of the Task
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTask.Reports">
+            <summary>
+            The reports to be generating.
+            </summary>
+        </member>
+        <member name="T:Ser.Api.Model.SerTemplate">
+            <summary>
+            The template for the report.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.Input">
+            <summary>
+            The Input path of the template (optional).
+            You can use the protokoll 'content' or 'lib'
+            Samples:
+            Use 'content:///[TEMPLATE]' for InApp template
+            Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
+            Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.Output">
+            <summary>
+            The output name of the report (optional).
+            Note:
+            You can use the output name with or without file extention.
+            If you use the output name without a file extension, you must also use the property 'Outputformat'.
+            If you do not specify a file extension, PDF will be used automatically.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.OutputFormat">
+            <summary>
+            The file extention for the output name (optional).
+            It is optional.
+            </summary>
+            <seealso cref="P:Ser.Api.Model.SerTemplate.Output"/>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.OutputPassword">
+            <summary>
+            The password what should be set for the reports (optional).
+            Note:
+            It only works for PDF and XLSX files.
+            If you not want the password remove it in the json.
+            Please do not leave blank, because the human json convention can not handle it.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.UseBase64Password">
+            <summary>
+            If you wont to use a BASE64 encoded password.
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.OutputFormatOptions">
+            <summary>
+            Flexible output format options (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.ScriptKeys">
+            <summary>
+            The signature for the script executing (optional)..
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.ScriptArgs">
+            <summary>
+            The arguments for the executing .NET scripts (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.Selections">
+            <summary>
+            The qlik filters used for the report (optional).
+            </summary>
+        </member>
+        <member name="P:Ser.Api.Model.SerTemplate.SelectionsClearAll">
+            <summary>
+            Clear or clear not the Qlik selections in a session (optional).
+            This mode is importent for the OnDemand Extention.
+            </summary>
+        </member>
+        <member name="M:Ser.Api.Model.SerTemplate.GetSelectionObjects(Ser.Api.Model.SelectionType)">
+            <summary>
+            Returns the selections of a special type.
+            </summary>
+            <param name="type">The type of a selection.</param>
+            <returns>A list of selections</returns>
+        </member>
         <member name="T:Ser.Api.QlikCredentialType">
             <summary>
             Authentication type to connect to Qlik
@@ -359,388 +746,6 @@
         <member name="F:Ser.Api.QlikCredentialType.CLOUD">
             <summary>
              Authentication To Qlik-Entprise-SAAS over API-Key
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SelectionType">
-            <summary>
-            The type of the selection
-            </summary>
-        </member>
-        <member name="F:Ser.Api.SelectionType.Static">
-            <summary>
-            Use a fixed filter name or bookmark.
-            </summary>
-        </member>
-        <member name="F:Ser.Api.SelectionType.Dynamic">
-            <summary>
-            Loop over a field or dimension.
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerTask">
-            <summary>
-            The full task object and configuration.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTask.Id">
-            <summary>
-            The GUID of the Task
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTask.Reports">
-            <summary>
-            The reports to be generating.
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerReport">
-            <summary>
-            The report of the ser task.
-            </summary>
-            <seealso cref="T:Ser.Api.SerTask"/>
-        </member>
-        <member name="P:Ser.Api.SerReport.General">
-            <summary>
-            The general setting of a report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerReport.Template">
-            <summary>
-            The template of a report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerReport.Distribute">
-            <summary>
-            This property includes the distribute options.
-            It is a json structure.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerReport.Connections">
-            <summary>
-            The available connections to Qlik.
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerGeneral">
-            <summary>
-            The general settings for the report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.Active">
-            <summary>
-            Task aktivieren oder deaktivierung für Alerting (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.CleanupTimeOut">
-            <summary>
-            The time after clean up the temp folder (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.AutoFitTables">
-            <summary>
-            Auto fit the colunms and rows from tables and pivottables (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.DisableAutoLink">
-            <summary>
-            Disable dataSource linking by pivot tables (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.DisableAdvancedTableMode">
-            <summary>
-            Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.DisableGenerateImage">
-            <summary>
-            Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.UsePerfomanceAnalyzer">
-            <summary>
-            Use the internal perfomance analyzer (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.WriteFormulaInCustomXml">
-            <summary>
-            Writes the resolved SenseEv formulas into the custom xml structure. (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.Timeout">
-            <summary>
-            The time until the report is aborted (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.ErrorRepeatCount">
-            <summary>
-            The repeat until the report is canceled as error (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.CPULimitInCore">
-            <summary>
-            The count of cpus or cpu cores for the ser engine (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerGeneral.MemoryLimitInGB">
-            <summary>
-            The soft memory limit for the ser engine (optional).
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerTemplate">
-            <summary>
-            The template for the report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.Input">
-            <summary>
-            The Input path of the template (optional).
-            You can use the protokoll 'content' or 'lib'
-            Samples:
-            Use 'content:///[TEMPLATE]' for InApp template
-            Use 'content://[CONTENTLIBARY]/[TEMPLATE]' for a content libary.
-            Use 'lib://[LIB-FOLDER]/[TEMPLATE]' for a special folder.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.Output">
-            <summary>
-            The output name of the report (optional).
-            Note:
-            You can use the output name with or without file extention.
-            If you use the output name without a file extension, you must also use the property 'Outputformat'.
-            If you do not specify a file extension, PDF will be used automatically.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.OutputFormat">
-            <summary>
-            The file extention for the output name (optional).
-            It is optional.
-            </summary>
-            <seealso cref="P:Ser.Api.SerTemplate.Output"/>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.OutputPassword">
-            <summary>
-            The password what should be set for the reports (optional).
-            Note:
-            It only works for PDF and XLSX files.
-            If you not want the password remove it in the json.
-            Please do not leave blank, because the human json convention can not handle it.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.UseBase64Password">
-            <summary>
-            If you wont to use a BASE64 encoded password.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.OutputFormatOptions">
-            <summary>
-            Flexible output format options (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.ScriptKeys">
-            <summary>
-            The signature for the script executing (optional)..
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.ScriptArgs">
-            <summary>
-            The arguments for the executing .NET scripts (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.Selections">
-            <summary>
-            The qlik filters used for the report (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerTemplate.SelectionsClearAll">
-            <summary>
-            Clear or clear not the Qlik selections in a session (optional).
-            This mode is importent for the OnDemand Extention.
-            </summary>
-        </member>
-        <member name="M:Ser.Api.SerTemplate.GetSelectionObjects(Ser.Api.SelectionType)">
-            <summary>
-            Returns the selections of a special type.
-            </summary>
-            <param name="type">The type of a selection.</param>
-            <returns>A list of selections</returns>
-        </member>
-        <member name="T:Ser.Api.SerCredentials">
-            <summary>
-            The credentials for the report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerCredentials.Type">
-            <summary>
-            The credential type for the connection.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerCredentials.Key">
-            <summary>
-            The name of the cookie.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerCredentials.Value">
-            <summary>
-            The Value of the cookie.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerCredentials.Cert">
-            <summary>
-            The path to the JWT certificate.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerCredentials.PrivateKey">
-            <summary>
-            The path to the private key.
-            It's generate the JWT token.
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerConnection">
-            <summary>
-            The connection class of the report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.ServerUri">
-            <summary>
-            The Connection uri to Qlik for TypeScript (optional).
-            Note:
-            Desktop: "Qlik Sense Desktop"
-            Server: "https://NAME_OF_SERVER/VIRTUALPROXY"
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.App">
-            <summary>
-            Qlik app name or id
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.RetryTimeout">
-            <summary>
-            The reload timeout for InAppMode.
-            Wait for data reload of the app (optional).
-            Wait for other apps or processes
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.SslVerify">
-            <summary>
-            Use the ssl validation (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.SslValidThumbprints">
-            <summary>
-            The thumb print from qlik client ssl certificate (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.Identities">
-            <summary>
-            Share the qlik session or create a new session with a identity (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.Credentials">
-            <summary>
-            The credentials for the qlik communication for TypeScript (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.Lefs">
-            <summary>
-            The lisence keys (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerConnection.LicenseServer">
-            <summary>
-            The lisence server (optional).
-            </summary>
-        </member>
-        <member name="M:Ser.Api.SerConnection.ToString">
-            <summary>
-            Get the server uri.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Ser.Api.SerServer">
-            <summary>
-            Server info for license Server
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerServer.ServerUri">
-            <summary>
-            Server uri with port and protocol
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerServer.Country">
-            <summary>
-            Country short
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerServer.Priority">
-            <summary>
-            Prefer server x
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerThumbprint">
-            <summary>
-            The thumb print for the report.
-            Note:
-            Copy the thumb print from thw qlik client certificate.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerThumbprint.Url">
-            <summary>
-            The server url to the qlilk certificate
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerThumbprint.Thumbprint">
-            <summary>
-            The thumb print from the qlik clint certificate
-            </summary>
-        </member>
-        <member name="T:Ser.Api.SerSenseSelection">
-            <summary>
-            The selection of the report.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.Name">
-            <summary>
-            The Name of the filter (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.StateName">
-            <summary>
-            The Name of the selection state default is $ (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.ObjectType">
-            <summary>
-            Type of the filter type.
-            By Default it will used 'Field'.
-            Other Values are 'bookmark' and 'hiddenbookmark'
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.Values">
-            <summary>
-            The values that should be used (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.Sorted">
-            <summary>
-            Sort dynamic values (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.DisableFilterValidation">
-            <summary>
-            Disable the static filter validation (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.Type">
-            <summary>
-            Type of the selection.
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.ExportRootNode">
-            <summary>
-            Export a Root node for the sheet names (optional).
-            </summary>
-        </member>
-        <member name="P:Ser.Api.SerSenseSelection.SheetName">
-            <summary>
-            Give the sheet a seperate sheet name form a formaula (optional).
-            You can also use @@sheetname@@ as placeholter for the orignal sheet name.
             </summary>
         </member>
     </members>

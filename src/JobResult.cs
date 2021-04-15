@@ -1,13 +1,14 @@
 ﻿namespace Ser.Api
 {
     #region Usings
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json.Serialization;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using Ser.Api.Model;
     #endregion
 
     #region Enumerations
@@ -221,6 +222,7 @@
     /// </summary>
     public class ReportData
     {
+        #region Properties
         /// <summary>
         /// File path of the report.
         /// </summary>
@@ -230,6 +232,7 @@
         /// Data as byte array
         /// </summary>
         public byte[] DownloadData { get; set; }
+        #endregion
     }
 
     /// <summary>
@@ -238,6 +241,7 @@
     [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy))]
     public class ReportException
     {
+        #region Properties
         /// <summary>
         /// All messages in excpetion recursion
         /// </summary>
@@ -249,7 +253,9 @@
         /// </summary>
         [JsonProperty]
         public string StackTrace { get; set; }
+        #endregion
 
+        #region Private Methods
         private static string GetCompleteMessage(Exception exception)
         {
             var x = exception?.InnerException ?? null;
@@ -261,7 +267,9 @@
             }
             return msg.ToString();
         }
+        #endregion
 
+        #region Public Methods
         /// <summary>
         /// Convert a full exception to serialize exception.
         /// </summary>
@@ -291,5 +299,6 @@
                 FullMessage = message
             };
         }
+        #endregion
     }
 }
