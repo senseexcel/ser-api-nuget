@@ -1,4 +1,4 @@
-﻿namespace Ser.Engine.Rest.Model
+﻿namespace Ser.Api
 {
     #region Usings
     using System;

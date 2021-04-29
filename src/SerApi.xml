@@ -748,5 +748,30 @@
              Authentication To Qlik-Entprise-SAAS over API-Key
             </summary>
         </member>
+        <member name="T:Ser.Api.RestTaskStatus">
+            <summary>
+            Task information
+            </summary>
+        </member>
+        <member name="P:Ser.Api.RestTaskStatus.Status">
+            <summary>
+            Status
+            </summary>
+        </member>
+        <member name="P:Ser.Api.RestTaskStatus.ProcessMessage">
+            <summary>
+            Task State Message
+            </summary>
+        </member>
+        <member name="P:Ser.Api.RestTaskStatus.DistributeResult">
+            <summary>
+            DistributeResult
+            </summary>
+        </member>
+        <member name="P:Ser.Api.RestTaskStatus.JobResultJson">
+            <summary>
+            Job result list as Json
+            </summary>
+        </member>
     </members>
 </doc>
