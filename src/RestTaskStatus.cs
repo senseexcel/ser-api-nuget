@@ -34,6 +34,11 @@
         /// Message by a error
         /// </summary>
         public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// The task is finish
+        /// </summary>
+        public bool Finish { get; set; }
         #endregion
     }
 }

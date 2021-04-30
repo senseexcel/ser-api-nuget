@@ -768,9 +768,14 @@
             DistributeResult
             </summary>
         </member>
-        <member name="P:Ser.Api.RestTaskStatus.JobResultJson">
+        <member name="P:Ser.Api.RestTaskStatus.JsonJobResults">
             <summary>
             Job result list as Json
+            </summary>
+        </member>
+        <member name="P:Ser.Api.RestTaskStatus.ErrorMessage">
+            <summary>
+            Message by a error
             </summary>
         </member>
     </members>
