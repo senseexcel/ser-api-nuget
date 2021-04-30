@@ -28,7 +28,12 @@
         /// <summary>
         /// Job result list as Json
         /// </summary>
-        public string JobResultJson { get; set; }
+        public string JsonJobResults { get; set; }
+
+        /// <summary>
+        /// Message by a error
+        /// </summary>
+        public string ErrorMessage { get; set; }
         #endregion
     }
 }
