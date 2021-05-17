@@ -8,22 +8,21 @@
     <Company>akquinet finance &amp; controlling GmbH</Company>
     <PackageId>Ser.Api</PackageId>
     <Product>Ser.Api</Product>
-    <Version>$(GitVersion_InformationalVersion)</Version>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <DocumentationFile>SerApi.xml</DocumentationFile>
+    <AssemblyVersion>5.1.2.0</AssemblyVersion>
+    <FileVersion>5.1.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="5.5.1" PrivateAssets="all" />
     <PackageReference Include="Hjson" Version="3.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="NLog" Version="4.7.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NLog" Version="4.7.9" />
   </ItemGroup>
 
-  <Target Name="GitVersion" AfterTargets="AfterBuild" Condition="Exists('C:\Users\MBerthold\Documents\DevTools\dotent2typescript')">
-    <Message Importance="High" Text="++++++ GitVersion: $(GitVersion_InformationalVersion) $(ProjectDir) ++++++" />
-    <Exec WorkingDirectory="C:\Users\MBerthold\Documents\DevTools\dotent2typescript" Command="%HOMEPATH%\Documents\DevTools\dotent2typescript\dotnet2typescript.exe config.json" />
+  <Target Name="ShowAssemblyVersion" BeforeTargets="AfterBuild">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="MyAssemblyIdentities" />
+    </GetAssemblyIdentity>
+    <Message Importance="High" Text="++++++ AssemblyVersion: %(MyAssemblyIdentities.Version) ++++++" />
   </Target>
 </Project>
