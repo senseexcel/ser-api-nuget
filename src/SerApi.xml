@@ -778,10 +778,5 @@
             Message by a error
             </summary>
         </member>
-        <member name="P:Ser.Api.RestTaskStatus.Finish">
-            <summary>
-            The task is finish
-            </summary>
-        </member>
     </members>
 </doc>
