@@ -1,4 +1,4 @@
-﻿namespace Ser.Api
+﻿namespace Ser.Api.JsonConverters
 {
     #region Usings
     using Newtonsoft.Json;
