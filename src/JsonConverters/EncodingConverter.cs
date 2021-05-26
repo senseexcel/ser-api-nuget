@@ -9,7 +9,7 @@
     /// <summary>
     /// Json Encoding Converter
     /// </summary>
-    public class JsonEncodingConverter : JsonConverter
+    public class EncodingConverter : JsonConverter
     {
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -22,9 +22,7 @@
         /// <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_ReadJson.htm"/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (existingValue == null)
-                existingValue = reader.Value;
-            return Encoding.GetEncoding(existingValue.ToString());
+            return Encoding.GetEncoding(reader.Value.ToString());
         }
 
         /// <summary>
