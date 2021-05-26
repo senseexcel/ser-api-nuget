@@ -7,6 +7,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Serialization;
+    using Ser.Api.JsonConverters;
     #endregion
 
     #region Enumerations

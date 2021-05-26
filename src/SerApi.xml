@@ -286,32 +286,32 @@
             <returns>true if this instance can convert the specified object type, otherwise false.</returns>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_CanConvert.htm"/>
         </member>
-        <member name="T:Ser.Api.SingleValueArrayConverter">
+        <member name="T:Ser.Api.JsonConverters.SingleValueArrayConverter">
             <summary>
             This converter converts a single object into an array item.
             </summary>
         </member>
-        <member name="T:Ser.Api.SingleValueArrayConverter.ObjectMode">
+        <member name="T:Ser.Api.JsonConverters.SingleValueArrayConverter.ObjectMode">
             <summary>
             The mode of the json object.
             </summary>
         </member>
-        <member name="F:Ser.Api.SingleValueArrayConverter.ObjectMode.Standard">
+        <member name="F:Ser.Api.JsonConverters.SingleValueArrayConverter.ObjectMode.Standard">
             <summary>
             No list and no array.
             </summary>
         </member>
-        <member name="F:Ser.Api.SingleValueArrayConverter.ObjectMode.Array">
+        <member name="F:Ser.Api.JsonConverters.SingleValueArrayConverter.ObjectMode.Array">
             <summary>
             It is a array.
             </summary>
         </member>
-        <member name="F:Ser.Api.SingleValueArrayConverter.ObjectMode.List">
+        <member name="F:Ser.Api.JsonConverters.SingleValueArrayConverter.ObjectMode.List">
             <summary>
             It is a list.
             </summary>
         </member>
-        <member name="M:Ser.Api.SingleValueArrayConverter.CanConvert(System.Type)">
+        <member name="M:Ser.Api.JsonConverters.SingleValueArrayConverter.CanConvert(System.Type)">
             <summary>
             Determines whether this instance can convert the specified object type.
             </summary>
@@ -319,7 +319,7 @@
             <returns>true if this instance can convert the specified object type, otherwise false.</returns>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_CanConvert.htm"/>
         </member>
-        <member name="M:Ser.Api.SingleValueArrayConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+        <member name="M:Ser.Api.JsonConverters.SingleValueArrayConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
             <summary>
             Reads the JSON representation of the object.
             </summary>
@@ -330,7 +330,7 @@
             <returns></returns>
             <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_ReadJson.htm"/>
         </member>
-        <member name="M:Ser.Api.SingleValueArrayConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+        <member name="M:Ser.Api.JsonConverters.SingleValueArrayConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
             <summary>
             Writes the JSON representation of the object.
             </summary>
