@@ -22,7 +22,14 @@
         /// <see href="https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConverter_ReadJson.htm"/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            return Encoding.GetEncoding(reader.Value.ToString());
+            try
+            {
+                return Encoding.GetEncoding(reader.Value.ToString());
+            }
+            catch
+            {
+                return existingValue;
+            }
         }
 
         /// <summary>
