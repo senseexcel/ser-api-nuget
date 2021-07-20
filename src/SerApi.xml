@@ -518,6 +518,11 @@
             Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
             </summary>
         </member>
+        <member name="P:Ser.Api.Model.SerGeneral.IgnoreRendererRuntimeErrors">
+            <summary>
+            Do not cancel if an image is not rendered properly (optional).
+            </summary>
+        </member>
         <member name="P:Ser.Api.Model.SerGeneral.UsePerfomanceAnalyzer">
             <summary>
             Use the internal perfomance analyzer (optional).

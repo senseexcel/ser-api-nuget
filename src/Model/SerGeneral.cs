@@ -56,6 +56,13 @@
         public bool DisableGenerateImage { get; set; }
 
         /// <summary>
+        /// Do not cancel if an image is not rendered properly (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool IgnoreRendererRuntimeErrors { get; set; }
+
+        /// <summary>
         /// Use the internal perfomance analyzer (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
