@@ -49,7 +49,7 @@
         public bool DisableAdvancedTableMode { get; set; }
 
         /// <summary>
-        /// Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+        /// Disable image rendering (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
