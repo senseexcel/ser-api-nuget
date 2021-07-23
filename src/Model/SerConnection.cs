@@ -6,6 +6,7 @@
     using System.ComponentModel;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
+    using Ser.Api.JsonConverters;
     #endregion
 
     /// <summary>

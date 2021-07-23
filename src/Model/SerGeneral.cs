@@ -49,11 +49,18 @@
         public bool DisableAdvancedTableMode { get; set; }
 
         /// <summary>
-        /// Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+        /// Disable image rendering (optional).
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(false)]
         public bool DisableGenerateImage { get; set; }
+
+        /// <summary>
+        /// Do not cancel if an image is not rendered properly (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool IgnoreRendererRuntimeErrors { get; set; }
 
         /// <summary>
         /// Use the internal perfomance analyzer (optional).
