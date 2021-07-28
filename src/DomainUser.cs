@@ -28,7 +28,8 @@
         /// <param name="domainUserValue">UserId and UserDirectory as Path.
         /// Sample: 'USERDIRECTORY\\USERID' or 'UserDirectory=USERDIRECTORY; UserId=USERID'
         /// </param>
-        public DomainUser(string domainUserValue)
+        /// <param name="useQlikFormat">Format UserDirectory Uppercase and UserId lowercase like Qlik</param>
+        public DomainUser(string domainUserValue, bool useQlikFormat = false)
         {
             var split = domainUserValue.Split('\\');
             if (split.Length == 2)
@@ -44,6 +45,12 @@
                     UserId = split.ElementAtOrDefault(1)?.Split('=').ElementAtOrDefault(1) ?? null;
                     UserDirectory = split.ElementAtOrDefault(0)?.Split('=').ElementAtOrDefault(1) ?? null;
                 }
+            }
+
+            if(useQlikFormat)
+            {
+                UserId = UserId.ToLowerInvariant();
+                UserDirectory = UserDirectory.ToUpperInvariant();
             }
         }
         #endregion
