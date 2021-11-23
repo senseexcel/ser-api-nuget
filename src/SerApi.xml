@@ -19,13 +19,14 @@
             Qlik user directory
             </summary>
         </member>
-        <member name="M:Ser.Api.DomainUser.#ctor(System.String)">
+        <member name="M:Ser.Api.DomainUser.#ctor(System.String,System.Boolean)">
             <summary>
             Creating a object for DomainUser.
             </summary>
             <param name="domainUserValue">UserId and UserDirectory as Path.
             Sample: 'USERDIRECTORY\\USERID' or 'UserDirectory=USERDIRECTORY; UserId=USERID'
             </param>
+            <param name="useQlikFormat">Format UserDirectory Uppercase and UserId lowercase like Qlik</param>
         </member>
         <member name="M:Ser.Api.DomainUser.ToString">
             <summary>
@@ -515,7 +516,7 @@
         </member>
         <member name="P:Ser.Api.Model.SerGeneral.DisableGenerateImage">
             <summary>
-            Disable new logic for advanced table columns or generated excel formulas from qlik (optional).
+            Disable image rendering (optional).
             </summary>
         </member>
         <member name="P:Ser.Api.Model.SerGeneral.IgnoreRendererRuntimeErrors">
