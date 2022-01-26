@@ -103,6 +103,13 @@
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         [DefaultValue(-1.0)]
         public double MemoryLimitInGB { get; set; } = -1.0;
+
+        /// <summary>
+        /// Use the Qlik Cloud Image Render (optional).
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [DefaultValue(false)]
+        public bool UseCloudImageRender { get; set; }
         #endregion
     }
 }
