@@ -9,8 +9,8 @@
     <PackageId>Ser.Api</PackageId>
     <Product>Ser.Api</Product>
     <DocumentationFile>SerApi.xml</DocumentationFile>
-    <AssemblyVersion>5.1.8.0</AssemblyVersion>
-    <FileVersion>5.1.8.0</FileVersion>
+    <AssemblyVersion>5.1.9.0</AssemblyVersion>
+    <FileVersion>5.1.9.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

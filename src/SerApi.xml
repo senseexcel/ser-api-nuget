@@ -554,6 +554,11 @@
             The soft memory limit for the ser engine (optional).
             </summary>
         </member>
+        <member name="P:Ser.Api.Model.SerGeneral.UseCloudImageRender">
+            <summary>
+            Use the Qlik Cloud Image Render (optional).
+            </summary>
+        </member>
         <member name="T:Ser.Api.Model.SerReport">
             <summary>
             The report of the ser task.
