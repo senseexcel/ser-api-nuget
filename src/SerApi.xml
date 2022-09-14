@@ -714,6 +714,11 @@
             If you wont to use a BASE64 encoded password.
             </summary>
         </member>
+        <member name="P:Ser.Api.Model.SerTemplate.EncryptType">
+            <summary>
+            Type for the Encryption - for example  a bearer.
+            </summary>
+        </member>
         <member name="P:Ser.Api.Model.SerTemplate.OutputFormatOptions">
             <summary>
             Flexible output format options (optional).
