@@ -822,5 +822,20 @@
             Message by a error
             </summary>
         </member>
+        <member name="T:AgApi.EncryptionType">
+            <summary>
+            Encryption types
+            </summary>
+        </member>
+        <member name="F:AgApi.EncryptionType.RSA256">
+            <summary>
+            RSA 256 Bit encryption
+            </summary>
+        </member>
+        <member name="F:AgApi.EncryptionType.AES256">
+            <summary>
+            AES 256 Bit encryption
+            </summary>
+        </member>
     </members>
 </doc>
