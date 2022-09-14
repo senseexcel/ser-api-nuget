@@ -5,7 +5,9 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
+    using AgApi;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json.Serialization;
     #endregion
@@ -62,6 +64,13 @@
         /// </summary>
         [JsonProperty]
         public bool UseBase64Password { get; set; }
+
+        /// <summary>
+        /// Type for the Encryption - for example  a bearer.
+        /// </summary>
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
+        [DefaultValue(EncryptionType.RSA256)]
+        public EncryptionType EncryptType { get; set; }
 
         /// <summary>
         /// Flexible output format options (optional).
